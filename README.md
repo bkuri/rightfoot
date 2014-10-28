@@ -27,6 +27,16 @@ This will create a directory called `node_modules` and install its packages (usi
 Install it using:
 `# npm install -g brunch`
 
+#### Plugins
+The following plugins are subsequently installed:
+* [auto-reload-brunch](https://github.com/brunch/auto-reload-brunch)
+* [brunch-pleeease](https://www.npmjs.org/package/brunch-pleeease)
+* [coffee-script-brunch](https://github.com/brunch/coffee-script-brunch)
+* [jade-pages-brunch](https://github.com/Kagami/jade-pages-brunch)
+* [javascript-brunch](https://github.com/brunch/javascript-brunch)
+* [stylus-brunch](https://github.com/brunch/stylus-brunch)
+* [uglify-js-brunch](https://github.com/brunch/uglify-js-brunch)
+
 
 ### Bower
 Install it using:
