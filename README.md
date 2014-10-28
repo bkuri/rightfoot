@@ -42,7 +42,7 @@ The previous step will create a `bower_components` directory and will contain al
 
 
 ### Use
-Simply use the following command:
+Simply issue the following command:
 `npm start`
 
 This will start a server on `http://localhost:3333`.
