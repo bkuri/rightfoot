@@ -1,6 +1,6 @@
 {
   "name": "rightfoot",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Superstar-grade nodejs development environment for web projects",
   "scripts": {
     "start": "brunch watch --server",
