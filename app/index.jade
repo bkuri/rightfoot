@@ -1,36 +1,34 @@
 doctype html
 
-include ./partials/properties.jade
-
-html
+html(lang=lang)
   head
-    title= app.name
+    title= name
 
-    meta(charset="utf-8")
+    meta(charset=charset)
 
     meta(
       name="viewport"
       content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes"
     )
 
-    script(type="text/javascript", src="js/vendor.js")
-    script(type="text/javascript", src="js/app.js")
+    script(type="text/javascript", src=url.vendor)
+    script(type="text/javascript", src=url.app)
 
-    link(rel="stylesheet", href="css/app.min.css")
+    link(rel="stylesheet", href=url.css)
 
   body
-    h1= app.name
+    h1= name
     h2 Quick notes
 
     ol
       li The main HTML (what you're reading right now) can be changed by editing:
-        pre ./index.jade
+        pre= url.jade
 
       li The main stylesheet is located at:
-        pre ./styles/app.styl
+        pre= url.styl
 
-      li The main JS is located at:
-        pre ./scripts/app.coffee
+      li The main coffeescript file is located at:
+        pre= url.coffee
 
       li You can install packages with bower like so (inside the base directory):
         pre bower install --save

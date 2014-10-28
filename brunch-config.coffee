@@ -1,5 +1,18 @@
-# See http://brunch.io/#documentation for docs.
+# change your local variables here
+locals =
+  charset: 'utf-8'
+  lang: 'en'
+  name: 'rightfoot'
 
+  url:
+    app: 'js/app.js'
+    coffee: 'scripts/app.coffee'
+    css: 'css/app.min.css'
+    jade: './index.jade'
+    styl: './styles/app.styl'
+    vendor: 'js/vendor.js'
+
+# See http://brunch.io/#documentation for docs.
 exports.config =
   conventions:
     assets: /^app\/assets\//
@@ -41,10 +54,8 @@ exports.config =
 
   plugins:
     jadePages:
-      htmlmin: false
-
       jade:
-        pretty: yes
+        locals: locals
 
     pleeease:
       fallbacks:
