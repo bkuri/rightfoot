@@ -1,8 +1,10 @@
 doctype html
 
+include ./partials/properties.jade
+
 html
   head
-    title rightfoot
+    title= app.name
 
     meta(charset="utf-8")
 
@@ -17,7 +19,8 @@ html
     link(rel="stylesheet", href="css/app.min.css")
 
   body
-    h1 Quick notes
+    h1= app.name
+    h2 Quick notes
 
     ol
       li The main HTML (what you're reading right now) can be changed by editing:
@@ -29,6 +32,6 @@ html
       li The main JS is located at:
         pre ./scripts/app.coffee
 
-      li You can install packages with bower like so:
+      li You can install packages with bower like so (inside the base directory):
         pre bower install --save
-          i packagename
+          i  packagename
