@@ -1,7 +1,7 @@
+<img src="http://media.catmoji.com/post/dmx/my-cat-likes-to-be-comfortable.jpg">
+
 # rightfoot
 ## A+ nodejs development environment for jump-starting web projects.
-Uses the following libraries to get you started in record time:
-
 * [Coffeescript](http://coffeescript.org) for clean, expressive JS
 * [Jade](http://jade.io) for clean, expressive HTML templates
 * [Stylus](https://learnboost.github.io/stylus/) for awesome and powerful CSS
@@ -12,7 +12,7 @@ Uses the following libraries to get you started in record time:
 
 It features on the fly compilation, optimization and page reloading (as long as [auto-reload-brunch](http://github.com/brunch/auto-reload-brunch) is kept installed):
 
-Everything is preconfigured and ready to go. All you need to do is add your bower libraries and start editing `index.jade` to your liking.
+Everything is preconfigured and ready to go. All you need to do is add your bower libraries (ie. bootstrap, jquery, etc) and start editing `index.jade`.
 
 
 ## Install
@@ -38,7 +38,8 @@ The following brunch plugins are subsequently installed:
 
 #### Notes
 * Consider uninstalling `auto-reload-brunch` when it's time to publish.
-* `jade-pages-brunch` is used to compile flat html. Consider alterntatives like `jaded` if you're looking for something more dynamic.
+* `jade-pages-brunch` is used to compile flat html. Consider an alterntative like `jaded` if you're looking for something more dynamic.
+
 
 ### Bower
 Install it using:
