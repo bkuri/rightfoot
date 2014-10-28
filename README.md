@@ -6,7 +6,7 @@ Uses the following kickass libraries to get you started in record time. It featu
 * [Coffeescript](http://coffeescript.org) for clean, expressive JS
 * [Jade](http://jade.io) for clean, expressive HTML templates
 * [Stylus](https://learnboost.github.io/stylus/) for awesome and powerful CSS
-* [Bower](http://bower.io) for professional package management;w
+* [Bower](http://bower.io) for professional package management
 * [Brunch](http://brunch.io) for super-fluid development
 * [Pleeease](http://pleeease.io) for CSS optimization and autoprefixing
 * [UglifyJS](http://lisperator.net/uglifyjs) for JS minification
