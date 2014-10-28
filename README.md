@@ -36,7 +36,7 @@ The following brunch plugins are subsequently installed:
 * [stylus-brunch](https://github.com/brunch/stylus-brunch)
 * [uglify-js-brunch](https://github.com/brunch/uglify-js-brunch)
 
-#### Notes
+#### Brunch notes
 * Consider uninstalling `auto-reload-brunch` when it's time to publish.
 * `jade-pages-brunch` is used to compile flat html. Consider an alterntative like `jaded` if you're looking for something more dynamic.
 
@@ -49,9 +49,10 @@ Install it using:
 Install your bower packages and add version info to `package.json`:
 `bower install --save my-package-name`
 
-Note: You will need git available in your $PATH for the last command to work. Windows users are recommended to run that command inside a git shell.
+This will create a `bower_components` directory and will contain all packages defined inside `bower.json`.
 
-The previous step will create a `bower_components` directory and will contain all packages defined inside `bower.json`.
+#### Note
+You will need git available in your $PATH for the last command to work. Windows users are recommended to run that command inside a git shell.
 
 
 ### Use
@@ -69,7 +70,7 @@ Remember to remove brunch's auto-reload package once you're ready to publish:
 
 
 ### Ideas FTW
-I will gladly consider suggestions and pull requests. This particular combo has served me really well, but of course there's always room for improvement.
+I will gladly consider suggestions and pull requests. This particular combo has served me really well, but of course there's always room for improvement and expansion.
 
 
 ### Thanks!
