@@ -27,8 +27,7 @@ This will create a directory called `node_modules` and install its packages (usi
 Install it using:
 `# npm install -g brunch`
 
-#### Plugins
-The following plugins are subsequently installed:
+The following brunch plugins are subsequently installed:
 * [auto-reload-brunch](https://github.com/brunch/auto-reload-brunch)
 * [brunch-pleeease](https://www.npmjs.org/package/brunch-pleeease)
 * [coffee-script-brunch](https://github.com/brunch/coffee-script-brunch)
@@ -37,6 +36,9 @@ The following plugins are subsequently installed:
 * [stylus-brunch](https://github.com/brunch/stylus-brunch)
 * [uglify-js-brunch](https://github.com/brunch/uglify-js-brunch)
 
+#### Notes
+* Consider uninstalling `auto-reload-brunch` when it's time to publish.
+* `jade-pages-brunch` is used to compile flat html. Consider alterntatives like `jaded` if you're looking for something more dynamic.
 
 ### Bower
 Install it using:
@@ -65,8 +67,8 @@ Remember to remove brunch's auto-reload package once you're ready to publish:
 `npm uninstall --save auto-reload-brunch`
 
 
-### Ideas welcome!
-I will gladly accept suggestions. This particular combo has served me really well, but of course there's always room for improvement.
+### Ideas FTW
+I will gladly consider suggestions and pull requests. This particular combo has served me really well, but of course there's always room for improvement.
 
 
 ### Thanks!
