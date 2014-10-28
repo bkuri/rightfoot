@@ -6,11 +6,13 @@ locals =
 
   url:
     app: 'js/app.js'
-    coffee: 'scripts/app.coffee'
+    brunch: './brunch-config.coffee'
+    coffee: './app/scripts/app.coffee'
     css: 'css/app.min.css'
-    jade: './index.jade'
-    styl: './styles/app.styl'
+    jade: './app/index.jade'
+    styl: './app/styles/app.styl'
     vendor: 'js/vendor.js'
+
 
 # See http://brunch.io/#documentation for docs.
 exports.config =

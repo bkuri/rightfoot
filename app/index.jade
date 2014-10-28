@@ -1,26 +1,16 @@
 doctype html
 
 html(lang=lang)
-  head
-    title= name
-
-    meta(charset=charset)
-
-    meta(
-      name="viewport"
-      content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes"
-    )
-
-    script(type="text/javascript", src=url.vendor)
-    script(type="text/javascript", src=url.app)
-
-    link(rel="stylesheet", href=url.css)
+  include ./partials/head.jade
 
   body
     h1= name
     h2 Quick notes
 
     ol
+      li Local variables can be found inside the brunch config file:
+        pre= url.brunch
+        
       li The main HTML (what you're reading right now) can be changed by editing:
         pre= url.jade
 
