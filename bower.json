@@ -1,0 +1,22 @@
+{
+  "name": "rightfoot",
+  "version": "0.1.0",
+  "authors": [
+    "@bkuri"
+  ],
+  "description": "Superstar-grade nodejs development environment for web projects.",
+  "moduleType": [
+    "node"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/bkuri/nodejs-rightfoot",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "bower_components",
+    "node_modules"
+  ],
+  "dependencies": {
+
+  }
+}

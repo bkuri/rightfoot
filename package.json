@@ -1,0 +1,33 @@
+{
+  "name": "rightfoot",
+  "version": "0.1.0",
+  "description": "Superstar-grade nodejs development environment for web projects.",
+  "scripts": {
+    "start": "brunch watch --server",
+    "test": "echo 'testing environment not specified'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bkuri/nodejs-rightfoot"
+  },
+  "keywords": [
+    "jade",
+    "stylus",
+    "brunch"
+  ],
+  "author": "Bernardo Kuri",
+  "license": "MIT",
+  "dependencies": {
+    "auto-reload-brunch": "~1.7.3",
+    "bower": "^1.3.12",
+    "brunch": "^1.7.18",
+    "brunch-pleeease": "^1.0.0",
+    "coffee-script-brunch": ">= 1.0 < 1.9",
+    "jade": "^1.7.0",
+    "jade-pages-brunch": "^1.7.6",
+    "javascript-brunch": ">= 1.0 < 1.8",
+    "stylus-brunch": ">= 1.0 < 1.9",
+    "uglify-js-brunch": ">= 1.0 < 1.8"
+  },
+  "devDependencies": {}
+}
