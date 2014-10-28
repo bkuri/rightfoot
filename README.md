@@ -1,12 +1,12 @@
 # rightfoot
-## Superstar-grade nodejs development environment for web projects.
-Uses the following kickass libraries to get you started in record time:
+## A+ nodejs development environment for jump-starting web projects.
+Uses the following libraries to get you started in record time:
 
 * [Coffeescript](http://coffeescript.org) for clean, expressive JS
 * [Jade](http://jade.io) for clean, expressive HTML templates
 * [Stylus](https://learnboost.github.io/stylus/) for awesome and powerful CSS
 * [Bower](http://bower.io) for professional package management
-* [Brunch](http://brunch.io) for super-fluid development
+* [Brunch](http://brunch.io) for super-fluid development (with [some extra help](#brunch))
 * [Pleeease](http://pleeease.io) for CSS optimization and autoprefixing
 * [UglifyJS](http://lisperator.net/uglifyjs) for JS minification
 
@@ -23,7 +23,7 @@ Install [Node.js](http://nodejs.org).  Visit [the download site](http://nodejs.o
 This will create a directory called `node_modules` and install its packages (using `package.json` for configuration).
 
 
-### Brunch
+### <a name="brunch"></a>Brunch
 Install it using:
 `# npm install -g brunch`
 
