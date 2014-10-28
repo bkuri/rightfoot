@@ -28,6 +28,7 @@ exports.config =
     stylesheets:
       joinTo:
         'css/app.min.css': /^(app|bower_components|vendor)/
+
       order:
         before: ['app/app.css']
 
