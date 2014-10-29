@@ -10,7 +10,7 @@
 * [Pleeease](http://pleeease.io) for CSS optimization and autoprefixing
 * [UglifyJS](http://lisperator.net/uglifyjs) for JS minification
 
-It features on the fly compilation, optimization and page reloading (as long as [auto-reload-brunch](http://github.com/brunch/auto-reload-brunch) is kept installed):
+It features on-the-fly compilation, optimization and page reloading.
 
 Everything is preconfigured and ready to go. All you need to do is add your bower libraries (ie. bootstrap, jquery, etc) and start editing `index.jade`.
 
