@@ -12,19 +12,19 @@
 
 It features on-the-fly compilation, optimization and page reloading.
 
-Everything is preconfigured and ready to go. All you need to do is add your bower libraries (ie. bootstrap, jquery, etc) and start editing `index.jade`.
+Everything is preconfigured and ready to go. Simply follow the instructions below and start editing `index.jade`.
 
 
-## Install
-### Node.js
+## Installing
+### 1. Node.js
 Install [Node.js](http://nodejs.org).  Visit [the download site](http://nodejs.org/download/) and download the version appropriate to your OS. Once `node` and `npm` commmands are available run the following:
  `$ npm install`
 
 This will create a directory called `node_modules` and install its packages (using `package.json` for configuration).
 
 
-### <a name="brunch"></a>Brunch
-Install it using:
+### <a name="brunch"></a>2. Brunch
+You can install it using the node package manager:
 `# npm install -g brunch`
 
 The following brunch plugins are subsequently installed:
@@ -41,7 +41,7 @@ The following brunch plugins are subsequently installed:
 * `jade-pages-brunch` is used to compile flat html. Consider an alterntative like `jaded` if you're looking for something more dynamic.
 
 
-### Bower
+### 3. Bower
 Install it using:
 `# npm install -g bower`
 
@@ -55,7 +55,7 @@ This will create a `bower_components` directory and will contain all packages de
 You will need git available in your $PATH for the last command to work. Windows users are recommended to run that command inside a git shell.
 
 
-### Use
+## Using
 Simply issue the following command:
 `npm start`
 
@@ -64,13 +64,13 @@ This will start a server on `http://localhost:3333`.
 You can now edit `index.jade` for the main content, as well as `scripts/app.coffee` for the main JS and `styles/app.styl` for the CSS. Everything will be minified/autoprefixed/compiled in real time as soon as you save your changes.
 
 
-### Deploy
+## Deploying
 Remember to remove brunch's auto-reload package once you're ready to publish:
 `npm uninstall --save auto-reload-brunch`
 
 
-### Ideas FTW
-I will gladly consider suggestions and pull requests. This particular combo has served me really well, but of course there's always room for improvement and expansion.
+## Ideas FTW
+I will gladly consider suggestions and pull requests. This particular combo has served me really well, but of course there's always room for improvement.
 
 
-### Thanks!
+## Thanks!
