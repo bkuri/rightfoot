@@ -14,7 +14,7 @@ locals =
     vendor: '/js/vendor.js'
 
 
-# See http://brunch.io/#documentation for docs.
+# See http://brunch.io/#documentation
 exports.config =
   conventions:
     assets: /^app\/assets\//
