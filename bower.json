@@ -1,5 +1,5 @@
 {
-  "name": "rightfoot",
+  "name": "rightfoot-nodejs",
   "version": "0.3.5",
   "authors": [
     "@bkuri"
@@ -9,7 +9,7 @@
     "node"
   ],
   "license": "MIT",
-  "homepage": "https://github.com/bkuri/nodejs-rightfoot",
+  "homepage": "https://github.com/bkuri/rightfoot-nodejs",
   "private": true,
   "ignore": [
     "**/.*",
