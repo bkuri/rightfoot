@@ -5,13 +5,13 @@ locals =
   name: 'rightfoot'
 
   url:
-    app: 'js/app.js'
-    brunch: './brunch-config.coffee'
-    coffee: './app/scripts/app.coffee'
-    css: 'css/app.min.css'
-    jade: './app/index.jade'
-    styl: './app/styles/app.styl'
-    vendor: 'js/vendor.js'
+    app: '/js/app.js'
+    brunch: 'brunch-config.coffee'
+    coffee: 'app/scripts/app.coffee'
+    css: '/css/app.min.css'
+    jade: 'app/index.jade'
+    styl: 'app/styles/app.styl'
+    vendor: '/js/vendor.js'
 
 
 # See http://brunch.io/#documentation for docs.
