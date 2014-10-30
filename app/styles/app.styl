@@ -2,25 +2,27 @@
 
 @import 'mixins'
 
-color = #0d355a
-light = hue((color + 50%), 180deg)
+color1 = #10073d
+color2 = hue((color1 + 50%), 0deg)
 
 body
-  background-color color
-  color light
+  background-color color1
+  color color2
+  padding 5%
 
 body, svg
-  margin-left 25%
+  margin-bottom 5%
+  margin-left 20%
   max-width 50%
 
+li
+  margin-bottom 15px
+
 pre
-  background-color light
-  color color
+  background-color color2
+  border-radius 5px
+  color color1
   padding 10px
 
-svg
-  margin-bottom 5%
-  margin-top 5%
-
-#foot, #text > *
-  fill light !important
+#svg-foot, #svg-text > *
+  fill color2 !important
