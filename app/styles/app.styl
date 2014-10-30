@@ -6,17 +6,16 @@ color1 = #10073d
 color2 = hue((color1 + 50%), 0deg)
 
 body
+  align-items center
   background-color color1
   color color2
-  padding 5%
-
-body, svg
-  margin-bottom 5%
-  margin-left 20%
+  display flex
+  flex-direction column
+  justify-content center
+  margin auto
   max-width 50%
-
-li
-  margin-bottom 15px
+  padding 5%
+  height 250px
 
 pre
   background-color color2
@@ -26,3 +25,6 @@ pre
 
 #svg-foot, #svg-text > *
   fill color2 !important
+
+*+*
+  margin-top 5%
