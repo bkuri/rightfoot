@@ -2,19 +2,25 @@
 
 @import 'mixins'
 
-body
-  margin-left 25%
-  margin-top 10%
-  max-width 50%
-  min-width 15%
+color = #0d355a
+light = hue((color + 50%), 180deg)
 
-h1
-  color red
-  font-family monospace
-  font-style italic
-  font-size 5em
-  text-align center
+body
+  background-color color
+  color light
+
+body, svg
+  margin-left 25%
+  max-width 50%
 
 pre
-  background-color #ccc
+  background-color light
+  color color
   padding 10px
+
+svg
+  margin-bottom 5%
+  margin-top 5%
+
+#foot, #text > *
+  fill light !important
