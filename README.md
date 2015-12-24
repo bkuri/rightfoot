@@ -2,12 +2,12 @@
 
 # rightfoot
 ## A+ nodejs development environment for jump-starting web projects.
-* [Coffeescript](http://coffeescript.org) for clean, expressive JS
-* [Jade](http://jade.io) for clean, expressive HTML templates
-* [Stylus](https://learnboost.github.io/stylus/) for awesome and powerful CSS
 * [Bower](http://bower.io) for professional package management
 * [Brunch](http://brunch.io) for super-fluid development (with [some extra help](#brunch))
+* [Coffeescript](http://coffeescript.org) for clean, expressive JS
+* [Jade](http://jade.io) for clean, expressive HTML templates
 * [Pleeease](http://pleeease.io) for CSS optimization and autoprefixing
+* [Stylus](https://learnboost.github.io/stylus/) for awesome and powerful CSS
 * [UglifyJS](http://lisperator.net/uglifyjs) for JS minification
 
 It features on-the-fly compilation, optimization and page reloading.
@@ -29,10 +29,10 @@ You can install it using the node package manager:
 
 The following brunch plugins are subsequently installed:
 * [auto-reload-brunch](https://github.com/brunch/auto-reload-brunch)
-* [brunch-pleeease](https://www.npmjs.org/package/brunch-pleeease)
 * [coffee-script-brunch](https://github.com/brunch/coffee-script-brunch)
 * [jade-pages-brunch](https://github.com/Kagami/jade-pages-brunch)
 * [javascript-brunch](https://github.com/brunch/javascript-brunch)
+* [pleeease-brunch](https://www.npmjs.org/package/pleeease-brunch)
 * [stylus-brunch](https://github.com/brunch/stylus-brunch)
 * [uglify-js-brunch](https://github.com/brunch/uglify-js-brunch)
 

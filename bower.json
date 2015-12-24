@@ -1,6 +1,6 @@
 {
   "name": "rightfoot-nodejs",
-  "version": "0.3.5",
+  "version": "0.3.6",
   "authors": [
     "@bkuri"
   ],
@@ -17,6 +17,6 @@
     "node_modules"
   ],
   "dependencies": {
-    "normalize.css": "~3.0.2"
+    "normalize.css": "~3.0.3"
   }
 }
