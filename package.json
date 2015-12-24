@@ -1,6 +1,6 @@
 {
-  "name": "rightfoot-nodejs",
-  "version": "0.3.5",
+  "name": "nodejs-rightfoot",
+  "version": "0.3.6",
   "description": "A+ nodejs development environment for jump-starting web projects",
   "scripts": {
     "start": "brunch watch --server",
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/bkuri/rightfoot-nodejs"
+    "url": "https://github.com/bkuri/nodejs-rightfoot"
   },
   "keywords": [
     "jade",
@@ -17,14 +17,14 @@
   ],
   "author": "Bernardo Kuri",
   "license": "MIT",
-  "dependencies": {
-    "auto-reload-brunch": "~1.7.3",
-    "brunch-pleeease": "^1.0.0",
-    "coffee-script-brunch": ">= 1.0 < 1.9",
-    "jade-pages-brunch": "^1.7.7",
-    "javascript-brunch": ">= 1.0 < 1.8",
-    "stylus-brunch": ">= 1.0 < 1.9",
-    "uglify-js-brunch": ">= 1.0 < 1.8"
-  },
-  "devDependencies": {}
+  "dependencies": {},
+  "devDependencies": {
+    "auto-reload-brunch": "^1.8.1",
+    "coffee-script-brunch": "^1.8.3",
+    "jade-pages-brunch": "^2.0.0",
+    "javascript-brunch": "^1.8.0",
+    "pleeease-brunch": "^2.0.1",
+    "stylus-brunch": "^1.8.1",
+    "uglify-js-brunch": "^1.7.8"
+  }
 }
