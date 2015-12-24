@@ -4,7 +4,7 @@ locals =
   lang: 'en'
   name: 'rightfoot'
 
-  url:
+  urls:
     app: '/js/app.js'
     brunch: 'brunch-config.coffee'
     coffee: 'app/scripts/app.coffee'
