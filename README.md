@@ -1,8 +1,5 @@
 <img src="http://i1039.photobucket.com/albums/a472/bkuri/g4204_zpsgxzdynlo.png">
 
-rightfoot
-=========
-
 A+ nodejs development environment for jump-starting web projects.
 -----------------------------------------------------------------
 
