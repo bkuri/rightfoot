@@ -2,18 +2,14 @@
 
 locals =
   charset: 'utf-8'
-  lang: 'es'
-  name: 'expedia-728x90'
-
-  banner:
-    height: 90
-    width: 728
+  lang: 'en'
+  name: 'rightfoot'
 
   url:
-    app: 'app.js'
+    app: 'app.min.js'
+    brunch: 'config.coffee'
     css: 'app.min.css'
-    form: 'mailer.php'
-    vendor: 'vendor.js'
+    vendor: 'vendor.min.js'
 
 
 # See http://brunch.io/docs
@@ -32,8 +28,8 @@ module.exports =
   files:
     javascripts:
       joinTo:
-        'app.js': /^app/
-        'vendor.js': /^(?!app)/
+        'app.min.js': /^app/
+        'vendor.min.js': /^(?!app)/
 
     stylesheets:
       joinTo: 'app.min.css'
