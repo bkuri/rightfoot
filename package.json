@@ -1,6 +1,6 @@
 {
   "name": "rightfoot",
-  "version": "0.4.3",
+  "version": "0.4.4",
   "description": "A+ nodejs development environment for jump-starting web projects",
   "scripts": {
     "bundle": "npm_scripts/bundle",
@@ -25,6 +25,7 @@
     "auto-reload-brunch": "^1.7.8",
     "bauer-zip": "^1.0.2",
     "coffee-script-brunch": "^2.0.0",
+    "cson": "^3.0.2",
     "jade-static-brunch": "^1.8.4",
     "javascript-brunch": "^1.7.1",
     "mkdirp": "^0.5.1",

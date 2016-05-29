@@ -1,19 +1,3 @@
-# change your local variables here
-
-locals =
-  charset: 'utf-8'
-  lang: 'en'
-  name: 'rightfoot'
-
-  url:
-    app: 'app.min.js'
-    brunch: 'config.coffee'
-    css: 'app.min.css'
-    vendor: 'vendor.min.js'
-
-
-# See http://brunch.io/docs
-
 module.exports =
   conventions:
     assets: /^app\/assets\//
@@ -63,7 +47,7 @@ module.exports =
 
   plugins:
     jadeStatic:
-      locals: locals
+      locals: require('cson').requireCSONFile('locals.cson')
       formatPath: (path) -> path.match(/^app\/(.+)\.jade$/)[1]
       extension: '.html'
 
