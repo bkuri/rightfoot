@@ -9,5 +9,5 @@ url:
 	css: "app.min.css"
 	jade: "app/index.jade"
 	styl: "app/styles/app.styl"
-	vars: "locals.cson"
+	vars: "app/variables.cson"
 	vendor: "vendor.min.js"

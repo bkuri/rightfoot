@@ -53,7 +53,12 @@ You can now edit `index.jade` for the main content, as well as `scripts/app.coff
 Deploying
 ---------
 
-You can deploy a production-ready version of your site by running `$ npm run deploy`. This will trigger all production-only optimizations, such as concatenation, minification, uglifyjs mangling, etc.
+You can deploy a production-ready version of your project by running `$ npm run deploy`. This will trigger all production-only optimizations, such as concatenation, minification, uglifyjs mangling, etc, as well as providing you with a zip file.
+
+Extra scripts
+-------------
+
+Inside the `npm_scripts` folder are a few scripts that make life a bit easier. The `reset` script will clean out your `public` folder. The `zip` script will (you guessed it) zip that same folder's contents. You can run those scripts using the standard `$ npm run <script_name>`. More scripts are planned for future versions.
 
 Ideas FTW
 ---------

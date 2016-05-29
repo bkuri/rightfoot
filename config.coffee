@@ -47,7 +47,7 @@ module.exports =
 
   plugins:
     jadeStatic:
-      locals: require('cson').requireCSONFile('locals.cson')
+      locals: require('fs-cson').readFileSync('app/variables.cson')
       formatPath: (path) -> path.match(/^app\/(.+)\.jade$/)[1]
       extension: '.html'
 

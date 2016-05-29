@@ -1,13 +1,13 @@
 {
   "name": "rightfoot",
-  "version": "0.4.4",
+  "version": "0.4.5",
   "description": "A+ nodejs development environment for jump-starting web projects",
   "scripts": {
-    "bundle": "npm_scripts/bundle",
-    "deploy": "npm run reset && brunch build --production && npm run bundle",
+    "deploy": "npm run reset && brunch build --production && npm run zip",
     "reset": "npm_scripts/reset",
     "start": "npm run reset && brunch watch --server",
-    "test": "echo 'testing environment not specified'"
+    "test": "echo 'testing environment not specified'",
+    "zip": "npm_scripts/zip"
   },
   "repository": {
     "type": "git",
@@ -25,7 +25,7 @@
     "auto-reload-brunch": "^1.7.8",
     "bauer-zip": "^1.0.2",
     "coffee-script-brunch": "^2.0.0",
-    "cson": "^3.0.2",
+    "fs-cson": "^0.3.2",
     "jade-static-brunch": "^1.8.4",
     "javascript-brunch": "^1.7.1",
     "mkdirp": "^0.5.1",
