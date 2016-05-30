@@ -58,7 +58,7 @@ You can deploy a production-ready version of your project by running `$ npm run 
 Extra scripts
 -------------
 
-Inside the `npm_scripts` folder are a few scripts that make life a bit easier. The `reset` script will clean out your `public` folder. The `zip` script will (you guessed it) zip that same folder's contents. You can run those scripts using the standard `$ npm run <script_name>`. More scripts are planned for future versions.
+Inside the `npm_scripts` folder are a few scripts that make life a bit easier. The `clean` script will empty out your `public` folder. The `zip` script will zip up that same folder's contents. The `wizard` script will assist you in creating a new `variables.cson` file. You can run those scripts using the standard `$ npm run <script_name>`. More scripts are planned for future versions.
 
 Ideas FTW
 ---------
