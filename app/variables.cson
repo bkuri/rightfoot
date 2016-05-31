@@ -4,7 +4,7 @@ name: "rightfoot"
 
 url:
 	app: "app.min.js"
-	brunch: "config.coffee"
+	brunch: "brunch-config.coffee"
 	coffee: "app/scripts/app.coffee"
 	css: "app.min.css"
 	jade: "app/index.jade"
