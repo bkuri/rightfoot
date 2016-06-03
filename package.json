@@ -25,6 +25,7 @@
   "dependencies": {
     "auto-reload-brunch": "^1.7.8",
     "bauer-zip": "^1.0.2",
+    "cheerio": "^0.20.0",
     "coffee-script-brunch": "^2.0.0",
     "coffeelint-brunch": "^2.0.0",
     "fs-cson": "^0.3.2",
@@ -33,6 +34,7 @@
     "javascript-brunch": "^1.7.1",
     "mkdirp": "^0.5.1",
     "pleeease-brunch": "^3.0.0",
+    "request": "^2.72.0",
     "rimraf": "^2.5.2",
     "stylus": "^0.54.5",
     "stylus-brunch": "^2.6.0",

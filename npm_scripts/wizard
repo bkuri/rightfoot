@@ -19,17 +19,27 @@ qLang =
   name: 'lang'
   validate: nonEmpty
 
-qCharset =
-  default: 'utf-8'
-  message: 'Which charset would you like to use?'
-  name: 'charset'
+qHeight =
+  default: 250
+  message: 'Height:'
+  name: 'height'
   validate: nonEmpty
 
+qType =
+  default: 'banner'
+  message: 'Type:'
+  name: 'type'
+  validate: nonEmpty
 
-prompt([qName, qLang, qCharset]).then (answers) ->
+qWidth =
+  default: 300
+  message: 'Width:'
+  name: 'width'
+  validate: nonEmpty
+
+prompt([qName, qLang, qType, qWidth, qHeight]).then (answers) ->
   path = 'app/variables.cson'
 
   writeFile path, answers, (err) ->
     throw err if err?
-
     console.log "Variables saved to '#{path}'. You can always edit the find manually or run this script again to start over.\n"

@@ -1,0 +1,24 @@
+#!/bin/env coffee
+
+
+{load} = require('cheerio')
+request = require('request')
+uri = 'http://developer.weborama.nl/tools-downloads/'
+
+request {uri}, (err, resp, body) ->
+  throw err if err?
+  $ = load(body)
+
+  $('tr', '#content').each (index, item) ->
+    return if (index is 0)
+    text = ''
+
+    $('td', item).each (i) ->
+      t = $(@).text().trim()
+
+      text += switch
+        when (i is 0) then "#{t} (v"
+        when (i is 1) then "#{t}) -> "
+        else t
+
+    console.log text

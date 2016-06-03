@@ -8,6 +8,7 @@ url:
 	coffee: "app/scripts/app.coffee"
 	css: "app.min.css"
 	jade: "app/index.jade"
+  screenad: "//media.adrcdn.com/scripts/screenad_interface_1.0.3_scrambled.js"
 	styl: "app/styles/app.styl"
 	vars: "app/variables.cson"
 	vendor: "vendor.min.js"
