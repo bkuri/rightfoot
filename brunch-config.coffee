@@ -11,11 +11,11 @@ module.exports =
   files:
     javascripts:
       joinTo:
-        'app.min.js': /^app/
-        'vendor.min.js': /^(?!app)/
+        'js/app.min.js': /^app/
+        'js/vendor.min.js': /^(?!app)/
 
     stylesheets:
-      joinTo: 'app.min.css'
+      joinTo: 'css/app.min.css'
 
   overrides:
     production:

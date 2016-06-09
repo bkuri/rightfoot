@@ -8,19 +8,19 @@ html(lang=lang)
 
     ol
       li Brunch's configuration file is here:
-        pre= url.brunch
+        pre brunch-config.coffee
 
       li Local variables can modified here:
-        pre= url.vars
+        pre app/variables.cson
 
       li The main view (what you're seeing right now) can be changed by editing:
-        pre= url.jade
+        pre app/index.jade
 
       li The main stylesheet is located at:
-        pre= url.styl
+        pre app/styles/app.styl
 
       li The main coffeescript file is located at:
-        pre= url.coffee
+        pre app/scripts/app.coffee
 
     script.
       require('scripts/app.coffee')

@@ -19,14 +19,8 @@ qLang =
   name: 'lang'
   validate: nonEmpty
 
-qCharset =
-  default: 'utf-8'
-  message: 'Which charset would you like to use?'
-  name: 'charset'
-  validate: nonEmpty
 
-
-prompt([qName, qLang, qCharset]).then (answers) ->
+prompt([qName, qLang]).then (answers) ->
   path = 'app/variables.cson'
 
   writeFile path, answers, (err) ->

@@ -1,14 +1,14 @@
 {
   "name": "rightfoot",
-  "version": "0.4.7",
+  "version": "0.4.8",
   "description": "A+ nodejs development environment for jump-starting web projects",
   "scripts": {
-    "clean": "npm_scripts/clean",
+    "clean": "npm_scripts/clean.coffee",
     "deploy": "npm run clean && brunch build --production && npm run zip",
-    "start": "npm run clean && brunch watch --server",
+    "start": "test -f app/variables.cson && brunch watch --server || npm run wizard",
     "test": "echo 'testing environment not specified'",
-    "wizard": "npm_scripts/wizard",
-    "zip": "npm_scripts/zip"
+    "wizard": "npm_scripts/wizard.coffee",
+    "zip": "npm_scripts/zip.coffee"
   },
   "repository": {
     "type": "git",
