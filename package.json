@@ -1,27 +1,5 @@
 {
-  "name": "rightfoot",
-  "version": "0.4.7",
-  "description": "A+ nodejs development environment for jump-starting web projects",
-  "scripts": {
-    "clean": "npm_scripts/clean",
-    "deploy": "npm run clean && brunch build --production && npm run zip",
-    "start": "npm run clean && brunch watch --server",
-    "test": "echo 'testing environment not specified'",
-    "wizard": "npm_scripts/wizard",
-    "zip": "npm_scripts/zip"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/bkuri/rightfoot"
-  },
-  "keywords": [
-    "brunch",
-    "coffeescript",
-    "jade",
-    "stylus"
-  ],
   "author": "Bernardo Kuri",
-  "license": "MIT",
   "dependencies": {
     "auto-reload-brunch": "^1.7.8",
     "bauer-zip": "^1.0.2",
@@ -40,5 +18,28 @@
     "stylus-brunch": "^2.6.0",
     "uglify-js-brunch": "^1.7.8"
   },
-  "devDependencies": {}
+  "description": "A+ nodejs development environment for jump-starting web projects",
+  "devDependencies": {},
+  "keywords": [
+    "brunch",
+    "coffeescript",
+    "jade",
+    "stylus"
+  ],
+  "license": "MIT",
+  "name": "rightfoot",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bkuri/rightfoot"
+  },
+  "scripts": {
+    "clean": "npm_scripts/clean.coffee",
+    "deploy": "npm run clean && brunch build --production && npm run zip",
+    "start": "test -f app/variables.cson && brunch watch --server || npm run wizard",
+    "test": "echo 'testing environment not specified'",
+    "tools": "npm_scripts/tools.coffee",
+    "wizard": "npm_scripts/wizard.coffee",
+    "zip": "npm_scripts/zip.coffee"
+  },
+  "version": "0.4.8"
 }

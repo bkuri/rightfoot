@@ -1,7 +1,10 @@
 head
-  <!-- WEBORAMA SCREENAD META DATA (don't edit/remove) -->
-  <!-- SCRWIDTH: !{width} -->
-  <!-- SCRHEIGHT: !{height} -->
+  //
+    WEBORAMA SCREENAD META DATA (don't edit/remove)
+    SCRFORMAT: !{format}
+    SCRWIDTH: !{width}
+    SCRHEIGHT: !{height}
+    SCRVERSION: screenad_interface_1.0.3
 
   title= name
 
@@ -12,8 +15,11 @@ head
     content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes"
   )
 
-  script(src=url.screenad)
-  script(src=url.vendor)
-  script(src=url.app)
+  each url in libraries
+    script(src=url async)
 
-  link(rel="stylesheet", href=url.css)
+  script(src=screenad async)
+  script(src='vendor.min.js')
+  script(src='app.min.js')
+
+  link(rel="stylesheet", href='app.min.css')

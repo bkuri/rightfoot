@@ -1,4 +1,5 @@
 #!/bin/env coffee
+'use strict'
 
 
 {readFile} = require('fs-cson')
@@ -7,7 +8,7 @@
 
 readFile 'app/variables.cson', (readErr, data) ->
   throw readErr if readErr?
-  path = "public/#{data.name}.zip"
+  path = "public/#{data.name}-#{data.width}x#{data.height}.zip"
 
   zip './public', path, (zipErr) ->
     throw zipErr if zipErr?

@@ -1,4 +1,5 @@
 #!/bin/env coffee
+'use strict'
 
 
 mkdirp = require('mkdirp')
