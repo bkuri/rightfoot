@@ -1,0 +1,22 @@
+html-comment
+  - WEBORAMA SCREENAD META DATA (don't edit/remove)
+  - SCRFORMAT: ${data.format}
+  - SCRWIDTH: ${data.width}
+  - SCRHEIGHT: ${data.height}
+  - SCRVERSION: screenad_interface_1.0.3
+
+title - ${data.title}
+
+meta charset='utf-8'
+
+meta [
+  name='viewport'
+  content='width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes'
+]
+
+script async src=url for(url in data.libraries)
+script async src=data.screenad
+script src='vendor.min.js'
+script src='app.min.js'
+
+link rel='stylesheet' href='app.min.css'

@@ -8,8 +8,8 @@
     "coffeelint-brunch": "^2.0.0",
     "fs-cson": "^0.3.2",
     "inquirer": "^1.0.2",
-    "jade-static-brunch": "^1.8.4",
     "javascript-brunch": "^1.7.1",
+    "marko-brunch": "0.0.1",
     "mkdirp": "^0.5.1",
     "pleeease-brunch": "^3.0.0",
     "request": "^2.72.0",
@@ -41,5 +41,5 @@
     "wizard": "npm_scripts/wizard.coffee",
     "zip": "npm_scripts/zip.coffee"
   },
-  "version": "0.4.8"
+  "version": "0.4.9"
 }
