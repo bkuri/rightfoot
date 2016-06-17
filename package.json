@@ -9,7 +9,7 @@
     "fs-cson": "^0.3.2",
     "inquirer": "^1.0.2",
     "javascript-brunch": "^1.7.1",
-    "marko-brunch": "0.0.1",
+    "marko-brunch": "^0.0.2",
     "mkdirp": "^0.5.1",
     "pleeease-brunch": "^3.0.0",
     "request": "^2.72.0",
