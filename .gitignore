@@ -1,4 +1,3 @@
-app/partials/*.marko.js
 app/variables.cson
 node_modules
 npm-debug.log
