@@ -26,9 +26,6 @@ module.exports =
         autoReload:
           enabled: no
 
-        jadeStatic:
-          pretty: no
-
         pleeease:
           autoprefixer: yes
           import: yes
@@ -48,10 +45,8 @@ module.exports =
     coffeelint:
       useCoffeelintJson: yes
 
-    jadeStatic:
-      locals: require('fs-cson').readFileSync('app/variables.cson')
-      formatPath: (path) -> path.match(/^app\/(.+)\.jade$/)[1]
-      extension: '.html'
+    marko:
+      data: require('fs-cson').readFileSync('app/variables.cson')
 
     pleeease:
       autoprefixer: yes
