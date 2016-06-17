@@ -4,18 +4,15 @@ html-comment - SCRWIDTH: ${data.width}
 html-comment - SCRHEIGHT: ${data.height}
 html-comment - SCRVERSION: screenad_interface_1.0.3
 
-title - ${data.name}
-
-meta charset='utf-8'
-
 meta [
   name='viewport'
   content='width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes'
 ]
 
-script async src=data.screenad
+meta charset='utf-8'
+title - ${data.name}
+link rel='stylesheet' href='app.min.css'
+
 script async src=url for(url in data.libraries)
 script src='vendor.min.js'
 script src='app.min.js'
-
-link rel='stylesheet' href='app.min.css'
