@@ -26,6 +26,9 @@ module.exports =
         autoReload:
           enabled: no
 
+        marko:
+          pretty: no
+        
         pleeease:
           autoprefixer: yes
           import: yes
@@ -47,6 +50,7 @@ module.exports =
 
     marko:
       data: require('fs-cson').readFileSync('app/variables.cson')
+      pretty: yes
 
     pleeease:
       autoprefixer: yes
