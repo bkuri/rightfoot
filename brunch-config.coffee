@@ -4,8 +4,9 @@ module.exports =
 
     ignored: [
       /[\\/]_/
-      /vendor[\\/]node[\\/]/
+      /^app\/assets\/logos/
       /^app\/partials/
+      /vendor[\\/]node[\\/]/
     ]
 
   files:
@@ -28,7 +29,7 @@ module.exports =
 
         marko:
           pretty: no
-        
+
         pleeease:
           autoprefixer: yes
           import: yes
@@ -62,6 +63,7 @@ module.exports =
 
     stylus:
       compress: no
+      plugins: ['axis']
 
     uglify:
       ignored: /^.+$/
