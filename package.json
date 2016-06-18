@@ -1,31 +1,32 @@
 {
   "author": "Bernardo Kuri",
   "dependencies": {
-    "auto-reload-brunch": "^1.7.8",
+    "axis": "^0.6.1",
     "bauer-zip": "^1.0.2",
     "cheerio": "^0.20.0",
-    "coffee-script-brunch": "^2.0.0",
-    "coffeelint-brunch": "^2.0.0",
+    "chroma-js": "^1.1.1",
     "fs-cson": "^0.3.2",
     "inquirer": "^1.0.2",
-    "javascript-brunch": "^1.7.1",
-    "marko-brunch": "^0.0.3",
-    "marko-widgets": "^6.1.2",
     "mkdirp": "^0.5.1",
-    "pleeease-brunch": "^3.0.0",
-    "pretty-html-brunch": "file:///run/media/bk/0378110d-2574-4da5-9118-13ff90196dc7/source/pretty-html-brunch",
     "request": "^2.72.0",
     "rimraf": "^2.5.2",
-    "stylus": "^0.54.5",
-    "stylus-brunch": "^2.6.0",
-    "uglify-js-brunch": "^1.7.8"
+    "stylus": "^0.54.5"
   },
   "description": "A+ nodejs development environment for jump-starting web projects",
-  "devDependencies": {},
+  "devDependencies": {
+    "auto-reload-brunch": "^2.7.1",
+    "coffee-script-brunch": "^2.0.0",
+    "coffeelint-brunch": "^2.0.0",
+    "javascript-brunch": "^2.0.0",
+    "marko-brunch": "^0.0.3",
+    "pleeease-brunch": "^3.0.0",
+    "stylus-brunch": "^2.6.0",
+    "uglify-js-brunch": "^2.0.1"
+  },
   "keywords": [
     "brunch",
     "coffeescript",
-    "jade",
+    "marko",
     "stylus"
   ],
   "license": "MIT",
@@ -35,13 +36,15 @@
     "url": "https://github.com/bkuri/rightfoot"
   },
   "scripts": {
+    "build": "brunch build && npm run image",
     "clean": "npm_scripts/clean.coffee",
-    "deploy": "npm run clean && brunch build --production && npm run zip",
+    "deploy": "npm run clean && brunch build --production && npm run image && npm run zip",
+    "image": "npm_scripts/image.coffee",
     "start": "test -f app/variables.cson && brunch watch --server || npm run wizard",
     "test": "echo 'testing environment not specified'",
     "tools": "npm_scripts/tools.coffee",
     "wizard": "npm_scripts/wizard.coffee",
     "zip": "npm_scripts/zip.coffee"
   },
-  "version": "0.4.10"
+  "version": "0.5.0"
 }
