@@ -38,13 +38,13 @@
   "scripts": {
     "build": "brunch build && npm run image",
     "clean": "npm_scripts/clean.coffee",
-    "deploy": "npm run clean && brunch build --production && npm run image && npm run zip",
-    "image": "npm_scripts/image.coffee",
+    "deploy": "npm run clean && brunch build --production && npm run images && npm run zip",
+    "images": "npm_scripts/images.coffee",
     "start": "test -f app/variables.cson && brunch watch --server || npm run wizard",
     "test": "echo 'testing environment not specified'",
     "tools": "npm_scripts/tools.coffee",
     "wizard": "npm_scripts/wizard.coffee",
     "zip": "npm_scripts/zip.coffee"
   },
-  "version": "0.5.0"
+  "version": "0.5.1"
 }
