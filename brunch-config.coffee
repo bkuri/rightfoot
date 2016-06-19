@@ -5,6 +5,7 @@ module.exports =
     ignored: [
       /[\\/]_/
       /^app\/assets\/logos/
+      /^app\/assets\/templates/
       /^app\/partials/
       /vendor[\\/]node[\\/]/
     ]
@@ -17,6 +18,13 @@ module.exports =
 
     stylesheets:
       joinTo: 'app.css'
+
+  modules:
+    definition: no
+    wrapper: no
+
+  npm:
+    enabled: no
 
   overrides:
     production:
@@ -48,6 +56,12 @@ module.exports =
   plugins:
     coffeelint:
       useCoffeelintJson: yes
+
+    keyword:
+      filePattern: /\.js$/
+
+      map:
+        format: -> 'banner'
 
     marko:
       data: require('fs-cson').readFileSync('app/variables.cson')
