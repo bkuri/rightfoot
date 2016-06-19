@@ -62,7 +62,7 @@ Inside the `npm_scripts` folder are a few scripts that make life a bit easier.
 
 -	`wizard` will assist you in creating a new `variables.cson` file.
 -	`clean` will empty out your `public` folder.
--	`image` will generate your backup image(s).
+-	`images` will generate your backup images.
 -	`zip` will compress your `public` folder along with its contents.
 
 You can run those scripts using the standard `$ npm run <script_name>`. More scripts are planned for future versions.
