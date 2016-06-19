@@ -3,13 +3,20 @@
 
 
 {readFile} = require('fs-cson')
+{rename} = require('fs')
 {zip} = require('bauer-zip')
 
 
 readFile 'app/variables.cson', (readErr, data) ->
   throw readErr if readErr?
-  path = "public/#{data.name}-#{data.width}x#{data.height}.zip"
+  name = "#{ data.name }-#{ data.width }x#{ data.height }"
+  old = './public'
 
-  zip './public', path, (zipErr) ->
-    throw zipErr if zipErr?
-    console.log "-> file saved as #{path}"
+  rename old, name, (renameErr) ->
+    throw renameErr if renameErr?
+
+    zip name, "#{ name }/#{ name }.zip", (zipErr) ->
+      throw zipErr if zipErr?
+
+      console.log "-> file saved as public/#{ name }.zip"
+      rename "./#{ name }", old
