@@ -11,6 +11,6 @@ meta name='viewport' content='width=device-width, initial-scale=1.0'
 title - ${data.name}
 link rel='stylesheet' href='app.css'
 
-script src=url for(url in data.libraries)
+script async=loop.isFirst() src=url for(url in data.libraries | status-var=loop)
 script src='vendor.js'
 script src='app.js'
