@@ -1,0 +1,101 @@
+*{
+	margin: 0px;
+	padding: 0px;
+}
+body {
+    width: 300px;
+    height: 250px;
+    margin: 0;
+    cursor: pointer;
+    overflow: hidden;
+}
+#container {
+    cursor: pointer;
+    font-size: 11px;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 300px;
+    height: 250px;
+    background-image: url('background.jpg');
+    background-repeat: no-repeat;
+    background-position: right top;
+    z-index: 10;
+}
+
+#media-video{
+	width:300px;
+	height:169px;
+	background:#000;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	z-index: 100000;
+	cursor: pointer;
+}
+
+/******CUSTOM VIDEO CONTROLS******/
+
+#media-controls{
+	z-index: 1000;
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	height: 5px;
+	margin-top: 1px;
+}
+button {
+	width:30px;
+	height:30px;
+	border:none;
+	cursor:pointer;
+	background:transparent url('buttons.png') no-repeat 0 0;
+}
+button:hover{
+	opacity: 0.8;
+    filter: alpha(opacity=80); /* For IE8 and earlier */	
+}
+.pause { background-position:-30px 0; }
+.mute { background-position:-90px 0; }
+.unmute { background-position:-60px 0; }
+.replay { background-position:-120px 0; }
+progress {
+	color:#000;
+	font-size:8px;
+	width:100%;
+	height:4px;
+	border:none;
+	margin-right:5px;
+	background:#434343;
+}
+#play-pause-button{
+	position: relative;
+	left: 5px;
+	top:165px;
+}
+#mute-button{
+	position: relative;
+	left: 5px;
+	top:165px;
+}
+#replay-button{
+	position: inherit;
+	width: auto;
+	top:70px;
+	left:110px;
+	font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;
+	padding-left: 30px;
+	color: #ffffff;
+	font-size: small;
+}
+
+progress::-webkit-progress-bar { background-color: grey;}
+progress::-moz-progress-bar { background-color: red;}  
+progress::-webkit-progress-value { background-color: red;}  
+/*IE*/
+progress::-ms-fill { background-color: red;}
+
+
+
+

@@ -1,0 +1,39 @@
+<html>
+<head>
+    <!-- ADRIME SCREENAD META DATA (don't edit/remove) -->
+    <!-- SCRVERSION: screenad_interface_1.0.3 -->
+    <!-- SCRFORMAT: banner -->
+    <!-- SCRWIDTH: 980 -->
+    <!-- SCRHEIGHT: 250 -->
+
+    <meta charset="UTF-8">
+    <script type="text/javascript" src="//media.adrcdn.com/scripts/screenad_interface_1.0.3_scrambled.js"></script>
+    <link rel="stylesheet" type="text/css" href="main.css">
+    <script>
+      screenad.onPreloadComplete = onReady;
+      /** Called when DOM or Body is loaded */
+      function onReady() {
+        screenad.setAlignment('banner', 'banner');
+        screenad.setSize("980px", "250px");
+        screenad.setSticky(true);
+        screenad.setZIndex(1);
+        screenad.setOffset(0, 0)
+        screenad.position();
+        screenad.log('ready');
+        onShow();
+      }
+
+      // Your initial actions/animations
+      function onShow() {
+        screenad.log('Start my Animation / Actions');
+      }
+    </script>
+</head>
+
+<body>
+    <div id="container" onclick="screenad.click()">
+
+    </div>
+</body>
+
+</html>
