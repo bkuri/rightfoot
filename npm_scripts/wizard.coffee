@@ -12,7 +12,7 @@ uri =
   screenad: '//media.adrcdn.com/scripts/screenad_interface_1.0.3_scrambled.js'
   tools: 'http://developer.weborama.nl/tools-downloads/'
 
-PLAIN = 'Plain'
+PLAIN = 'Standard (from scratch)'
 
 getFormat = (format) ->
   switch format
