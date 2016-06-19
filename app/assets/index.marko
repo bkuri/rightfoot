@@ -3,5 +3,4 @@
 html lang=data.lang
   include('../partials/head.marko', data)
 
-  body
-    script - require('scripts/app.coffee')
+  body onload='init()'
