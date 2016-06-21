@@ -15,7 +15,7 @@ VARS = 'app/variables.cson'
 class Prompt
   data: {}
 
-  unitQuestions: (name, layer) =>
+  unitQuestions: (name, layer=no) =>
     console.log green "\n#{name} settings".toUpperCase()
 
     prompt(@questions.nextRound()).then (answers) =>
@@ -25,7 +25,7 @@ class Prompt
 
       unless layer then writeFile VARS, @data, (error) ->
         throw error if error?
-        console.log green "\nSettings saved to '#{VARS}'. You can always edit the find manually or run this script again to start over.\n"
+        console.log green "\nSettings saved to '#{VARS}'. You can always edit the find manually or run this wizard again to start over.\n"
       else @unitQuestions('layer')
     return
 
