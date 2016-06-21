@@ -1,9 +1,7 @@
 'use strict'
 
-
 {load} = require('cheerio')
 request = require('request')
-
 
 PLAIN = 'Standard HTML5'
 URI = 'http://developer.weborama.nl/tools-downloads/'
@@ -11,14 +9,10 @@ URI = 'http://developer.weborama.nl/tools-downloads/'
 class WizardQuestions
   # firstRound: => [@qName, @qLang, @qType, @qImage]
   firstRound: => [@qName, @qLang, @qType]
-  # nextRound: => [@qWidth, @qHeight, @qSticky, @qOffset, @qZIndex, @qLibs]
-  nextRound: => [@qWidth, @qHeight, @qSticky, @qZIndex, @qLibs]
+  nextRound: => [@qWidth, @qHeight, @qSticky, @qOffsetX, @qOffsetY, @qZIndex, @qLibs]
 
   _nonEmpty: (what) ->
     String(what).trim().length > 0
-
-  _onlyNumbers: (what) ->
-    Number(what) or what
 
   qName:
     message: 'Give this project a name:'
@@ -38,20 +32,6 @@ class WizardQuestions
     name: 'type'
     type: 'rawlist'
 
-  qWidth:
-    default: 320
-    filter: @_onlyNumbers
-    message: 'Width:'
-    name: 'width'
-    validate: @_nonEmpty
-
-  qHeight:
-    default: 240
-    filter: @_onlyNumbers
-    message: 'Height:'
-    name: 'height'
-    validate: @_nonEmpty
-
   qLibs:
     choices: []
     message: 'Select the libraries that you would like to use:'
@@ -64,15 +44,27 @@ class WizardQuestions
     name: 'sticky'
     type: 'confirm'
 
-  qZIndex:
-    default: 1
-    filter: @_onlyNumbers
-    message: 'Z-Index'
-    name: 'zindex'
-    validate: (what) -> Number(what) and (Number(what) > 0)
+  qWidth: {}
+  qHeight: {}
+  qOffsetX: {}
+  qOffsetY: {}
+  qZIndex: {}
 
   constructor: ->
     libs = []
+
+    create = (name, def=0, min=def) ->
+      name: name.split(' ')[0].toLowerCase()
+      default: def
+      message: "#{name}:"
+      validate: (val) -> !Number.isNaN(val) and Number(val) >= min
+      filter: (val) -> Number(val)
+
+    @qWidth = create('Width', 320, 1)
+    @qHeight = create('Height', 240, 1)
+    @qOffsetX = create('X Offset')
+    @qOffsetY = create('Y Offset')
+    @qZIndex = create('Z Index', 1)
 
     request uri: URI, (err, resp, body) =>
       throw err if err?

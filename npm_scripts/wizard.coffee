@@ -3,7 +3,7 @@
 
 
 WizardQuestions = require('./questions/questions')
-{prompt} = require('inquirer')
+{prompt, registerPrompt} = require('inquirer')
 {writeFile} = require('fs-cson')
 
 
@@ -15,11 +15,10 @@ class Prompt
   unitQuestions: (name) =>
     console.log "\n#{name} settings".toUpperCase()
 
-    console.log JSON.stringify(@data, null, '  ')
-
-    prompt(@questions.nextRound @data.meta.type).then (answers) =>
-      {width, height, libraries, offset, sticky, zindex} = answers
-      unit = {width, height, libraries, offset, sticky, zindex}
+    prompt(@questions.nextRound()).then (answers) =>
+      console.log JSON.stringify(answers, null, '  ')
+      {width, height, libraries, sticky, x, y, z} = answers
+      unit = {width, height, libraries, sticky, x, y, z}
       @data[name] = answers
 
       # TODO: check qType against templates that require a layer

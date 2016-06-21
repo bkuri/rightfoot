@@ -4,10 +4,10 @@
 init_layer = ->
   # screenad.onPreloadComplete = onPreloadComplete
   screenad.hide 'self'
-  screenad.setSize layer.width, layer.height
   screenad.setAlignment 'banner', 'banner'
-  screenad.setOffset layer.offset.x, layer.offset.y
   screenad.setSticky layer.sticky
-  screenad.setZIndex layer.zindex
+  screenad.setSize layer.width, layer.height
+  screenad.setOffset layer.x, layer.y
+  screenad.setZIndex layer.z
   screenad.position()
   return

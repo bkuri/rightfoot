@@ -7,7 +7,6 @@
     "chroma-js": "^1.1.1",
     "fs-cson": "^0.3.2",
     "inquirer": "^1.0.2",
-    "lodash": "^4.13.1",
     "mkdirp": "^0.5.1",
     "request": "^2.72.0",
     "rimraf": "^2.5.2",
@@ -47,5 +46,5 @@
     "wizard": "npm_scripts/wizard.coffee",
     "zip": "npm_scripts/zip.coffee"
   },
-  "version": "0.5.8"
+  "version": "0.5.9"
 }
