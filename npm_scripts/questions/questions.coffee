@@ -1,5 +1,6 @@
 'use strict'
 
+{concat} = require('lodash')
 {load} = require('cheerio')
 request = require('request')
 
@@ -8,29 +9,12 @@ URI = 'http://developer.weborama.nl/tools-downloads/'
 
 class WizardQuestions
   # firstRound: => [@qName, @qLang, @qType, @qImage]
-  firstRound: => [@qName, @qLang, @qType]
+  firstRound: (choices) =>
+    @qType.choices = concat([PLAIN], choices)
+    console.log @qType.choices
+    return [@qName, @qLang, @qType]
+
   nextRound: => [@qWidth, @qHeight, @qSticky, @qOffsetX, @qOffsetY, @qZIndex, @qLibs]
-
-  _nonEmpty: (what) ->
-    String(what).trim().length > 0
-
-  qName:
-    message: 'Give this project a name:'
-    name: 'name'
-    validate: @_nonEmpty
-
-  qLang:
-    default: 'en'
-    message: 'Which language would you like to use?'
-    name: 'lang'
-    validate: @_nonEmpty
-
-  qType:
-    choices: [PLAIN]
-    default: 0
-    message: 'Banner type:'
-    name: 'type'
-    type: 'rawlist'
 
   qLibs:
     choices: []
@@ -38,33 +22,48 @@ class WizardQuestions
     name: 'libraries'
     type: 'checkbox'
 
+  qType:
+    choices: []
+    default: 0
+    message: 'Banner type:'
+    name: 'type'
+    type: 'list'
+
   qSticky:
     default: yes
     message: 'Sticky?'
     name: 'sticky'
     type: 'confirm'
 
-  qWidth: {}
-  qHeight: {}
-  qOffsetX: {}
-  qOffsetY: {}
-  qZIndex: {}
-
   constructor: ->
     libs = []
 
-    create = (name, def=0, min=def) ->
-      name: name.split(' ')[0].toLowerCase()
-      default: def
-      message: "#{name}:"
-      validate: (val) -> !Number.isNaN(val) and Number(val) >= min
-      filter: (val) -> Number(val)
+    createNumericInput = (name, def=0, min=def) ->
+      n = name.split(' ')[0].toLowerCase()
 
-    @qWidth = create('Width', 320, 1)
-    @qHeight = create('Height', 240, 1)
-    @qOffsetX = create('X Offset')
-    @qOffsetY = create('Y Offset')
-    @qZIndex = create('Z Index', 1)
+      default: def
+      filter: (val) -> Number(val)
+      message: "#{name}:"
+      name: n
+
+      validate: (val) ->
+        return no if Number.isNaN(val)
+        return no if (Number(val) < min) and (n isnt 'x') and (n isnt 'y')
+        return yes
+
+    createTextInput = (name, message, def=null) ->
+      Object.assign {name, message},
+        default: def
+        filter: (val) -> String(val).trim()
+        validate: (val) -> String(val).trim().length > 0
+
+    @qName = createTextInput('name', 'Give this project a name:')
+    @qLang = createTextInput('lang', 'What language will the banner be in?', 'en')
+    @qWidth = createNumericInput('Width', 320, 1)
+    @qHeight = createNumericInput('Height', 240, 1)
+    @qOffsetX = createNumericInput('X Offset')
+    @qOffsetY = createNumericInput('Y Offset')
+    @qZIndex = createNumericInput('Z Index', 1)
 
     request uri: URI, (err, resp, body) =>
       throw err if err?
