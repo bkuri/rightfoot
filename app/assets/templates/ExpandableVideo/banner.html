@@ -1,110 +1,89 @@
 <html>
-
-<head>
-    <!-- ADRIME SCREENAD META DATA (don't edit/remove) -->
-    <!-- SCRVERSION: screenad_interface_1.0.3 -->
-    <!-- SCRFORMAT: banner -->
-    <!-- SCRWIDTH: 300 -->
-    <!-- SCRHEIGHT: 250 -->
-    <meta charset="UTF-8">
-    <meta name="description" content="">     
-     <script type="text/javascript" src="//media.adrcdn.com/scripts/screenad_interface_1.0.3_scrambled.js"></script>
-
+  <head>
     <script type="text/javascript">
-		var _click = "click";
-		var _expandType = _click;
-		var _autoExpand = false;
-		var ignite = false;
-		
-		function init(){			
-            // Get deviceType
-            screenad.event(screenad.deviceType);
-			if (!ignite){
-				screenad.onSync = start;
-				ignite = true;
-			}		
-		}
-		
-		function start (){			
-            if (_expandType=== "click") {
-                document.getElementById('container').addEventListener("click",clickDefault)
+      var _click = "click";
+      var _expandType = _click;
+      var _autoExpand = false;
+      var ignite = false;
 
-            }
-			if (_autoExpand && ignite ){				
-				showLayer();
-			}
-			screenad.setSize("300", "250");
-			screenad.setAlignment("banner", "banner");
-			screenad.setOffset(0, 0);
-			screenad.setSticky(true);
-			screenad.setZIndex(100);
-			screenad.position();			
-		}
-		
-		function showLayer(){
-			screenad.event('expand');
-			console.log("show_layer")
-			screenad.show("all");
-			screenad.shared.callMethod("PlayVideo");			
-		}
-		function clickDefault(){
-			screenad.click();
-			//console.log('click default');
-		}
-		
+      function init() {
+        // Get deviceType
+        screenad.event(screenad.deviceType);
+
+        if (!ignite) {
+          screenad.onSync = start;
+          ignite = true;
+        }
+      }
+
+      function start() {
+        if (_expandType === _click) {
+          document.getElementById('container').addEventListener(_click, clickDefault)
+        }
+
+        if (_autoExpand && ignite) showLayer();
+
+        screenad.setSize("300", "250");
+        screenad.setAlignment("banner", "banner");
+        screenad.setOffset(0, 0);
+        screenad.setSticky(true);
+        screenad.setZIndex(100);
+        screenad.position();
+      }
+
+      function showLayer() {
+        screenad.event('expand');
+        screenad.show("all");
+        screenad.shared.callMethod("PlayVideo");
+      }
+
+      function clickDefault() {
+        screenad.click();
+        //console.log('click default');
+      }
     </script>
-</head>
+  </head>
 
-<body onload="init()">
-    <div id="container">    	
-    </div>
-    <div id="clicktoexpand" onclick="showLayer()"></div>
-    
-</body>
+  <body onload="init()">
+      <div id="container">
+      </div>
+      <div id="clicktoexpand" onclick="showLayer()"></div>
+  </body>
 
-<style type="text/css">
-	
-	*{margin:0px; padding:0px;}
-	
-	body{		
-		font-size: 11px;
-		font-family: "Trebuchet MS";
-		text-align: center;		
-	}
-	
-	#content{
-	    width: 100%;
-        height: 100%;
-	}
-	
+  <style type="text/css">
+    body {
+      font-family: "Trebuchet MS";
+      text-align: center;
+    }
+
+    #content {
+      width: 100%;
+      height: 100%;
+    }
+
     #container {
-        width: 100%;
-        height: 100%;
-        background-color: #FFFFFF;
-        z-index: 1000;
-        cursor: pointer;
-        background-image: url("bg.jpg");
-        background-repeat: no-repeat;
+      background-color: #FFFFFF;
+      z-index: 1000;
+      cursor: pointer;
     }
-    
+
     #clicktoexpand {
-		position: absolute;	
-		bottom: 0px;
-		left: 0px;
-		z-index: 10000;
-        width: 170px;
-        height: 23px;
-        background-color: #FFFFFF;      
-        cursor: pointer;
-        background-image: url("clicktoexpand.png");
-        background-repeat: no-repeat;
+      position: absolute;
+      bottom: 0px;
+      left: 0px;
+      z-index: 10000;
+      width: 170px;
+      height: 23px;
+      background-color: #FFFFFF;
+      cursor: pointer;
+      background-image: url("clicktoexpand.png");
+      background-repeat: no-repeat;
     }
 
-#clicktoexpand:hover{
-	opacity: 0.8;
-    filter: alpha(opacity=80); /* For IE8 and earlier */	
-}
-    
-</style>
-
+    #clicktoexpand:hover {
+      opacity: 0.8;
+      filter: alpha(opacity=80);
+      /* For IE8 and earlier */
+    }
+  </style>
 </html>

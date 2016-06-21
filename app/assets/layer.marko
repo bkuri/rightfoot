@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+
+html lang=data.meta.lang
+  html-comment - SCRFORMAT: layer
+  include('../partials/head.marko', data.layer)
+  script src='vendor.js'
+  script src='layer.js'
+  title - ${data.meta.name} (layer)
+
+  body onload='init_layer()'
+    script - var layer = ${JSON.stringify(data.layer)}

@@ -2,82 +2,51 @@
 'use strict'
 
 
-{load} = require('cheerio')
+WizardQuestions = require('./questions/questions')
 {prompt} = require('inquirer')
-path = 'app/variables.cson'
-request = require('request')
 {writeFile} = require('fs-cson')
 
-uri =
-  screenad: '//media.adrcdn.com/scripts/screenad_interface_1.0.3_scrambled.js'
-  tools: 'http://developer.weborama.nl/tools-downloads/'
 
-PLAIN = 'Standard (from scratch)'
+PATH = 'app/variables.cson'
 
-getFormat = (format) ->
-  switch format
-    when PLAIN then 'banner'
-    else format
+class Prompt
+  data: {}
 
-nonEmpty = (str) ->
-  String(str).trim().length > 0
+  unitQuestions: (name) =>
+    console.log "\n#{name} settings".toUpperCase()
 
-qName =
-  message: 'Give this project a name:'
-  name: 'name'
-  validate: nonEmpty
+    console.log JSON.stringify(@data, null, '  ')
 
-qLang =
-  default: 'en'
-  message: 'Which language would you like to use?'
-  name: 'lang'
-  validate: nonEmpty
+    prompt(@questions.nextRound @data.meta.type).then (answers) =>
+      {width, height, libraries, offset, sticky, zindex} = answers
+      unit = {width, height, libraries, offset, sticky, zindex}
+      @data[name] = answers
 
-qFormat =
-  default: PLAIN
-  message: 'Banner type:'
-  name: 'format'
-  validate: nonEmpty
+      # TODO: check qType against templates that require a layer
+      last = (name isnt 'banner')
 
-qWidth =
-  default: 300
-  message: 'Width:'
-  name: 'width'
-  validate: nonEmpty
+      unless last then @unitQuestions('layer')
+      else writeFile PATH, @data, (error) ->
+        throw error if error?
+        console.log "\nSettings saved to '#{PATH}'. You can always edit the find manually or run this script again to start over.\n"
 
-qHeight =
-  default: 250
-  message: 'Height:'
-  name: 'height'
-  validate: nonEmpty
+      return
+    return
 
-qLibs =
-  choices: []
-  message: 'Select the libraries that you would like to use:'
-  name: 'libraries'
-  type: 'checkbox'
-  when: (answers) -> (answers.format is PLAIN)
 
-request uri: uri.tools, (reqErr, resp, body) ->
-  throw reqErr if reqErr?
-  $ = load(body)
+  constructor: (@questions) ->
+    prompt(@questions.firstRound()).then (answers) =>
+      {name, lang, type} = answers
+      meta = {name, lang, type}
 
-  $('tr', '#content').each (index, item) ->
-    return if (index is 0)
-    name = ''
+      ###
+      {border, color, gravity, quality, source} = answers
+      image = {border, color, gravity, quality, source}
+      ###
+      image = border: 1, color: '#eee', gravity: 'center', quality: 85, source: 'logo2'
 
-    $('td', item).each (i) ->
-      value = $(@).text().trim()
+      @data = {meta, image}
+      @unitQuestions 'banner'
+      return
 
-      switch
-        when (i is 0) then name += "#{value} v"
-        when (i is 1) then name += value
-        else qLibs.choices.push {name, value}
-
-  prompt([qName, qLang, qFormat, qLibs, qWidth, qHeight]).then (answers) ->
-    answers.format = getFormat(answers.format)
-    answers.libraries.unshift uri.screenad
-
-    writeFile path, answers, (writeErr) ->
-      throw writeErr if writeErr?
-      console.log "Settings saved to '#{path}'. You can always edit the find manually or run this script again to start over.\n"
+new Prompt new WizardQuestions()

@@ -7,6 +7,7 @@
     "chroma-js": "^1.1.1",
     "fs-cson": "^0.3.2",
     "inquirer": "^1.0.2",
+    "lodash": "^4.13.1",
     "mkdirp": "^0.5.1",
     "request": "^2.72.0",
     "rimraf": "^2.5.2",
@@ -18,7 +19,7 @@
     "coffee-script-brunch": "^2.0.0",
     "coffeelint-brunch": "^2.0.0",
     "javascript-brunch": "^2.0.0",
-    "marko-brunch": "^0.0.3",
+    "marko-brunch": "0.0.4",
     "pleeease-brunch": "^3.0.0",
     "stylus-brunch": "^2.6.0",
     "uglify-js-brunch": "^2.0.1"
@@ -46,5 +47,5 @@
     "wizard": "npm_scripts/wizard.coffee",
     "zip": "npm_scripts/zip.coffee"
   },
-  "version": "0.5.1"
+  "version": "0.5.8"
 }

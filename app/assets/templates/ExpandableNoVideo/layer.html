@@ -1,48 +1,37 @@
 <html>
+  <head>
+    <!-- SCRFORMAT: layer -->
 
-<head>
-	<!-- ADRIME SCREENAD META DATA (don't edit/remove) -->
-	<!-- SCRVERSION: screenad_interface_1.0.3 -->
-	<!-- SCRFORMAT: layer -->
-	<!-- SCRWIDTH: 600 -->
-	<!-- SCRHEIGHT: 250 -->
+    <link rel="stylesheet" type="text/css" href="layer.css">
 
-	<meta charset="UTF-8">
-	<meta name="description" content="">
-	<script type="text/javascript" src="//media.adrcdn.com/scripts/screenad_interface_1.0.3_scrambled.js"></script>	
-	<link rel="stylesheet" type="text/css" href="layer.css">
+    <script type="text/javascript">
+      function initL() {
+        screenad.hide("self");
+        screenad.setSize("600", "250");
+        screenad.setAlignment("banner", "banner");
+        screenad.setOffset(-300, 0);
+        screenad.setSticky(true);
+        screenad.setZIndex(100000);
+        screenad.position();
+      }
 
-	<script type="text/javascript">
+      function collapseFormat() {
+        screenad.event('user_close');
+        screenad.hide();
+      }
 
-		function initL() {
-			screenad.hide("self");
-			screenad.setSize("600", "250");
-			screenad.setAlignment("banner", "banner");
-			screenad.setOffset(-300, 0);
-			screenad.setSticky(true);
-			screenad.setZIndex(100000);
-			screenad.position();
-		}
+      function clickDefault() {
+        screenad.click();
+        //console.log('click default');
+      }
+    </script>
+  </head>
 
-		function collapseFormat(){					
-			screenad.event('user_close');		
-			screenad.hide();
-		}
-		function clickDefault(){
-			screenad.click();
-			//console.log('click default');
-		}
-	</script>
-</head>
+  <body onload="initL()">
+    <div id="wrap_bg" onclick="clickDefault()">
+      <!--Your content goes here-->
+    </div>
 
-<body onload="initL()">
-	<div id="wrap_bg" onclick="clickDefault()">
-		<!--Your content goes here-->
-	</div>
-
-	<div id="closebutton" onclick="collapseFormat()"></div>
-	
-</body>
-
-
+    <div id="closebutton" onclick="collapseFormat()"></div>
+  </body>
 </html>

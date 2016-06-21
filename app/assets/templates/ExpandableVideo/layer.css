@@ -1,99 +1,117 @@
-*{margin:0px; padding:0px;}
-
 body {
-	width: 100%;
-	height: 100%;
-	background-color: #000000;
-}
-#wrap_bg {
-	z-index: 100010;
-	width: 100%;
-	height: 100%;
-	background-image: url("bg_layer.jpg");
-	background-repeat: no-repeat;
-	cursor: pointer;
-}
-#closebutton{
-	position: absolute;	
-	bottom: 0px;
-	right: 0px;
-	z-index: 110000;
-	background-image: url("close.png");
-	width: 90px;
-	height: 20px;
-	cursor: pointer;
-}
-#closebutton:hover{
-	opacity: 0.8;
-    filter: alpha(opacity=80); /* For IE8 and earlier */	
+  background-color: #000000;
 }
 
-#media-video{
-	width:380px;
-	height:175px;
-	background:#000;
-	position: absolute;
-	top: 0px;
-	left: 110px;
-	z-index: 100000;
-	cursor: pointer;
+#wrap_bg {
+  background-image: url("bg_layer.jpg");
+  background-repeat: no-repeat;
+  cursor: pointer;
+  height: 100%;
+  width: 100%;
+  z-index: 100010;
+}
+
+#closebutton {
+  background-image: url("close.png");
+  bottom: 0px;
+  cursor: pointer;
+  height: 20px;
+  position: absolute;
+  right: 0px;
+  width: 90px;
+  z-index: 110000;
+}
+
+#closebutton:hover {
+  filter: alpha(opacity=80); /* For IE8 and earlier */
+  opacity: 0.8;
+}
+
+#media-video {
+  background:#000;
+  cursor: pointer;
+  height:175px;
+  left: 110px;
+  position: absolute;
+  top: 0px;
+  width:380px;
+  z-index: 100000;
 }
 
 /*CUSTOM VIDEO PLAYER*/
-#media-controls{
-	z-index: 101000;
-	position: absolute;
-	left: 110px;
-	top: 210px;
-	width: 380px;
-	height: 5px;
+#media-controls {
+  height: 5px;
+  left: 110px;
+  position: absolute;
+  top: 210px;
+  width: 380px;
+  z-index: 101000;
 }
+
 button {
-	width:30px;
-	height:30px;
-	border:none;
-	cursor:pointer;
-	background:transparent url('buttons.png') no-repeat 0 0;
+  background:transparent url('buttons.png') no-repeat 0 0;
+  border:none;
+  cursor:pointer;
+  height:30px;
+  width:30px;
 }
-button:hover{
-	opacity: 0.8;
-    filter: alpha(opacity=80); /* For IE8 and earlier */	
+
+button:hover {
+  filter: alpha(opacity=80); /* For IE8 and earlier */
+  opacity: 0.8;
 }
+
 .pause { background-position:-30px 0; }
 .mute { background-position:-90px 0; }
 .unmute { background-position:-60px 0; }
 .replay { background-position:-120px 0; }
+
 progress {
-	color:#000;
-	font-size:8px;
-	width:100%;
-	height:4px;
-	border:none;
-	margin-right:5px;
-	background:#dedede;
+  background:#dedede;
+  border:none;
+  color:#000;
+  font-size:8px;
+  height:4px;
+  margin-right:5px;
+  width:100%;
 }
-#play-pause-button{
-	position: relative;
-	left: 5px;
-	top:0px;
+
+#play-pause-button {
+  left: 5px;
+  position: relative;
+  top:0px;
 }
-#mute-button{
-	position: relative;
-	left: 5px;
-	top:0px;
+
+#mute-button {
+  left: 5px;
+  position: relative;
+  top:0px;
 }
-#replay-button{
-	position: inherit;
-	width: auto;
-	top:-120px;
-	left:150px;
-	font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;
-	padding-left: 30px;
-	color: #ffffff;
-	font-size: small;
+
+#replay-button {
+  color: #ffffff;
+  font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;
+  font-size: small;
+  left:150px;
+  padding-left: 30px;
+  position: inherit;
+  top:-120px;
+  width: auto;
 }
-progress::-webkit-progress-bar { background-color: #dedede;}
-progress::-moz-progress-bar { background-color: red;}  
-progress::-webkit-progress-value { background-color: red;}  
+
+progress::-webkit-progress-bar {
+  background-color: #dedede;
+}
+
+progress::-moz-progress-bar {
+  background-color: red;
+}
+
+progress::-webkit-progress-value {
+  background-color: red;
+}
+
 /*IE*/
-progress::-ms-fill { background-color: red;}
+progress::-ms-fill {
+  background-color: red;
+}

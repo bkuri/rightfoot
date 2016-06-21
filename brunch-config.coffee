@@ -13,7 +13,8 @@ module.exports =
   files:
     javascripts:
       joinTo:
-        'app.js': /^app/
+        'banner.js': /^app\/scripts\/banner/
+        'layer.js': /^app\/scripts\/layer/
         'vendor.js': /^(?!app)/
 
     stylesheets:
