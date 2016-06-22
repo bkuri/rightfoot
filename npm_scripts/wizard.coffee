@@ -1,69 +1,73 @@
 #!/bin/env coffee
 'use strict'
 
-{copy} = require('quickly-copy-file')
 {find} = require('lodash')
-{green, red, yellow} = require('chalk')
 {prompt} = require('inquirer')
-{readdirSync, statSync} = require('fs')
+{readdirSync} = require('fs')
 {version} = require('../package.json')
-WizardQuestions = require('./questions/questions')
-{writeFile} = require('fs-cson')
+Messages = require('./lib/messages')
+UtilityBelt = require('./lib/utilities')
+WizardQuestions = require('./lib/questions')
 
 TEMPLATES = 'app/assets/templates'
-VARS = 'app/variables.cson'
 
 class Wizard
-  cleanUp: (publicOnly=yes) ->
-    # TODO
-
-  copyFiles: (files, from='app/assets/init', to='app/assets') ->
-
-    for file in files
-      copy "#{from}/#{{file}}", "#{to}/#{file}"
-        .catch (error) -> throw error
-
-    return
-
-
   menu: =>
-    prompt(@questions.menu()).then (answers) ->
-      {choice} = answers
-      console.log choice
+    prompt(@questions.menu()).then (answers) =>
+      switch answers.choice
+        when 'public'
+          @utils.cleanUp()
+
+        when 'restart'
+          prompt(@questions.confirm()).then (answers) =>
+            return unless answers.restart
+            @utils.cleanUp yes, yes
+            @unitQuestions 'banner'
+
+        when 'server'
+          @utils.startServer()
+
+        when 'snapshot'
+          @utils.zip()
 
     return
 
 
   unitQuestions: (name, extraLayer=no) =>
-    console.log green "\n#{name} settings".toUpperCase()
+    @msg.info 'subtitle', name
 
     prompt(@questions.nextRound()).then (answers) =>
       {width, height, libraries, sticky, x, y, z} = answers
       unit = {width, height, libraries, sticky, x, y, z}
       @data[name] = answers
 
-      # TODO: clean up old files
+      # clean up old files
+      @utils.cleanUp yes, yes
 
-      unless extraLayer
-        writeFile VARS, @data, (error) ->
-          throw error if error?
-          console.log green """
-            \nSettings saved to '#{VARS}'. You can always edit the find
-            manually or run this wizard again to start over.\n
-          """
+      if extraLayer
+        @utils.copyFiles ['layer.coffee'], 'app/scripts'
+        @utils.copyFiles ['layer.marko']
+
       else
-        @copyFiles ['layer.coffee', 'layer.marko']
+        @utils.writeVars @data
 
       # TODO: copy all template-related assets
+      @utils.copyFiles ['app.styl'], 'app/styles'
+      @utils.copyFiles ['banner.coffee'], 'app/scripts'
+      @utils.copyFiles ['banner.marko']
+      @utils.copyFiles ['head.marko'], 'app/partials'
 
       @menu()
     return
 
 
   constructor: (@questions = new WizardQuestions()) ->
-    console.log green "Weborama template studio v#{version}\n"
+    @msg = new Messages()
+    @utils = new UtilityBelt()
 
-    unless statSync(VARS)?
+    @msg.info 'title', version
+
+    unless @utils.foundVars()
       prompt(@questions.firstRound readdirSync(TEMPLATES)).then (answers) =>
         {lang, name, type} = answers
         meta = {lang, name, type}
@@ -72,15 +76,15 @@ class Wizard
         {border, color, gravity, quality, source} = answers
         image = {border, color, gravity, quality, source}
         ###
-        image = border: 1, color: '#eee', gravity: 'center', quality: 85, source: 'logo2'
-        hasLayer = (find readdirSync("#{TEMPLATES}/#{type}"), (f) -> f.match(/layer/))?
+        image = border: 1, color: '#eee', gravity: 'Center', quality: 85, source: 'logo2'
+        hasLayer = (find readdirSync("#{ TEMPLATES }/#{ type }"), (f) -> f.match(/layer/))?
 
         @data = {meta, image}
         @unitQuestions 'banner', hasLayer
-        return
+
+      return
 
     else @menu()
     return
-
 
 new Wizard()

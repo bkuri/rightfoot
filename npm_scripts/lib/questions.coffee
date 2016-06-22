@@ -9,6 +9,9 @@ PLAIN = 'Standard HTML5'
 URI = 'http://developer.weborama.nl/tools-downloads/'
 
 class WizardQuestions
+  confirm: =>
+    [@qConfirm]
+
   # firstRound: => [@qName, @qLang, @qType, @qImage]
   firstRound: (choices) =>
     @qType.choices = concat([PLAIN], choices)
@@ -20,21 +23,11 @@ class WizardQuestions
   nextRound: =>
     [@qWidth, @qHeight, @qSticky, @qOffsetX, @qOffsetY, @qZIndex, @qLibs]
 
-  qMenu:
-    choices: [
-      {name: 'Start a live development server at http://localhost:3333', value: 'server'}
-      new Separator()
-      {name: 'Create & zip a snapshot of the current template as is', value: 'current'}
-      {name: 'Create & zip a production version of the current template', value: 'production'}
-      new Separator()
-      {name: 'Clean up public folder (leave everything else intact)', value: 'public'}
-      {name: 'Clean up everything and start a new project', value: 'restart'}
-      new Separator()
-      {name: 'Just exit', value: 'exit'}
-    ]
-    message: 'What would you like to do now?'
-    name: 'choice'
-    type: 'list'
+  qConfirm: =>
+    defaut: no
+    message: 'Are you SURE that you would like to start over? All modified files will be deleted!'
+    name: 'restart'
+    type: 'confirm'
 
   qLibs:
     choices: []
@@ -42,11 +35,20 @@ class WizardQuestions
     name: 'libraries'
     type: 'checkbox'
 
-  qType:
-    choices: []
-    default: 0
-    message: 'Banner type:'
-    name: 'type'
+  qMenu:
+    choices: [
+      {name: 'Start a live development server at http://localhost:3333', value: 'server'}
+      new Separator()
+      {name: 'Create & zip a snapshot of the current template as is', value: 'snapshot'}
+      {name: 'Create & zip a production version of the current template', value: 'production'}
+      new Separator()
+      {name: 'Clean up public folder (leave everything else intact)', value: 'public'}
+      {name: 'Clean up everything and start a new project', value: 'restart'}
+      new Separator()
+      {name: 'Exit and do nothing', value: 'exit'}
+    ]
+    message: 'What would you like to do now?'
+    name: 'choice'
     type: 'list'
 
   qSticky:
@@ -54,6 +56,13 @@ class WizardQuestions
     message: 'Sticky?'
     name: 'sticky'
     type: 'confirm'
+
+  qType:
+    choices: []
+    default: 0
+    message: 'Banner type:'
+    name: 'type'
+    type: 'list'
 
   constructor: ->
     libs = []
@@ -63,7 +72,7 @@ class WizardQuestions
 
       default: def
       filter: (val) -> Number(val)
-      message: "#{name}:"
+      message: "#{ name }:"
       name: n
 
       validate: (val) ->
@@ -97,7 +106,7 @@ class WizardQuestions
           value = $(@).text().trim()
 
           switch
-            when (i is 0) then name += "#{value} v"
+            when (i is 0) then name += "#{ value } v"
             when (i is 1) then name += value
             else libs.push {name, value}
 

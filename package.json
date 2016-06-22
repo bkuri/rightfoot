@@ -7,12 +7,11 @@
     "cheerio": "^0.20.0",
     "chroma-js": "^1.1.1",
     "fs-cson": "^0.3.2",
+    "gm": "^1.22.0",
     "inquirer": "^1.0.2",
     "lodash": "^4.13.1",
-    "mkdirp": "^0.5.1",
-    "quickly-copy-file": "^1.0.0",
     "request": "^2.72.0",
-    "rimraf": "^2.5.2",
+    "shelljs": "^0.7.0",
     "stylus": "^0.54.5"
   },
   "description": "A+ nodejs development environment for jump-starting web projects",
@@ -39,15 +38,16 @@
     "url": "https://github.com/bkuri/rightfoot"
   },
   "scripts": {
-    "build": "brunch build && npm run image",
+    "_build": "brunch build && npm run image",
+    "build": "test -f app/variables.cson && npm run _build || npm_scripts/error.coffee novars",
     "clean": "npm_scripts/clean.coffee",
     "deploy": "npm run clean && brunch build --production && npm run images && npm run zip",
     "images": "npm_scripts/images.coffee",
-    "start": "test -f app/variables.cson && brunch watch --server || npm run wizard",
+    "start": "npm run wizard",
     "test": "echo 'testing environment not specified'",
     "tools": "npm_scripts/tools.coffee",
     "wizard": "npm_scripts/wizard.coffee",
     "zip": "npm_scripts/zip.coffee"
   },
-  "version": "0.5.11"
+  "version": "0.6.2"
 }
