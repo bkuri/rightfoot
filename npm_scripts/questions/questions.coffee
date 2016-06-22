@@ -3,6 +3,7 @@
 {concat} = require('lodash')
 {load} = require('cheerio')
 request = require('request')
+{Separator} = require('inquirer')
 
 PLAIN = 'Standard HTML5'
 URI = 'http://developer.weborama.nl/tools-downloads/'
@@ -11,10 +12,29 @@ class WizardQuestions
   # firstRound: => [@qName, @qLang, @qType, @qImage]
   firstRound: (choices) =>
     @qType.choices = concat([PLAIN], choices)
-    console.log @qType.choices
     return [@qName, @qLang, @qType]
 
-  nextRound: => [@qWidth, @qHeight, @qSticky, @qOffsetX, @qOffsetY, @qZIndex, @qLibs]
+  menu: =>
+    [@qMenu]
+
+  nextRound: =>
+    [@qWidth, @qHeight, @qSticky, @qOffsetX, @qOffsetY, @qZIndex, @qLibs]
+
+  qMenu:
+    choices: [
+      {name: 'Start a live development server at http://localhost:3333', value: 'server'}
+      new Separator()
+      {name: 'Create & zip a snapshot of the current template as is', value: 'current'}
+      {name: 'Create & zip a production version of the current template', value: 'production'}
+      new Separator()
+      {name: 'Clean up public folder (leave everything else intact)', value: 'public'}
+      {name: 'Clean up everything and start a new project', value: 'restart'}
+      new Separator()
+      {name: 'Just exit', value: 'exit'}
+    ]
+    message: 'What would you like to do now?'
+    name: 'choice'
+    type: 'list'
 
   qLibs:
     choices: []
@@ -55,7 +75,7 @@ class WizardQuestions
       Object.assign {name, message},
         default: def
         filter: (val) -> String(val).trim()
-        validate: (val) -> String(val).trim().length > 0
+        validate: (val) -> (String(val).trim().length > 0)
 
     @qName = createTextInput('name', 'Give this project a name:')
     @qLang = createTextInput('lang', 'What language will the banner be in?', 'en')

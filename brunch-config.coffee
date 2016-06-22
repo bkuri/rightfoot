@@ -4,6 +4,7 @@ module.exports =
 
     ignored: [
       /[\\/]_/
+      /^app\/assets\/init/
       /^app\/assets\/logos/
       /^app\/assets\/templates/
       /^app\/partials/
