@@ -2,7 +2,6 @@
   "author": "Bernardo Kuri",
   "dependencies": {
     "axis": "^0.6.1",
-    "bauer-zip": "^1.0.2",
     "chalk": "^1.1.3",
     "cheerio": "^0.20.0",
     "chroma-js": "^1.1.1",
@@ -10,9 +9,10 @@
     "gm": "^1.22.0",
     "inquirer": "^1.0.2",
     "lodash": "^4.13.1",
-    "request": "^2.72.0",
+    "request-promise": "^3.0.0",
     "shelljs": "^0.7.0",
-    "stylus": "^0.54.5"
+    "stylus": "^0.54.5",
+    "zip-folder": "^1.0.0"
   },
   "description": "A+ nodejs development environment for jump-starting web projects",
   "devDependencies": {
@@ -38,16 +38,19 @@
     "url": "https://github.com/bkuri/rightfoot"
   },
   "scripts": {
-    "_build": "brunch build && npm run image",
-    "build": "test -f app/variables.cson && npm run _build || npm_scripts/error.coffee novars",
     "clean": "npm_scripts/clean.coffee",
-    "deploy": "npm run clean && brunch build --production && npm run images && npm run zip",
-    "images": "npm_scripts/images.coffee",
+    "deploy": "npm run clean && npm run optimized && npm run img && npm run zip",
+    "img": "npm_scripts/img.coffee",
+    "optimized": "brunch build --production",
+    "restart": "npm run scrub && npm run wizard",
+    "scrub": "npm_scripts/scrub.coffee",
+    "server": "brunch watch --server",
+    "snapshot": "npm run clean && npm run standard && npm run img && npm run zip",
+    "standard": "brunch build",
     "start": "npm run wizard",
     "test": "echo 'testing environment not specified'",
-    "tools": "npm_scripts/tools.coffee",
     "wizard": "npm_scripts/wizard.coffee",
     "zip": "npm_scripts/zip.coffee"
   },
-  "version": "0.6.2"
+  "version": "0.7.0"
 }

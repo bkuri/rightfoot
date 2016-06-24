@@ -1,0 +1,11 @@
+#!/bin/env coffee
+'use strict'
+
+
+{rm, test} = require('shelljs')
+
+VARS = 'app/variables.cson'
+targets = ['public', 'assets', 'partials', 'scripts', 'styles']
+
+rm('-f', VARS) if test('-f', VARS)
+rm('-f', "app/#{ target }/*") for target in targets

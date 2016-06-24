@@ -1,4 +1,5 @@
 #!/bin/env coffee
 'use strict'
 
-new require('./lib/utilities')().cleanUp no
+
+require('shelljs').rm '-f', 'app/assets/public/*'

@@ -1,3 +1,7 @@
+app/assets/*.*
+app/partials/*.marko
+app/scripts/*.coffee
+app/styles/*.styl
 app/variables.cson
 node_modules
 npm-debug.log
