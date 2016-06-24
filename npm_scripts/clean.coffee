@@ -2,4 +2,4 @@
 'use strict'
 
 
-require('shelljs').rm '-f', 'app/assets/public/*'
+require('shelljs').rm '-f', 'public/*'
