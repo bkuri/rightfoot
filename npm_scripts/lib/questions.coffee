@@ -77,19 +77,17 @@ class Questions
 
   constructor: ->
     inputNumber = (name, def=0, min=def) ->
-      n = name.split(' ')[0].toLowerCase()
+      name = name.split(' ')[0].toLowerCase()
 
-      return {
+      return Object.assign {name},
         default: def
         filter: (val) -> Number(val)
         message: "#{ name }:"
-        name: n
 
         validate: (val) ->
           return no if Number.isNaN(val)
-          return no if (Number(val) < min) and (n isnt 'x') and (n isnt 'y')
+          return no if (Number(val) < min) and (name isnt 'x') and (name isnt 'y')
           return yes
-      }
 
     inputText = (name, message, def=null) ->
       return Object.assign {name, message},
