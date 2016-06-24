@@ -1,45 +1,85 @@
 'use strict'
 
-{green, red, yellow} = require('chalk')
+
+{cyan, green, red, yellow} = require('chalk')
+{exit} = require('shelljs')
+
 
 class Messages
   debug: (key, extra='') ->
-    return unless @debugging
-
     message = switch(key)
-      when 'del' then "deleted '#{ extra }'"
+      when 'del' then "→ Deleted file '#{ extra }'."
       else extra
 
-    console.debug cyan(message)
+    console.log cyan(message)
     return
+
 
   error: (key, extra) ->
     message = switch key
-      when 'nopub' then 'There are no files in the public folder. Try running "npm run build" first.'
-      when 'novars' then 'There is no settings file yet. Try running the wizard first.'
-      else extra
+      when 'nopub'
+        'There are no files left to delete in the public folder.'
+
+      when 'novars'
+        'There is no settings file yet. Try running the wizard first.'
+
+      else
+        extra
 
     console.error red("\nERROR: #{ message }\n")
+    exit 1
     return
+
 
   info: (key, extra='') ->
     message = switch key
-      when 'copied' then "copied #{ extra }"
-      when 'drydel' then "would have deleted #{ extra }"
-      when 'saved' then "saved file '#{ extra }'"
-      when 'server' then '\nstarting server on http://localhost:3333\n'
-      when 'subtitle' then "\n#{ extra } settings".toUpperCase()
-      when 'title' then "\nWEBORAMA TEMPLATE STUDIO v#{ extra }\n"
-      when 'writevars' then "\nSettings saved to '#{ extra }'. You can always edit the file manually or run this wizard again to start over."
-      when 'zipped' then "\nZip file saved as public/#{ extra }.zip"
+      when 'clean'
+        '\nCleaning public folder...\n'
+
+      when 'copied'
+        "→ Copied #{ extra }"
+
+      when 'deploy', 'snapshot'
+        "\nCompiling #{ extra } version...\n"
+
+      when 'saved'
+        "→ Saved file '#{ extra }'"
+
+      when 'scrub'
+        '\nRestoring original state...'
+
+      when 'scrubbed'
+        'Finished. Run "npm start" again to start a new project.\n'
+
+      when 'server'
+        '\nStarting server on http://localhost:3333\n'
+
+      when 'standard'
+        '\nBuilding standard development version...\n'
+
+      when 'subtitle'
+        "\n#{ extra } settings".toUpperCase()
+
+      when 'title'
+        "\nWEBORAMA TEMPLATE STUDIO v#{ extra }\n"
+
+      when 'writevars'
+        "→ Settings file '#{ extra }' saved.\n"
+
+      when 'zipped'
+        "\nZip file saved as public/#{ extra }.zip\n"
 
     console.log green(message)
     return
 
-  warning: (key) ->
+
+  warning: (message) ->
     console.log yellow("\nWARNING: #{ message }\n")
     return
 
-  constructor: (@debugging=no) ->
+
+  constructor: ->
+    return
+
 
 module.exports = Messages
