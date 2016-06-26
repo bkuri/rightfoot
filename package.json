@@ -39,18 +39,22 @@
   },
   "scripts": {
     "clean": "npm_scripts/clean.coffee",
-    "deploy": "npm run clean && npm run optimized && npm run img && npm run zip",
+    "deploy": "npm run optimized && npm run img",
     "img": "npm_scripts/img.coffee",
     "optimized": "brunch build --production",
+    "postdeploy":"npm run zip",
+    "postsnapshot":"npm run zip",
+    "preoptimized": "npm run clean",
+    "prestandard": "npm run clean",
     "restart": "npm run scrub && npm run wizard",
     "scrub": "npm_scripts/scrub.coffee",
     "server": "brunch watch --server",
-    "snapshot": "npm run clean && npm run standard && npm run img && npm run zip",
+    "snapshot": "npm run standard && npm run img",
     "standard": "brunch build",
     "start": "npm run wizard",
     "test": "echo 'testing environment not specified'",
     "wizard": "npm_scripts/wizard.coffee",
     "zip": "npm_scripts/zip.coffee"
   },
-  "version": "0.7.0"
+  "version": "0.7.3"
 }

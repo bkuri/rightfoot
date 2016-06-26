@@ -46,12 +46,14 @@ class Wizard
 
 
   scrub: =>
-    prompt(@questions.confirm()).then (answers) =>
-      return unless answers.confirmed
-      @tools.run('scrub', 'scrubbed')
-      return
+    setTimeout (=>
+      prompt(@questions.confirm()).then (answers) =>
+        return unless answers.confirmed
+        @tools.run('scrub', 'scrubbed')
+        return
 
-    return
+      return
+    ), 1000
 
 
   stage: (name, extraLayer=no) =>
@@ -63,20 +65,23 @@ class Wizard
       @data[name] = answers
 
       if extraLayer
-        @tools.copy 'layer.coffee'
-        @tools.copy 'layer.marko'
-        @stage 'layer'
-        
+        @tools
+          .copy 'layer.coffee'
+          .copy 'layer.marko'
+
+        setTimeout (=> @stage 'layer'), 100
+
       else
-        @tools.writeVars @data
+        @tools
+          .copy 'app.styl'
+          .copy 'banner.coffee'
+          .copy 'banner.marko'
+          .copy 'head.marko', 'partials'
+          .copyFolder @data.meta.type
+          .writeVars @data
 
-      @tools.copy 'app.styl'
-      @tools.copy 'banner.coffee'
-      @tools.copy 'banner.marko'
-      @tools.copy 'head.marko', 'partials'
-      @tools.copyFolder @data.meta.type
+        setTimeout (=> @menu()), 100
 
-      @menu()
       return
 
     return

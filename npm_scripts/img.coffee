@@ -2,11 +2,15 @@
 'use strict'
 
 
-img = new require('./lib/images')()
-tools = new require('./lib/tools')()
-data = tools.readVars()
+Images = require('./lib/images')
+Tools = require('./lib/tools')
 
+do ->
+  tools = new Tools()
+  data = tools.readVars()
+  img = new Images(data)
 
-img.backup()
-img.backup(data.layer, '-layer') if data.layer?
-img.blank()
+  img.backup 'banner'
+  img.backup('layer', '-layer') if data.layer?
+  img.blank()
+  return

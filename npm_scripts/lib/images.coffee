@@ -3,19 +3,19 @@
 
 chroma = require('chroma-js')
 gm = require('gm')
-Messages = require('./lib/messages')
+Messages = require('./messages')
 
 
-class Imager
-  backup: (size = @data, dest = '') =>
+class Images
+  backup: (what, suffix = '') =>
     {image} = @data
-    name = "public/backup#{ dest }.jpg"
+    name = "public/backup#{ suffix }.jpg"
     s = (image.border * 2)
 
     gm("app/assets/logos/#{ image.source }.png")
       .background image.color
       .gravity image.gravity
-      .extent (size.width - s), (size.height - s)
+      .extent (@data[what].width - s), (@data[what].height - s)
       .borderColor @invert(image.color)
       .border image.border, image.border
       .quality image.quality
@@ -29,7 +29,7 @@ class Imager
 
   blank: =>
     b = '#000'
-    {width, height} = @data
+    {width, height} = @data['banner']
     name = "public/#{ width }x#{ height }.gif"
 
     gm(width, height, b)
@@ -47,9 +47,9 @@ class Imager
     channels[i] = (if i is 3 then 1 else 255) - c for c, i in channels
     return "rgb(#{ channels.join(',') })"
 
-  constructor: ->
+  constructor: (@data) ->
     @msg = new Messages()
     return
 
 
-module.exports = Imager
+module.exports = Images

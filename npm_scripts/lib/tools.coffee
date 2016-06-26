@@ -27,17 +27,22 @@ class Tools
     mkdir '-p', dest
     cp "app/assets/init/#{ what }", dest
     @msg.info 'copied', what
-    return
+    return @
 
 
   copyFolder: (what) =>
     cp "app/assets/templates/#{ what }/*", 'app/assets'
     @msg.info 'copied', "#{ what } template files."
-    return
+    return @
 
 
   foundVars: ->
     return test('-f', VARS)
+
+
+  linkBannerToIndex: ->
+    ln '-sf', 'public/banner.html', 'public/index.html'
+    return @
 
 
   readVars: =>
@@ -49,8 +54,8 @@ class Tools
     @msg.info command
 
     exec "npm run #{ command }", (code, stdout, stderr) =>
-      @msg.debug(command, stdout) if stdout?
-      @msg.error(command, stderr) if stderr?
+      # @msg.error(command, stderr) if stderr?
+      # @msg.info(command, stdout) if stdout?
       @msg.info(after) if after?
       return
 
@@ -63,7 +68,7 @@ class Tools
       @msg.info 'writevars', VARS
       return
 
-    return
+    return @
 
 
   constructor: ->

@@ -26,7 +26,7 @@ class Messages
       else
         extra
 
-    console.error red("\nERROR: #{ message }\n")
+    console.error red("\n× ERROR: #{ message }\n")
     exit 1
     return
 
@@ -34,31 +34,34 @@ class Messages
   info: (key, extra='') ->
     message = switch key
       when 'clean'
-        '\nCleaning public folder...\n'
+        '\n· Cleaning public folder…\n'
 
       when 'copied'
         "→ Copied #{ extra }"
 
       when 'deploy', 'snapshot'
-        "\nCompiling #{ extra } version...\n"
+        "\n· Compiling #{ extra } version…\n"
+
+      when 'img'
+        '· Generating backup images…'
 
       when 'saved'
-        "→ Saved file '#{ extra }'"
+        "· Saved file '#{ extra }'"
 
       when 'scrub'
-        '\nRestoring original state...'
+        '\n· Restoring original state…'
 
       when 'scrubbed'
         'Finished. Run "npm start" again to start a new project.\n'
 
       when 'server'
-        '\nStarting server on http://localhost:3333\n'
+        '\n· Starting server on http://localhost:3333 (Use Ctrl+C to close)\n'
 
       when 'standard'
-        '\nBuilding standard development version...\n'
+        '\n· Building standard development version…\n'
 
       when 'subtitle'
-        "\n#{ extra } settings".toUpperCase()
+        "\n· #{ extra } settings".toUpperCase()
 
       when 'title'
         "\nWEBORAMA TEMPLATE STUDIO v#{ extra }\n"
@@ -67,7 +70,7 @@ class Messages
         "→ Settings file '#{ extra }' saved.\n"
 
       when 'zipped'
-        "\nZip file saved as public/#{ extra }.zip\n"
+        "\n· Zip file saved as public/#{ extra }.zip\n"
 
     console.log green(message)
     return

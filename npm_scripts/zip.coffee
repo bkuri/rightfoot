@@ -2,23 +2,28 @@
 'use strict'
 
 
-{mv} = require('shelljs')
+{rm, mkdir, mv} = require('shelljs')
 {readdirSync} = require('fs')
-{zip} = require('zip-folder')
-Messages = require('./messages')
+zip = require('zip-folder')
 
+do ->
 
-PUB = './public'
+  Tools = require('./lib/tools')
+  PUB = './public'
 
-@msg.error('nopub') if (readdirSync(PUB).length < 1)
+  if (readdirSync(PUB).length < 1)
+    msg.error 'nopub'
 
-data = @readVars()
-name = "#{ data.name }-#{ data.width }x#{ data.height }"
+  data = new Tools().readVars()
+  name = "#{ data.meta.name }-#{ data.banner.width }x#{ data.banner.height }"
+  dir = "#{ PUB }/#{ name }"
 
-mv PUB, name
+  mkdir dir
+  mv "#{ PUB }/*.*", dir
 
-zip name, "#{ name }/#{ name }.zip", (error) =>
-  throw error if error?
-  @msg.info 'zipped', name
-  mv "./#{ name }", PUB
+  zip dir, "#{ dir }.zip", (error) ->
+    throw error if error?
+    rm '-rf', dir
+    return
+
   return

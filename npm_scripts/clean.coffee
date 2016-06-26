@@ -2,4 +2,6 @@
 'use strict'
 
 
-require('shelljs').rm '-f', 'public/*.*'
+do ->
+  require('shelljs').rm '-f', 'public/*.*'
+  return
