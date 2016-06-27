@@ -44,6 +44,7 @@ module.exports =
           processors: [
             require('autoprefixer')(['last 8 versions'])
             require('csswring')
+            require('pixrem')
           ]
 
         stylus:
@@ -64,6 +65,7 @@ module.exports =
     postcss:
       processors: [
         require('autoprefixer')(['last 8 versions'])
+        require('pixrem')
       ]
 
     stylus:
