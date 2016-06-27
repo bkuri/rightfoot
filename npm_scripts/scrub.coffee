@@ -11,4 +11,5 @@ do ->
   rm('-f', VARS) if test('-f', VARS)
   rm('-f', "app/#{ target }/*.*") for target in targets
   rm '-f', 'public/*.*'
+  rm '-f', 'vendor/*.*'
   return
