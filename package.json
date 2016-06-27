@@ -17,11 +17,13 @@
   "description": "A+ nodejs development environment for jump-starting web projects",
   "devDependencies": {
     "auto-reload-brunch": "^2.7.1",
+    "autoprefixer": "^6.3.6",
     "coffee-script-brunch": "^2.0.0",
     "coffeelint-brunch": "^2.0.0",
+    "csswring": "^5.0.0",
     "javascript-brunch": "^2.0.0",
     "marko-brunch": "^0.0.4",
-    "pleeease-brunch": "^3.0.0",
+    "postcss-brunch": "^0.5.0",
     "stylus-brunch": "^2.6.0",
     "uglify-js-brunch": "^2.0.1"
   },
@@ -54,5 +56,5 @@
     "wizard": "npm_scripts/wizard.coffee",
     "zip": "npm_scripts/zip.coffee"
   },
-  "version": "0.7.3"
+  "version": "0.7.5"
 }

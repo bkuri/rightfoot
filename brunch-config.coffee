@@ -40,13 +40,11 @@ module.exports =
         marko:
           pretty: no
 
-        pleeease:
-          autoprefixer: yes
-          import: yes
-          minifier: yes
-          mqpacker: yes
-          rem: ['16px']
-          variables: yes
+        postcss:
+          processors: [
+            require('autoprefixer')(['last 8 versions'])
+            require('csswring')
+          ]
 
         stylus:
           compress: yes
@@ -69,13 +67,10 @@ module.exports =
       data: require('fs-cson').readFileSync('app/variables.cson')
       pretty: yes
 
-    pleeease:
-      autoprefixer: yes
-      import: no
-      minifier: no
-      mqpacker: no
-      rem: no
-      variables: yes
+    postcss:
+      processors: [
+        require('autoprefixer')(['last 8 versions'])
+      ]
 
     stylus:
       compress: no
