@@ -57,12 +57,6 @@ module.exports =
     coffeelint:
       useCoffeelintJson: yes
 
-    keyword:
-      filePattern: /\.js$/
-
-      map:
-        format: -> 'banner'
-
     marko:
       data: require('fs-cson').readFileSync('app/variables.cson')
       pretty: yes
