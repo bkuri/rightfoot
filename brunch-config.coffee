@@ -37,22 +37,12 @@ module.exports =
         autoReload:
           enabled: no
 
-        marko:
-          pretty: no
-
         postcss:
           processors: [
             require('autoprefixer')(['last 8 versions'])
             require('csswring')
             require('pixrem')
           ]
-
-        stylus:
-          compress: yes
-
-        uglify:
-          ignored: /^_.+\.js$/
-          mangle: yes
 
   plugins:
     coffeelint:
