@@ -15,12 +15,11 @@ class Tools
 
 
   copy: (what, where=null) =>
-    ext = what.match(/\.(.*)$/)[1]
-
-    unless where? then where = switch ext
-      when 'coffee' then 'scripts'
-      when 'styl' then 'styles'
-      else 'assets'
+    unless where?
+      where = switch what.match(/\.(.*)$/)[1]
+        when 'coffee' then 'scripts'
+        when 'styl' then 'styles'
+        else 'assets'
 
     dest = "app/#{ where }"
 
@@ -31,18 +30,13 @@ class Tools
 
 
   copyFolder: (what) =>
-    cp "app/assets/templates/#{ what }/*", 'app/assets'
+    cp "app/assets/#{ what }/*", 'app/assets'
     @msg.info 'copied', "#{ what } template files."
     return @
 
 
   foundVars: ->
     return test('-f', VARS)
-
-
-  linkBannerToIndex: ->
-    ln '-sf', 'public/banner.html', 'public/index.html'
-    return @
 
 
   readVars: =>

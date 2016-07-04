@@ -72,12 +72,18 @@ class Wizard
         setTimeout (=> @stage 'layer'), 100
 
       else
+        ###
+        .copy 'index.marko'
+        .copy 'preview/preview.header.jpg'
+        .copy 'preview/preview.footer.jpg'
+        .copy 'preview/preview.styl'
+        ###
         @tools
           .copy 'app.styl'
           .copy 'banner.coffee'
           .copy 'banner.marko'
           .copy 'head.marko', 'partials'
-          .copyFolder @data.meta.type
+          .copyFolder "templates/#{@data.meta.type}"
           .writeVars @data
 
         setTimeout (=> @menu()), 100

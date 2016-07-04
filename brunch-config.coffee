@@ -7,6 +7,7 @@ module.exports =
       /^app\/assets\/init/
       /^app\/assets\/logos/
       /^app\/assets\/templates/
+      /^app\/components/
       /^app\/partials/
       /vendor[\\/]node[\\/]/
     ]
@@ -30,13 +31,7 @@ module.exports =
 
   overrides:
     production:
-      optimize: yes
-      sourceMaps: no
-
       plugins:
-        autoReload:
-          enabled: no
-
         postcss:
           processors: [
             require('autoprefixer')(['last 8 versions'])
@@ -61,9 +56,6 @@ module.exports =
     stylus:
       compress: no
       plugins: ['axis']
-
-    uglify:
-      ignored: /^.+$/
 
   watcher:
     awaitWriteFinish: yes
