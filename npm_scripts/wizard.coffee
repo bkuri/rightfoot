@@ -8,8 +8,8 @@
 {readdirSync} = require('fs')
 {version} = require('../package.json')
 {writeFile} = require('fs-cson')
-Questions = require('./lib/questions')
 Messages = require('./lib/messages')
+Questions = require('./lib/questions')
 Tools = require('./lib/tools')
 
 TEMPLATES = 'app/assets/templates'
@@ -83,7 +83,7 @@ class Wizard
           .copy 'banner.coffee'
           .copy 'banner.marko'
           .copy 'head.marko', 'partials'
-          .copyFolder "templates/#{@data.meta.type}"
+          .copyFolder "templates/#{ @data.meta.type }"
           .writeVars @data
 
         setTimeout (=> @menu()), 100
