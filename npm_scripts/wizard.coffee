@@ -37,7 +37,7 @@ class Wizard
     prompt(@questions.menu()).then (answers) =>
       switch answers.choice
         when 'exit' then exit(0)
-        when 'restart' then @restart()
+        when 'scrub' then @scrub(answers.confirm)
         else @tools.run answers.choice
 
       return
@@ -45,15 +45,9 @@ class Wizard
     return
 
 
-  scrub: =>
-    setTimeout (=>
-      prompt(@questions.confirm()).then (answers) =>
-        return unless answers.confirmed
-        @tools.run('scrub', 'scrubbed')
-        return
-
-      return
-    ), 1000
+  scrub: (confirmed) =>
+    @tools.run('scrub', 'scrubbed') if confirmed
+    return
 
 
   stage: (name, extraLayer=no) =>
