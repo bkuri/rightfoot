@@ -10,11 +10,8 @@ URI = 'http://developer.weborama.nl/tools-downloads/'
 
 
 class Questions
-  confirm: (message) ->
-    return Object.assign {message},
-      defaut: no
-      name: 'confirmed'
-      type: 'confirm'
+  confirm: (message, name='confirmed', defaultVal=no) ->
+    return Object.assign {message, name}, defaut: defaultVal, type: 'confirm'
 
 
   firstStage: (choices) =>
