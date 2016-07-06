@@ -77,11 +77,11 @@ class Questions
 
 
   constructor: ->
-    inputNumber = (name, def=0, min=def) ->
+    inputNumber = (name, defaultVal=0, min=defaultVal) ->
       name = name.split(' ')[0].toLowerCase()
 
       return Object.assign {name},
-        default: def
+        default: defaultVal
         filter: (val) -> Number(val)
         message: "#{ name }:"
 
@@ -90,9 +90,9 @@ class Questions
           return no if (Number(val) < min) and (name isnt 'x') and (name isnt 'y')
           return yes
 
-    inputText = (name, message, def=null) ->
+    inputText = (name, message, defaultVal=null) ->
       return Object.assign {name, message},
-        default: def
+        default: defaultVal
         filter: (val) -> String(val).trim()
         validate: (val) -> (String(val).trim().length > 0)
 
