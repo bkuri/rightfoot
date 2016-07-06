@@ -10,8 +10,11 @@ URI = 'http://developer.weborama.nl/tools-downloads/'
 
 
 class Questions
-  confirm: (message) =>
-    return [@qConfirm message]
+  confirm: (message) ->
+    return Object.assign {message},
+      defaut: no
+      name: 'confirmed'
+      type: 'confirm'
 
 
   firstStage: (choices) =>
@@ -26,13 +29,6 @@ class Questions
 
   nextStage: =>
     return [@qWidth, @qHeight, @qSticky, @qOffsetX, @qOffsetY, @qZIndex, @qLibs]
-
-
-  qConfirm: (message) ->
-    return Object.assign {message},
-      defaut: no
-      name: 'confirmed'
-      type: 'confirm'
 
 
   qLibs:
