@@ -3,7 +3,6 @@
 
 chroma = require('chroma-js')
 gm = require('gm')
-Messages = require('./messages')
 
 
 class Images
@@ -19,11 +18,7 @@ class Images
       .borderColor @invert(image.color)
       .border image.border, image.border
       .quality image.quality
-
-      .write name, (err) =>
-        throw err if err?
-        @msg.info 'saved', name
-        return
+      .write name, @callback(name)
 
     return
 
@@ -34,11 +29,7 @@ class Images
 
     gm(width, height, b)
       .transparent b
-
-      .write name, (err) =>
-        throw err if err?
-        @msg.info 'saved', name
-        return
+      .write name, @callback(name)
 
     return
 
@@ -47,8 +38,7 @@ class Images
     channels[i] = (if i is 3 then 1 else 255) - c for c, i in channels
     return "rgb(#{ channels.join(',') })"
 
-  constructor: (@data) ->
-    @msg = new Messages()
+  constructor: (@data, @callback) ->
     return
 
 
