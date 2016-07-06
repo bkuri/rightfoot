@@ -26,6 +26,7 @@
     "marko-brunch": "^1.0.0",
     "mime": "^1.3.4",
     "pixrem": "^3.0.1",
+    "postcss-base64": "^0.4.1",
     "postcss-brunch": "^0.5.0",
     "stylus-brunch": "^2.6.0",
     "uglify-js-brunch": "^2.0.1"
@@ -44,11 +45,12 @@
   },
   "scripts": {
     "clean": "npm_scripts/clean.coffee",
-    "deploy": "npm run optimized && npm run img && npm run zip",
+    "deploy": "npm run optimized && npm run zip",
     "img": "npm_scripts/img.coffee",
     "optimized": "brunch build --production",
-    "preoptimized": "npm run clean",
-    "prestandard": "npm run clean",
+    "preoptimized": "npm run clean && npm run img",
+    "prestandard": "npm run clean && npm run img",
+    "preserver": "npm run clean && npm run img",
     "restart": "npm run scrub && npm run wizard",
     "scrub": "npm_scripts/scrub.coffee",
     "server": "brunch watch --server",
@@ -59,5 +61,5 @@
     "wizard": "npm_scripts/wizard.coffee",
     "zip": "npm_scripts/zip.coffee"
   },
-  "version": "0.7.9"
+  "version": "0.8.0"
 }
