@@ -35,8 +35,9 @@ module.exports =
         postcss:
           processors: [
             require('autoprefixer')(['last 8 versions'])
-            require('csswring')
-            require('pixrem')
+            require('postcss-base64')(extensions: ['.jpg'])
+            require 'csswring'
+            require 'pixrem'
           ]
 
   plugins:
@@ -50,7 +51,7 @@ module.exports =
     postcss:
       processors: [
         require('autoprefixer')(['last 8 versions'])
-        require('pixrem')
+        require 'pixrem'
       ]
 
     stylus:
