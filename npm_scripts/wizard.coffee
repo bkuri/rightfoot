@@ -7,7 +7,6 @@
 {prompt} = require('inquirer')
 {readdirSync} = require('fs')
 {version} = require('../package.json')
-{writeFile} = require('fs-cson')
 Messages = require('./lib/messages')
 Questions = require('./lib/questions')
 Tools = require('./lib/tools')
