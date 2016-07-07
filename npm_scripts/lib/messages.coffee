@@ -64,7 +64,7 @@ class Messages
         yellow "\n· #{ extra } settings".toUpperCase()
 
       when 'title'
-        yellow.bold "\n  WEBORAMA TEMPLATE STUDIO v#{ extra }\n"
+        yellow "\n  WEBORAMA TEMPLATE STUDIO v#{ extra }\n"
 
       when 'writevars'
         green "→ Settings file '#{ extra }' saved.\n"
