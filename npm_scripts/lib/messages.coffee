@@ -58,7 +58,7 @@ class Messages
         cyan '\n· Starting server on http://localhost:3333 (Use Ctrl+C to close)\n'
 
       when 'standard'
-        cyan '\n· Building standard development version…\n'
+        cyan '\n· Building standard development version…'
 
       when 'subtitle'
         yellow "\n· #{ extra } settings".toUpperCase()
