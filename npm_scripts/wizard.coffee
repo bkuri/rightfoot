@@ -53,8 +53,6 @@ class Wizard
     @msg.info 'subtitle', name
 
     prompt(@questions.nextStage()).then (answers) =>
-      {width, height, libraries, sticky, x, y, z} = answers
-      unit = {width, height, libraries, sticky, x, y, z}
       @data[name] = answers
 
       if extraLayer
