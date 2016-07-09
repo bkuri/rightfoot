@@ -1,0 +1,24 @@
+body
+  background-color black
+
+#closebutton
+  background-image url('close.png')
+  bottom 0px
+  cursor pointer
+  height 20px
+  position absolute
+  right 0px
+  width 90px
+  z-index 110000
+
+  &:hover
+    filter alpha(opacity=80) /* For IE8 and earlier */
+    opacity 0.8
+
+#wrap_bg
+  background-image url('backup-layer.jpg')
+  background-repeat no-repeat
+  cursor pointer
+  height 100%
+  width 100%
+  z-index 100010

@@ -1,0 +1,29 @@
+html
+  head
+    <!-- SCRFORMAT: layer -->
+
+    link rel='stylesheet' type='text/css' href='layer.css'
+
+    coffee
+      initLayer = ->
+        screenad.hide 'self'
+        screenad.setSize '600', '250'
+        screenad.setAlignment 'banner', 'banner'
+        screenad.setOffset -300, 0
+        screenad.setSticky yes
+        screenad.setZIndex 100000
+        screenad.position()
+
+      collapseFormat = ->
+        screenad.event 'user_close'
+        screenad.hide()
+
+      clickDefault = ->
+        screenad.click()
+        # console.log 'click default'
+
+  body onload='initLayer()'
+    #wrap_bg onclick='clickDefault()'
+      <!--Your content goes here-->
+
+    #closebutton onclick='collapseFormat()'
