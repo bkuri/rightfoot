@@ -1,7 +1,7 @@
 'use strict'
 
 
-{cp, exec, exit, mkdir, mv, rm, test} = require('shelljs')
+{cp, exec, find, mkdir, test} = require('shelljs')
 {readFileSync, writeFile} = require('fs-cson')
 Messages = require('./messages')
 
@@ -24,14 +24,17 @@ class Tools
     dest = "app/#{ where }"
 
     mkdir '-p', dest
-    cp "app/assets/init/#{ what }", dest
+    cp what, dest
     @msg.info 'copied', what
     return @
 
 
   copyFolder: (what) =>
-    cp "app/assets/#{ what }/*", 'app/assets'
-    @msg.info 'copied', "#{ what } template files."
+    files = find("#{ what }/*")
+      .stdout.split '\n'
+      .filter (line) -> line.length
+
+    @copy file for file in files
     return @
 
 
