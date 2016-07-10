@@ -22,7 +22,7 @@
     "coffeelint-brunch": "^2.0.0",
     "csswring": "^5.0.0",
     "javascript-brunch": "^2.0.0",
-    "marko-brunch": "^1.0.0",
+    "marko-brunch": "^1.0.3",
     "pixrem": "^3.0.1",
     "postcss-base64": "^0.4.1",
     "postcss-brunch": "^0.5.0",
