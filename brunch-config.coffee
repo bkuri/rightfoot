@@ -6,6 +6,7 @@ module.exports =
       /[\\/]_/
       /^app\/assets\/init/
       /^app\/assets\/logos/
+      /^app\/assets\/tags/
       /^app\/assets\/templates/
       /^app\/components/
       /^app\/partials/

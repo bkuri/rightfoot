@@ -1,3 +1,15 @@
 {
-  "<coffee>": "./app/assets/tags/coffee/marko-tag.json"
+  "<coffee-script>": {
+    "renderer": "./app/assets/tags/coffee-script",
+    "body": "static-text",
+    "preserve-whitespace": true,
+    "@bare": "boolean"
+  },
+  "<stylus-css>": {
+    "renderer": "./app/assets/tags/stylus-css",
+    "body": "static-text",
+    "preserve-whitespace": true,
+    "@compress": "boolean",
+    "@paths": "array"
+  }
 }
