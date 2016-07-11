@@ -5,6 +5,9 @@
     "preserve-whitespace": true,
     "@bare": "boolean"
   },
+  "<container>": {
+    "template": "./app/assets/tags/container.marko"
+  },
   "<media-controls>": {
     "template": "./app/assets/tags/media-controls.marko"
   },
