@@ -14,7 +14,7 @@
     "stylus": "^0.54.5",
     "zip-folder": "^1.0.0"
   },
-  "description": "A+ nodejs development environment for jump-starting web projects",
+  "description": "The best way to jump-start weborama creative projects",
   "devDependencies": {
     "auto-reload-brunch": "^2.7.1",
     "autoprefixer": "^6.3.6",
@@ -62,5 +62,5 @@
     "wizard": "npm_scripts/wizard.coffee",
     "zip": "npm_scripts/zip.coffee"
   },
-  "version": "0.8.5"
+  "version": "0.8.7"
 }

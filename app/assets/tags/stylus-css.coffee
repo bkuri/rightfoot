@@ -2,20 +2,14 @@
 
 stylus = require('stylus')
 
-exports.render = (input, output) ->
-  source = output.captureString ->
-    return input.renderBody?(output) or ''
+module.exports = (el, generator) ->
+  {builder} = generator
 
-  stylus(source)
-    .set 'compress', input.compress or no
-    .set 'paths', input.paths or []
+  css = stylus(el.bodyText)
+    .set 'compress', el.getAttributeValue('compress') or no
+    .set 'paths', el.getAttributeValue('paths') or []
+    .render()
 
-    .render (error, css) ->
-      if error?
-        output.write "<!-- STYLUS-ERROR: #{ error } -->"
-        return
-
-      output.write "<style>#{ css }</style>"
-      return
-
-  return
+  return builder.htmlElement 'style', {}, [
+    builder.text builder.literal(css)
+  ]

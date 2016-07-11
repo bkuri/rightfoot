@@ -1,12 +1,15 @@
 {
   "<coffee-script>": {
-    "renderer": "./app/assets/tags/coffee-script",
+    "code-generator": "./app/assets/tags/coffee-script",
     "body": "static-text",
     "preserve-whitespace": true,
     "@bare": "boolean"
   },
+  "<media-controls>": {
+    "template": "./app/assets/tags/media-controls.marko"
+  },
   "<stylus-css>": {
-    "renderer": "./app/assets/tags/stylus-css",
+    "code-generator": "./app/assets/tags/stylus-css",
     "body": "static-text",
     "preserve-whitespace": true,
     "@compress": "boolean",

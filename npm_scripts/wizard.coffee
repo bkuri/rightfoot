@@ -56,10 +56,7 @@ class Wizard
       @data[name] = answers
 
       if extraLayer
-        @tools
-          .copy 'layer.coffee'
-          .copy 'layer.marko'
-
+        @tools.copy 'layer.marko', 'partials'
         setTimeout (=> @stage 'layer'), 100
 
       else
@@ -67,8 +64,7 @@ class Wizard
 
         @tools
           .copy "#{base}/init/app.styl"
-          .copy "#{base}/init/banner.coffee"
-          .copy "#{base}/init/banner.marko"
+          .copy "#{base}/init/banner.marko", 'partials'
           .copy "#{base}/init/head.marko", 'partials'
           .copy "#{base}/init/index.marko"
           .copy "#{base}/init/preview/preview.styl"

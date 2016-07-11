@@ -2,11 +2,10 @@
 
 {compile} = require('coffee-script')
 
-exports.render = (input, output) ->
-  {bare} = input
+module.exports = (el, generator) ->
+  {builder} = generator
+  bare = el.getAttributeValue('bare') or yes
 
-  source = output.captureString ->
-    return input.renderBody?(output) or ''
-
-  output.write "<script>#{ compile(source, {bare}) }</script>"
-  return
+  return builder.htmlElement 'script', {}, [
+    builder.text builder.literal(compile el.bodyText, {bare})
+  ]
