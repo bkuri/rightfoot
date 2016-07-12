@@ -47,9 +47,10 @@
         return
 
       start = ->
-        if (_expandType is _click) then document
-          .getElementById 'container'
-          .addEventListener _click, clickDefault
+        if (_expandType is _click)
+          document
+            .getElementById 'container'
+            .addEventListener _click, clickDefault
 
         showLayer() if (_autoExpand and ignite)
 
