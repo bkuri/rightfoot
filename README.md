@@ -6,8 +6,8 @@ A+ nodejs development environment for jump-starting web projects.
 -	[Brunch](http://brunch.io) for super-fluid development (with [some extra help](#brunch)\)
 -	[Coffeescript](http://coffeescript.org) for clean, expressive JS
 -	[Marko](http://markojs.com) for clean, expressive HTML templates
--	[Pleeease](http://pleeease.io) for CSS optimization and autoprefixing
--	[Stylus](https://learnboost.github.io/stylus/) for awesome and powerful CSS
+-	[PostCSS](http://postcss.org) for awesome CSS manipulation powers
+-	[Stylus](https://learnboost.github.io/stylus/) for powerful CSS precompilation
 -	[UglifyJS](http://lisperator.net/uglifyjs) for JS minification
 
 It features on-the-fly compilation, optimization and page reloading.
@@ -34,7 +34,7 @@ The following brunch plugins are subsequently installed:
 -	[auto-reload-brunch](https://github.com/brunch/auto-reload-brunch)
 -	[coffee-script-brunch](https://github.com/brunch/coffee-script-brunch)
 -	[marko-brunch](https://github.com/bkuri/marko-brunch)
--	[pleeease-brunch](https://github.com/iamvdo/pleeease-brunch)
+-	[postcss-brunch](https://github.com/iamvdo/postcss-brunch)
 -	[javascript-brunch](https://github.com/brunch/javascript-brunch)
 -	[stylus-brunch](https://github.com/brunch/stylus-brunch)
 -	[uglify-js-brunch](https://github.com/brunch/uglify-js-brunch)
