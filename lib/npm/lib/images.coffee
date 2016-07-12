@@ -11,7 +11,7 @@ class Images
     name = "public/backup#{ suffix }.jpg"
     s = (image.border * 2)
 
-    gm("app/assets/logos/#{ image.source }.png")
+    gm("lib/logos/#{ image.source }.png")
       .background image.color
       .gravity image.gravity
       .extent (@data[what].width - s), (@data[what].height - s)

@@ -6,20 +6,17 @@
 {readdirSync} = require('fs')
 zip = require('zip-folder')
 
+PUBLIC = './public'
+
 do ->
+  msg.error('nopub') if (readdirSync(PUBLIC).length < 1)
 
   Tools = require('./lib/tools')
-  PUB = './public'
-
-  if (readdirSync(PUB).length < 1)
-    msg.error 'nopub'
-
   data = new Tools().readVars()
-  name = "#{ data.meta.name }-#{ data.banner.width }x#{ data.banner.height }"
-  dir = "#{ PUB }/#{ name }"
+  dir = "#{ PUBLIC }/#{ data.meta.name }"
 
   mkdir dir
-  mv "#{ PUB }/*.*", dir
+  mv "#{ PUBLIC }/*.*", dir
 
   zip dir, "#{ dir }.zip", (error) ->
     throw error if error?

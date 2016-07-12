@@ -14,17 +14,14 @@ class Tools
     return
 
 
-  copy: (what, where=null) =>
-    unless where?
-      where = switch what.match(/\.(.*)$/)[1]
-        when 'coffee' then 'scripts'
-        when 'styl' then 'styles'
-        else 'assets'
+  copy: (what) =>
+    where = switch what.match(/[^\.]+$/)[0]
+      when 'coffee' then 'app/scripts'
+      when 'styl' then 'app/styles'
+      else 'app/assets'
 
-    dest = "app/#{ where }"
-
-    mkdir '-p', dest
-    cp what, dest
+    mkdir '-p', where
+    cp what, where
     @msg.info 'copied', what
     return @
 
@@ -60,6 +57,8 @@ class Tools
 
 
   writeVars: (data) =>
+    mkdir '-p', 'app'
+
     writeFile VARS, data, (error) =>
       throw error if error?
       @msg.info 'writevars', VARS

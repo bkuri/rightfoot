@@ -5,7 +5,6 @@
 {Separator} = require('inquirer')
 request = require('request-promise')
 
-PLAIN = 'Standard HTML5'
 URI = 'http://developer.weborama.nl/tools-downloads/'
 
 

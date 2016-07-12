@@ -45,22 +45,22 @@
     "url": "https://github.com/bkuri/rightfoot"
   },
   "scripts": {
-    "clean": "npm_scripts/clean.coffee",
+    "clean": "lib/npm/clean.coffee",
     "deploy": "npm run optimized && npm run zip",
-    "img": "npm_scripts/img.coffee",
+    "img": "lib/npm/img.coffee",
     "optimized": "brunch build --production",
     "preoptimized": "npm run clean && npm run img",
     "prestandard": "npm run clean && npm run img",
     "preserver": "npm run clean && npm run img",
     "restart": "npm run scrub && npm run wizard",
-    "scrub": "npm_scripts/scrub.coffee",
+    "scrub": "lib/npm/scrub.coffee",
     "server": "export BRUNCH_WATCHING=true; brunch watch --server",
     "snapshot": "npm run standard && npm run img && npm run zip",
     "standard": "brunch build",
     "start": "npm run wizard",
     "test": "echo 'testing environment not specified'",
-    "wizard": "npm_scripts/wizard.coffee",
-    "zip": "npm_scripts/zip.coffee"
+    "wizard": "lib/npm/wizard.coffee",
+    "zip": "lib/npm/zip.coffee"
   },
-  "version": "0.8.8"
+  "version": "0.9.0"
 }

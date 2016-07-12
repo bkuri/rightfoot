@@ -1,4 +1,4 @@
-<layout-use('../partials/banner.marko', data)>
+<layout-use('../../lib/partials/banner.marko', data)>
   <layout-put into='head'>
     <stylus-css>
       body
@@ -11,6 +11,7 @@
 
       #container
         background-color #FFFFFF
+        cursor pointer
         z-index 1000
 
       #clicktoexpand
@@ -39,18 +40,18 @@
         # Get deviceType
         screenad.event screenad.deviceType
 
-        if !ignite
+        unless ignite
           screenad.onSync = start
           ignite = yes
 
         return
 
       start = ->
-        if _expandType is _click then document
-          .getElementById('container')
+        if (_expandType is _click) then document
+          .getElementById 'container'
           .addEventListener _click, clickDefault
 
-        showLayer() if _autoExpand and ignite
+        showLayer() if (_autoExpand and ignite)
 
         screenad.setSize '300', '250'
         screenad.setAlignment 'banner', 'banner'
@@ -63,10 +64,12 @@
       showLayer = ->
         screenad.event 'expand'
         screenad.show 'all'
+        screenad.shared.callMethod 'PlayVideo'
         return
 
       clickDefault = ->
         screenad.click()
+        # console.log 'click default'
         return
     </coffee-script>
   </layout-put>

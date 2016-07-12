@@ -5,13 +5,14 @@
 {exit, ls} = require('shelljs')
 {prompt} = require('inquirer')
 {readdirSync} = require('fs')
-{version} = require('../package.json')
+{version} = require('../../package.json')
 Messages = require('./lib/messages')
 Questions = require('./lib/questions')
 Tools = require('./lib/tools')
 
-ASSETS = 'app/assets'
+ASSETS = 'lib'
 INIT = "#{ ASSETS }/init"
+PARTIALS = "#{ ASSETS }/partials"
 TEMPLATES = "#{ ASSETS }/templates"
 
 
@@ -20,37 +21,43 @@ class Wizard
     prompt(@questions.firstStage readdirSync(TEMPLATES)).then (answers) =>
       {lang, name, type} = answers
       meta = {lang, name, type}
-      temp = "#{ TEMPLATES }/#{ type }"
-      @data = {meta, image}
 
       ###
       {border, color, gravity, quality, source} = answers
       image = {border, color, gravity, quality, source}
       ###
       image = border: 1, color: '#eee', gravity: 'Center', quality: 85, source: 'logo2'
+      @data = {meta, image}
 
-      @tools
-        .copyFolder temp
-        .copy "#{ INIT }/app.styl"
-        .copy "#{ INIT }/head.marko", 'partials'
-        .copy "#{ INIT }/index.marko"
-        .copy "#{ INIT }/preview/preview.styl"
-        .writeVars @data
-
-      setTimeout (=> @stage ls("#{ temp }/*.marko")), 100
+      setTimeout =>
+        @stage ls("#{ TEMPLATES }/#{ type }/*.marko")
+        return
+      , 100
       return
 
     return
+
 
   menu: =>
     prompt(@questions.menu()).then (answers) =>
       switch answers.choice
         when 'exit' then exit(0)
         when 'scrub' then @scrub(answers.confirm)
-        else @tools.run answers.choice
+        else @tools.run(answers.choice)
 
       return
 
+    return
+
+
+  process: =>
+    @tools
+      .copy "#{ INIT }/app.styl"
+      .copy "#{ INIT }/preview/preview.styl"
+      .copyFolder "#{ TEMPLATES }/#{ @data.meta.type }"
+      .writeVars @data
+
+    setTimeout (=> @menu()), 100
     return
 
 
@@ -60,22 +67,20 @@ class Wizard
 
 
   stage: (names) =>
-    file = names.shift()
-    name = file.match(/([^/]+)\.marko$/)[1]
+    path = names.shift()
+    # return @process() unless path?
+    name = path.match(/([^/]+)\.marko$/)[1]
 
     @msg.info 'subtitle', name
 
     prompt(@questions.nextStage()).then (answers) =>
       @data[name] = answers
-      path = "#{ INIT }/#{ file }"
-
-      @tools.copy(path, 'partials') if ls(path).length
-      @tools.copy file, 'partials'
 
       setTimeout =>
-        unless names.length then @stage names else @menu()
+        if names.length then @stage(names) else @process()
         return
       , 100
+
       return
 
     return
