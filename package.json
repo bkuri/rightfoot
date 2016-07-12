@@ -62,5 +62,5 @@
     "wizard": "npm_scripts/wizard.coffee",
     "zip": "npm_scripts/zip.coffee"
   },
-  "version": "0.8.7"
+  "version": "0.8.8"
 }

@@ -2,8 +2,7 @@
 'use strict'
 
 
-{exit} = require('shelljs')
-{find} = require('lodash')
+{exit, ls} = require('shelljs')
 {prompt} = require('inquirer')
 {readdirSync} = require('fs')
 {version} = require('../package.json')
@@ -11,7 +10,9 @@ Messages = require('./lib/messages')
 Questions = require('./lib/questions')
 Tools = require('./lib/tools')
 
-TEMPLATES = 'app/assets/templates'
+ASSETS = 'app/assets'
+INIT = "#{ ASSETS }/init"
+TEMPLATES = "#{ ASSETS }/templates"
 
 
 class Wizard
@@ -19,18 +20,27 @@ class Wizard
     prompt(@questions.firstStage readdirSync(TEMPLATES)).then (answers) =>
       {lang, name, type} = answers
       meta = {lang, name, type}
+      temp = "#{ TEMPLATES }/#{ type }"
+      @data = {meta, image}
 
       ###
       {border, color, gravity, quality, source} = answers
       image = {border, color, gravity, quality, source}
       ###
       image = border: 1, color: '#eee', gravity: 'Center', quality: 85, source: 'logo2'
-      hasLayer = (find readdirSync("#{ TEMPLATES }/#{ type }"), (f) -> f.match(/layer/))?
 
-      @data = {meta, image}
-      @stage 'banner', hasLayer
+      @tools
+        .copyFolder temp
+        .copy "#{ INIT }/app.styl"
+        .copy "#{ INIT }/head.marko", 'partials'
+        .copy "#{ INIT }/index.marko"
+        .copy "#{ INIT }/preview/preview.styl"
+        .writeVars @data
+
+      setTimeout (=> @stage ls("#{ temp }/*.marko")), 100
       return
 
+    return
 
   menu: =>
     prompt(@questions.menu()).then (answers) =>
@@ -49,30 +59,23 @@ class Wizard
     return
 
 
-  stage: (name, extraLayer=no) =>
+  stage: (names) =>
+    file = names.shift()
+    name = file.match(/([^/]+)\.marko$/)[1]
+
     @msg.info 'subtitle', name
 
     prompt(@questions.nextStage()).then (answers) =>
       @data[name] = answers
+      path = "#{ INIT }/#{ file }"
 
-      if extraLayer
-        @tools.copy 'layer.marko', 'partials'
-        setTimeout (=> @stage 'layer'), 100
+      @tools.copy(path, 'partials') if ls(path).length
+      @tools.copy file, 'partials'
 
-      else
-        base = 'app/assets'
-
-        @tools
-          .copy "#{base}/init/app.styl"
-          .copy "#{base}/init/banner.marko", 'partials'
-          .copy "#{base}/init/head.marko", 'partials'
-          .copy "#{base}/init/index.marko"
-          .copy "#{base}/init/preview/preview.styl"
-          .copyFolder "#{base}/templates/#{ @data.meta.type }"
-          .writeVars @data
-
-        setTimeout (=> @menu()), 100
-
+      setTimeout =>
+        unless names.length then @stage names else @menu()
+        return
+      , 100
       return
 
     return
