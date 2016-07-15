@@ -1,0 +1,79 @@
+<layout-use('../../lib/partials/banner.marko', data)>
+  <layout-put into='head'>
+    <stylus-css>
+      body
+        font-family "Trebuchet MS"
+        text-align center
+
+      #content
+        height 100%
+        width 100%
+
+      #container
+        background-color #FFFFFF
+        z-index 1000
+
+      #clicktoexpand
+        background-color #FFFFFF
+        background-image url("clicktoexpand.png")
+        background-repeat no-repeat
+        bottom 0px
+        cursor pointer
+        height 23px
+        left 0px
+        position absolute
+        width 170px
+        z-index 10000
+
+        &:hover
+          opacity 0.8
+    </stylus-css>
+
+    <coffee-script>
+      _click = 'click'
+      _expandType = _click
+      _autoExpand = no
+      ignite = no
+
+      init = ->
+        # Get deviceType
+        screenad.event screenad.deviceType
+
+        if !ignite
+          screenad.onSync = start
+          ignite = yes
+
+        return
+
+      start = ->
+        if (_expandType is _click)
+          document
+            .getElementById('container')
+            .addEventListener _click, clickDefault
+
+        showLayer() if _autoExpand and ignite
+
+        screenad.setSize '300', '250'
+        screenad.setAlignment 'banner', 'banner'
+        screenad.setOffset 0, 0
+        screenad.setSticky yes
+        screenad.setZIndex 100
+        screenad.position()
+        return
+
+      showLayer = ->
+        screenad.event 'expand'
+        screenad.show 'all'
+        return
+
+      clickDefault = ->
+        screenad.click()
+        return
+    </coffee-script>
+  </layout-put>
+
+  <layout-put into='body'>
+    <div id='container' />
+    <div id='clicktoexpand' onclick='showLayer()' />
+  </layout-put>
+</layout-use>

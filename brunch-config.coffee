@@ -4,20 +4,18 @@ module.exports =
 
     ignored: [
       /[\\/]_/
-      /^app\/assets\/init/
-      /^app\/assets\/logos/
-      /^app\/assets\/templates/
-      /^app\/components/
-      /^app\/partials/
+      /^lib\/npm/
+      /^lib\/templates/
       /vendor[\\/]node[\\/]/
     ]
+
+    vendor: /(^node_modules|vendor)/
 
   files:
     javascripts:
       joinTo:
-        'banner.js': /^app\/scripts\/banner/
-        'layer.js': /^app\/scripts\/layer/
-        'vendor.js': /^(?!app)/
+        'app.js': /^lib\/scripts/
+        'vendor.js': /^(?!lib)/
 
     stylesheets:
       joinTo: 'app.css'
@@ -35,7 +33,7 @@ module.exports =
         postcss:
           processors: [
             require('autoprefixer')(['last 8 versions'])
-            require('postcss-base64')(extensions: ['.jpg'])
+            require('postcss-base64')(extensions: ['.jpg', '.png'])
             require 'csswring'
             require 'pixrem'
           ]

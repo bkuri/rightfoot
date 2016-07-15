@@ -1,0 +1,58 @@
+<layout-use('../../lib/partials/layer.marko', data)>
+  <layout-put into='head'>
+    html-comment - SCRFORMAT: layer
+
+    <stylus-css>
+      body
+        background-color black
+
+      #closebutton
+        background-image url('close.png')
+        bottom 0px
+        cursor pointer
+        height 20px
+        position absolute
+        right 0px
+        width 90px
+        z-index 110000
+
+        &:hover
+          opacity 0.8
+
+      #wrap_bg
+        background-image url('backup-layer.jpg')
+        background-repeat no-repeat
+        cursor pointer
+        height 100%
+        width 100%
+        z-index 100010
+    </stylus-css>
+
+    <coffee-script>
+      initLayer = ->
+        screenad.hide 'self'
+        screenad.setSize '600', '250'
+        screenad.setAlignment 'banner', 'banner'
+        screenad.setOffset -300, 0
+        screenad.setSticky yes
+        screenad.setZIndex 100000
+        screenad.position()
+
+      collapseFormat = ->
+        screenad.event 'user_close'
+        screenad.hide()
+
+      clickDefault = ->
+        screenad.click()
+        # console.log 'click default'
+    </coffee-script>
+  </layout-put>
+
+  <layout-put into='body'>
+    <div id='wrap_bg' onclick='clickDefault()'>
+      <html-comment>Your content goes here</html-comment>
+    </div>
+
+    <div id='closebutton' onclick='collapseFormat()' />
+  </layout-put>
+</layout-use>

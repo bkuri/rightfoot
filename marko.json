@@ -1,0 +1,21 @@
+{
+  "<coffee-script>": {
+    "code-generator": "./lib/tags/coffee-script",
+    "body": "static-text",
+    "preserve-whitespace": true,
+    "@bare": "boolean"
+  },
+  "<banner-container>": {
+    "template": "./lib/tags/banner-container.marko"
+  },
+  "<media-controls>": {
+    "template": "./lib/tags/media-controls.marko"
+  },
+  "<stylus-css>": {
+    "code-generator": "./lib/tags/stylus-css",
+    "body": "static-text",
+    "preserve-whitespace": true,
+    "@compress": "boolean",
+    "@paths": "array"
+  }
+}
