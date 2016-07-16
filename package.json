@@ -54,7 +54,7 @@
     "preserver": "npm run clean && npm run img",
     "restart": "npm run scrub && npm run wizard",
     "scrub": "lib/npm/scrub.coffee",
-    "server": "export BRUNCH_WATCHING=true; brunch watch --server",
+    "server": "brunch watch --server",
     "snapshot": "npm run standard && npm run img && npm run zip",
     "standard": "brunch build",
     "start": "npm run wizard",
