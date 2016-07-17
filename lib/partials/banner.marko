@@ -20,6 +20,9 @@ html lang=data.meta.lang
     layout-placeholder name='head'
     title - ${ data.meta.name }
 
+  script marko-init
+    - var indent = (process.env.npm_lifecycle_event === 'standard')? 2 : 0;
+
   body onload='init_banner()'
-    script - window.banner = ${ JSON.stringify(data.banner, null, data.indent) };
+    script - window.banner = ${ JSON.stringify(data.banner, null, indent) };
     layout-placeholder name='body'
