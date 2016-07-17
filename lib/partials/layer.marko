@@ -1,24 +1,26 @@
 <!DOCTYPE html>
 
 html lang=data.meta.lang
-  html-comment - SCRFORMAT: layer
-  include('./head.marko', data.layer)
-  title - ${data.meta.name} (layer)
-  script src='vendor.js'
-  layout-placeholder name='head'
+  head
+    html-comment - SCRFORMAT: layer
+    include('./head.marko', data.layer)
+    script src='vendor.js'
 
-  <coffee-script>
-    init_layer = ->
-      screenad.hide 'self'
-      screenad.setAlignment 'banner', 'banner'
-      screenad.setSticky layer.sticky
-      screenad.setSize layer.width, layer.height
-      screenad.setOffset layer.x, layer.y
-      screenad.setZIndex layer.z
-      screenad.position()
-      return
-  </coffee-script>
+    <coffee-script>
+      init_layer = ->
+        screenad.hide 'self'
+        screenad.setAlignment 'banner', 'banner'
+        screenad.setSticky layer.sticky
+        screenad.setSize layer.width, layer.height
+        screenad.setOffset layer.x, layer.y
+        screenad.setZIndex layer.z
+        screenad.position()
+        return
+    </coffee-script>
+
+    layout-placeholder name='head'
+    title - ${ data.meta.name }
 
   body onload='init_layer()'
-    script - window.layer = ${JSON.stringify(data.layer)};
+    script - window.layer = ${ JSON.stringify(data.layer, null, data.indent) };
     layout-placeholder name='body'
