@@ -14,7 +14,9 @@ class Tools
     return
 
 
-  copy: (what) =>
+  copy: (what, condition=yes) =>
+    return unless condition
+
     where = switch what.match(/[^\.]+$/)[0]
       when 'coffee' then 'app/scripts'
       when 'styl' then 'app/styles'
