@@ -14,10 +14,11 @@ class Tools
     return
 
 
-  copy: (what, condition=yes) =>
-    return unless condition
+  copy: (what, condition=yes, rename=null) =>
+    return @ unless condition
+    ext = what.match(/[^\.]+$/)[0]
 
-    where = switch what.match(/[^\.]+$/)[0]
+    where = switch ext
       when 'coffee' then 'app/scripts'
       when 'styl' then 'app/styles'
       else 'app/assets'
