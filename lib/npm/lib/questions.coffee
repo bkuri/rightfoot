@@ -23,7 +23,8 @@ class Questions
     return [@qMenu, @qScrub]
 
 
-  nextStage: =>
+  nextStage: (id) =>
+    return [@qPreview] if (id is 'preview')
     return [@qWidth, @qHeight, @qSticky, @qOffsetX, @qOffsetY, @qZIndex, @qLibs]
 
 
@@ -50,6 +51,13 @@ class Questions
     message: 'What would you like to do?'
     name: 'choice'
     type: 'list'
+
+
+  qPreview:
+    default: no
+    message: 'Would you like to add a preview page?'
+    name: 'preview'
+    type: 'confirm'
 
 
   qScrub:
@@ -129,12 +137,12 @@ class Questions
         @qLibs.choices = libs
         return
 
-    @qHeight = inputNumber('Height', 240, 1)
+    @qHeight = inputNumber('Height', 250, 1)
     @qLang = inputText('lang', 'What language will the banner be in?', 'en')
     @qName = inputText('name', 'Please give this project a name:')
     @qOffsetX = inputNumber('X Offset')
     @qOffsetY = inputNumber('Y Offset')
-    @qWidth = inputNumber('Width', 320, 1)
+    @qWidth = inputNumber('Width', 300, 1)
     @qZIndex = inputNumber('Z Index', 1)
     return
 
