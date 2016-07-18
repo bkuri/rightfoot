@@ -24,6 +24,8 @@ class Tools
       else 'app/assets'
 
     mkdir '-p', where
+    where = "#{ where }/#{ rename }.#{ ext }" if rename?
+
     cp what, where
     @msg.info 'copied', what
     return @
