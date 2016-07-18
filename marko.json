@@ -5,9 +5,6 @@
     "preserve-whitespace": true,
     "@bare": "boolean"
   },
-  "<banner-container>": {
-    "template": "./lib/tags/banner-container.marko"
-  },
   "<media-controls>": {
     "template": "./lib/tags/media-controls.marko"
   },

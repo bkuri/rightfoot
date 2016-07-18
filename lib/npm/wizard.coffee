@@ -30,7 +30,7 @@ class Wizard
       @data = {meta, image}
 
       setTimeout =>
-        @stage ls("#{ TEMPLATES }/#{ type }/*.marko")
+        @stage ls("#{ TEMPLATES }/#{ type }/*.marko").concat('preview.marko')
         return
       , 100
       return
@@ -53,7 +53,10 @@ class Wizard
   process: =>
     @tools
       .copy "#{ INIT }/app.styl"
-      .copy "#{ INIT }/preview/preview.styl"
+      .copy "#{ INIT }/preview/preview.footer.jpg", @data['preview']
+      .copy "#{ INIT }/preview/preview.header.jpg", @data['preview']
+      .copy "#{ INIT }/preview/preview.marko", @data['preview'], 'index'
+      .copy "#{ INIT }/preview/preview.styl", @data['preview']
       .copyFolder "#{ TEMPLATES }/#{ @data.meta.type }"
       .writeVars @data
 
@@ -68,13 +71,13 @@ class Wizard
 
   stage: (names) =>
     path = names.shift()
-    # return @process() unless path?
     name = path.match(/([^/]+)\.marko$/)[1]
 
     @msg.info 'subtitle', name
 
-    prompt(@questions.nextStage()).then (answers) =>
-      @data[name] = answers
+    prompt(@questions.nextStage name).then (answers) =>
+      @data[name] = unless (name is 'preview') then answers
+      else answers.preview
 
       setTimeout =>
         if names.length then @stage(names) else @process()
