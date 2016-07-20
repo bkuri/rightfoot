@@ -1,8 +1,8 @@
 #!/bin/env coffee
 'use strict'
 
-
 {rm, test} = require('shelljs')
+
 
 do ->
   targets = ['assets', 'scripts', 'styles']

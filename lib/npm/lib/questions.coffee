@@ -1,6 +1,5 @@
 'use strict'
 
-
 {load} = require('cheerio')
 {Separator} = require('inquirer')
 request = require('request-promise')

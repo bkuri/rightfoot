@@ -1,7 +1,6 @@
 #!/bin/env coffee
 'use strict'
 
-
 {exit, ls} = require('shelljs')
 {prompt} = require('inquirer')
 {readdirSync} = require('fs')

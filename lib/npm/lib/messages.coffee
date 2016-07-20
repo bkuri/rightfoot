@@ -1,6 +1,5 @@
 'use strict'
 
-
 {cyan, green, red, yellow} = require('chalk')
 {exit} = require('shelljs')
 

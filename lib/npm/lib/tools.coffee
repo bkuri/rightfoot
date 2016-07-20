@@ -1,6 +1,5 @@
 'use strict'
 
-
 {cp, exec, find, mkdir, test} = require('shelljs')
 {readFileSync, writeFile} = require('fs-cson')
 Messages = require('./messages')

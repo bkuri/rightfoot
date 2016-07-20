@@ -1,6 +1,5 @@
 'use strict'
 
-
 chroma = require('chroma-js')
 gm = require('gm')
 

@@ -1,12 +1,12 @@
 #!/bin/env coffee
 'use strict'
 
-
 {rm, mkdir, mv} = require('shelljs')
 {readdirSync} = require('fs')
 zip = require('zip-folder')
 
 PUBLIC = './public'
+
 
 do ->
   msg.error('nopub') if (readdirSync(PUBLIC).length < 1)

@@ -2,6 +2,7 @@
 
 {compile} = require('coffee-script')
 
+
 module.exports = (el, generator) ->
   {builder} = generator
   bare = el.getAttributeValue('bare') or yes
