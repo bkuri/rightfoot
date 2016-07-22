@@ -14,13 +14,18 @@ class Tools
     return
 
 
-  copy: (what) =>
-    where = switch what.match(/[^\.]+$/)[0]
+  copy: (what, condition=yes, rename=null) =>
+    return @ unless condition
+    ext = what.match(/[^\.]+$/)[0]
+
+    where = switch ext
       when 'coffee' then 'app/scripts'
       when 'styl' then 'app/styles'
       else 'app/assets'
 
     mkdir '-p', where
+    where = "#{ where }/#{ rename }.#{ ext }" if rename?
+
     cp what, where
     @msg.info 'copied', what
     return @

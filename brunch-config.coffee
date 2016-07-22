@@ -44,7 +44,6 @@ module.exports =
 
     marko:
       data: require('fs-cson').readFileSync('app/variables.cson')
-      pretty: yes
 
     postcss:
       processors: [

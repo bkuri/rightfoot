@@ -4,12 +4,12 @@ stylus = require('stylus')
 
 module.exports = (el, generator) ->
   {builder} = generator
+  preserve = (process.env.npm_lifecycle_event is 'standard')
 
   css = stylus(el.bodyText)
-    .set 'compress', el.getAttributeValue('compress') or no
     .set 'paths', el.getAttributeValue('paths') or []
     .render()
 
   return builder.htmlElement 'style', {}, [
-    builder.text builder.literal(css)
+    builder.text builder.literal(css), no, preserve
   ]

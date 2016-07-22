@@ -18,26 +18,20 @@
   "devDependencies": {
     "auto-reload-brunch": "^2.7.1",
     "autoprefixer": "^6.3.6",
+    "chai": "^3.5.0",
     "coffee-script-brunch": "^2.0.0",
     "coffeelint-brunch": "^2.0.0",
     "csswring": "^5.0.0",
     "javascript-brunch": "^2.0.0",
-    "marko-brunch": "^1.0.3",
+    "marko-brunch": "^1.0.6",
     "pixrem": "^3.0.1",
     "postcss-base64": "^0.4.1",
     "postcss-brunch": "^0.5.0",
     "stylus-brunch": "^2.6.0",
     "uglify-js-brunch": "^2.0.1"
   },
-  "engines": {
-    "node": "6.2.0"
-  },
-  "keywords": [
-    "brunch",
-    "coffeescript",
-    "marko",
-    "stylus"
-  ],
+  "engines": { "node": "6.2.0" },
+  "keywords": [ "brunch", "coffeescript", "marko", "stylus" ],
   "license": "MIT",
   "name": "rightfoot",
   "repository": {
@@ -49,18 +43,19 @@
     "deploy": "npm run optimized && npm run zip",
     "img": "lib/npm/img.coffee",
     "optimized": "brunch build --production",
+    "predeploy": "npm test",
     "preoptimized": "npm run clean && npm run img",
     "prestandard": "npm run clean && npm run img",
     "preserver": "npm run clean && npm run img",
     "restart": "npm run scrub && npm run wizard",
     "scrub": "lib/npm/scrub.coffee",
-    "server": "export BRUNCH_WATCHING=true; brunch watch --server",
+    "server": "brunch watch --server",
     "snapshot": "npm run standard && npm run img && npm run zip",
     "standard": "brunch build",
     "start": "npm run wizard",
-    "test": "echo 'testing environment not specified'",
+    "test": "mocha --compilers coffee:coffee-script/register",
     "wizard": "lib/npm/wizard.coffee",
     "zip": "lib/npm/zip.coffee"
   },
-  "version": "0.9.0"
+  "version": "0.9.4"
 }

@@ -1,23 +1,26 @@
 <!DOCTYPE html>
 
 html lang=data.meta.lang
-  html-comment - SCRFORMAT: banner
-  include('./head.marko', data.banner)
-  title - ${data.meta.name} (banner)
-  script src='vendor.js'
-  layout-placeholder name='head'
+  head
+    html-comment - SCRFORMAT: banner
+    include('./head.marko', data.banner)
+    script src='vendor.js'
 
-  <coffee-script>
-    init_banner = ->
-      screenad.setAlignment 'banner', 'banner'
-      screenad.setSticky banner.sticky
-      screenad.setSize banner.width, banner.height
-      screenad.setOffset banner.x, banner.y
-      screenad.setZIndex banner.z
-      screenad.position()
-      return
-  </coffee-script>
+    <coffee-script>
+      init_banner = ->
+        screenad.setAlignment 'banner', 'banner'
+        screenad.setSticky banner.sticky
+        screenad.setSize banner.width, banner.height
+        screenad.setOffset banner.x, banner.y
+        screenad.setZIndex banner.z
+        screenad.position()
+        return
+    </coffee-script>
+
+    layout-placeholder name='head'
+    title - ${ data.meta.name }
 
   body onload='init_banner()'
-    script - window.banner = ${JSON.stringify(data.banner)};
+    script marko-init - var indent = (process.env.npm_lifecycle_event === 'standard')? 2 : 0;
+    script - window.banner = ${ JSON.stringify(data.banner, null, indent) };
     layout-placeholder name='body'

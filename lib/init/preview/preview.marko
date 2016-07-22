@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+
+html lang=data.meta.lang
+  head
+    title - ${ data.meta.name }
+
+    meta charset='utf-8'
+    meta http-equiv='x-ua-compatible' content='ie=edge'
+    meta name='viewport' content='width=device-width, initial-scale=1.0'
+
+    link rel='stylesheet' href='app.css'
+
+    script defer src='//media.adrcdn.com/scripts/screenad_interface_1.0.3_scrambled.js'
+    script src='vendor.js'
+
+  body
+    script - window.banner = ${ JSON.stringify(data.banner, null, 2) };
+
+    <coffee-script>
+      get = (size) ->
+        ad = document.querySelector("#adrPos#{ size }")
+        return if ad? then ad else document.querySelector("#adrPosCustom")
+
+      window.onload = ->
+        ad = get("#{ banner.width }x#{ banner.height }")
+
+        iframe = document.createElement('IFRAME')
+        iframe.src = 'banner.html'
+        iframe.width = banner.width
+        iframe.height = banner.height
+
+        ad.innerHTML = ''
+        ad.appendChild iframe
+        return
+    </coffee-script>
+
+    #wrapper
+      #header
+
+      #nav.block
+        a href='http://www.weborama.nl' - Interstitial Anchor
+
+      table width='100%' border='0' cellspacing='0' cellpadding='0'
+        tr
+          td.block width='100%'
+            #adrPos728x90.banner
+            #adrPosCustom
+
+      #nav2.block
+
+      table width='100%' cellspacing='0' cellpadding='0'
+        tr valign='top'
+          td.block
+            .banner style='width:160px;height:600px'
+
+          td.block style='width:704px'
+            #adrPos300x250.banner
+
+            table width='100%'
+              tr for(i from 0 to 2)
+                td.block width='100%'
+
+          td.block
+            #adrPos160x600.banner
+
+      #footer
+        p - &copy; 2016 WEBORAMA - Advanced Rich Media Technology - Microsoft and Google certified Rich Media vendor

@@ -1,6 +1,6 @@
 a
   color #333
-  font-size 11px
+  fs 11px
 
 
 body
@@ -9,23 +9,28 @@ body
   padding 0
 
 
+td.block
+  width 160px
+  vertical-align top
+
 #adrPos160x600
-  text-align center
-  min-width 160px
-  min-height 600px
+  size(160px, 600px)
 
 
 #adrPos300x250
-  height 250px
   margin 0 auto
-  width 300px
+  size(300px, 250px)
+
+  & + table tr
+    height 160px
+
+    td
+      border-top 1px solid white
 
 
 #adrPos336x280
-  height 280px
   margin 0 auto
-  text-align center
-  width 336px
+  size(336px, 280px)
 
 
 #adrPos468x60,
@@ -33,9 +38,18 @@ body
   text-align center
 
 
+#adrPos468x60
+  size(468px, 60px)
+
+
+#adrPos728x90
+  margin 0 auto
+  size(728px, 90px)
+
+
 #footer
   background white
-  background-image url(./app/assets/init/preview/footer.jpg)
+  background-image url(preview.footer.jpg)
   background-repeat no-repeat
   color #333
   font-size 10px
@@ -47,17 +61,10 @@ body
 
 
 #header
-  background-image url(./app/assets/init/preview/header.jpg)
+  background-image url(preview.header.jpg)
   background-position left center
   background-repeat no-repeat
   height 100px
-
-
-#inarticle_position_div
-  width 702px
-
-  & + table tr
-    height 105px
 
 
 #nav
@@ -73,11 +80,12 @@ body
 #wrapper
   background white
   margin 0 auto
-  width 970px
+  width 1024px
 
 
 .banner
   background #e2e2e2
+  margin 0
 
 
 .block
