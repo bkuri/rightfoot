@@ -1,7 +1,5 @@
 <layout-use('../../lib/partials/layer.marko', data)>
   <layout-put into='head'>
-    html-comment - SCRFORMAT: layer
-
     <stylus-css>
       body
         background-color black
@@ -29,22 +27,15 @@
     </stylus-css>
 
     <coffee-script>
-      initLayer = ->
-        screenad.hide 'self'
-        screenad.setSize '600', '250'
-        screenad.setAlignment 'banner', 'banner'
-        screenad.setOffset -300, 0
-        screenad.setSticky yes
-        screenad.setZIndex 100000
-        screenad.position()
-
       collapseFormat = ->
         screenad.event 'user_close'
         screenad.hide()
+        return
 
       clickDefault = ->
         screenad.click()
         # console.log 'click default'
+        return
     </coffee-script>
   </layout-put>
 
