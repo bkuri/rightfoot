@@ -1,4 +1,7 @@
 {
+  "<banner-container>": {
+    "template": "./lib/tags/banner-container.marko"
+  },
   "<coffee-script>": {
     "code-generator": "./lib/tags/coffee-script",
     "body": "static-text",
