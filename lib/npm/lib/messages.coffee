@@ -72,6 +72,8 @@ class Messages
       when 'zipped'
         green "\n· Zip file saved as public/#{ extra }.zip\n"
 
+      else ''
+
     return
 
 
