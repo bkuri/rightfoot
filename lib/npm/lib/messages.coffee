@@ -38,7 +38,7 @@ class Messages
       when 'copied'
         green "→ Copied #{ extra }"
 
-      when 'deploy', 'snapshot'
+      when 'build', 'snapshot'
         cyan "\n· Compiling #{ extra } version…\n"
 
       when 'img'
