@@ -45,6 +45,7 @@ class Questions
       { name: 'Clean up public folder (leave everything else intact)', value: 'clean' }
       { name: 'Start a new project from scratch', value: 'scrub' }
       new Separator()
+      { name: 'Run a series of tests on the current state', value: 'test' }
       { name: 'Exit and do nothing', value: 'exit' }
     ]
     message: 'What would you like to do?'
