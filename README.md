@@ -21,15 +21,19 @@ Installing
 
 Install [Node.js](http://nodejs.org). Visit [the download site](http://nodejs.org/download/) and download the version appropriate to your OS. Once `node` and `npm` commmands are available on your system, run the following:
 
+### 2. Everything else
+
+Install Brunch & Coffeescript globally (you may need root permissions):
+
+`# npm i -g brunch coffee-script`
+
+Clone this repo and run the following command inside the `rightfoot` directory:
+
 `$ npm install`
 
 This will create a directory called `node_modules` and install its packages (using `package.json` for configuration).
 
-### <a name="brunch"></a>2. Brunch
-
-You can install it using the node package manager: `# npm install -g brunch`
-
-The following brunch plugins are subsequently installed:
+<a name="brunch"></a>The following brunch plugins are subsequently installed:
 
 -	[auto-reload-brunch](https://github.com/brunch/auto-reload-brunch)
 -	[coffee-script-brunch](https://github.com/brunch/coffee-script-brunch)
@@ -39,7 +43,7 @@ The following brunch plugins are subsequently installed:
 -	[stylus-brunch](https://github.com/brunch/stylus-brunch)
 -	[uglify-js-brunch](https://github.com/brunch/uglify-js-brunch)
 
-#### Installing packages using bower
+#### Bower packages
 
 Bower no longer comes pre-bundled, but you can easily add it by installing it using `$ npm install bower`. You can then install your bower packages like so: `$bower install --save my-package-name`. This will create a `bower_components` directory and will contain all packages defined inside `bower.json`.
 
@@ -60,10 +64,13 @@ Extra scripts
 
 Inside the `npm_scripts` folder are a few scripts that make life a bit easier.
 
--	`wizard` will assist you in creating a new `variables.cson` file.
+-	`wizard` will assist you in creating a new project or modifying an existing one.
 -	`clean` will empty out your `public` folder.
 -	`images` will generate your backup images.
+-	`scrub` will reset everything to its original state.
+-	`test` will run a battery of tests.
 -	`zip` will compress your `public` folder along with its contents.
+-	`deploy` will prepare everything for production.
 
 You can run those scripts using the standard `$ npm run <script_name>`. More scripts are planned for future versions.
 
