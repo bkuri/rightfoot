@@ -4,6 +4,7 @@ html lang=data.meta.lang
   head
     html-comment - SCRFORMAT: banner
     include('./head.marko', data.banner)
+    layout-placeholder name='head'
     script src='vendor.js'
 
     <coffee-script>
@@ -17,7 +18,6 @@ html lang=data.meta.lang
         return
     </coffee-script>
 
-    layout-placeholder name='head'
     title - ${ data.meta.name }
 
   body onload='init_banner()'
