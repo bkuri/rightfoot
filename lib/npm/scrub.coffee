@@ -1,4 +1,3 @@
-#!/bin/env coffee
 'use strict'
 
 {rm, test} = require('shelljs')

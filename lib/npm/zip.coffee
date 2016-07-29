@@ -1,4 +1,3 @@
-#!/bin/env coffee
 'use strict'
 
 {rm, mkdir, mv} = require('shelljs')
