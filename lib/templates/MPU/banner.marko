@@ -1,5 +1,5 @@
-<layout-use('../../lib/partials/banner.marko', data)>
-  <layout-put into='head'>
+layout-use('../../lib/partials/banner.marko', data)
+  layout-put into='head'
     script src='video.js'
 
     <stylus-css>
@@ -110,11 +110,8 @@
         initialiseMediaPlayer()
         return
     </coffee-script>
-  </layout-put>
 
-  <layout-put into='body'>
-    <media-controls />
-    <banner-container />
-    <div id='media-video' />
-  </layout-put>
-</layout-use>
+  layout-put into='body'
+    media-controls
+    banner-container
+    #media-video
