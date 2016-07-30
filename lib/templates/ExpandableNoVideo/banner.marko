@@ -6,8 +6,7 @@ layout-use('../../lib/partials/banner.marko', data)
         text-align center
 
       #content
-        height 100%
-        width 100%
+        size 100%
 
       #container
         background-color #FFFFFF
@@ -15,14 +14,12 @@ layout-use('../../lib/partials/banner.marko', data)
 
       #clicktoexpand
         background-color #FFFFFF
-        background-image url("clicktoexpand.png")
+        background-image url(clicktoexpand.png)
         background-repeat no-repeat
         bottom 0px
         cursor pointer
-        height 23px
-        left 0px
-        position absolute
-        width 170px
+        absolute 0
+        size 170px, 23px
         z-index 10000
 
         &:hover

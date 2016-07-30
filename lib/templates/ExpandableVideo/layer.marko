@@ -1,7 +1,6 @@
-<layout-use('../../lib/partials/layer.marko', data)>
-  <layout-put into='head'>
+layout-use('../../lib/partials/layer.marko', data)
+  layout-put into='head'
     html-comment - SCRFORMAT: layer
-
     script src='video.js'
 
     <stylus-css>
@@ -12,47 +11,40 @@
         background-image url(bg_layer.jpg)
         background-repeat no-repeat
         cursor pointer
-        height 100%
-        width 100%
+        size 100%
         z-index 100010
 
       #closebutton
+        absolute()
         background-image url(close.png)
         bottom 0px
         cursor pointer
-        height 20px
-        position absolute
         right 0px
-        width 90px
+        size 90px, 20px
         z-index 110000
 
         &:hover
           opacity 0.8
 
       #media-video
+        absolute 110px, 0
         background #000
         cursor pointer
-        height 175px
-        left 110px
-        position absolute
-        top 0px
-        width 380px
+        size 380px, 175px
         z-index 100000
 
       #media-controls
-        height 5px
         left 110px
         position absolute
+        size 380px, 5px
         top 210px
-        width 380px
         z-index 101000
 
       button
         background transparent url(buttons.png) no-repeat 0 0
         border none
         cursor pointer
-        height 30px
-        width 30px
+        size 30px, 30px
 
         &:hover
           opacity 0.8
@@ -74,9 +66,8 @@
         border none
         color #000
         font-size 8px
-        height 4px
         margin-right 5px
-        width 100%
+        size 100%, 4px
 
         &::-webkit-progress-bar
           background-color #dedede
@@ -138,15 +129,15 @@
         ###Creating a new video element:###
 
         settings =
-          width: 380
-          height: 214
-          reference: 'video'
-          prependTo: document.getElementById('media-video')
-          controls: false
-          poster: 'video_poster.jpg'
-          loop: false
           autoplay: yes
+          controls: no
+          height: 214
+          loop: no
           muted: yes
+          poster: 'video_poster.jpg'
+          prependTo: document.getElementById('media-video')
+          reference: 'video'
+          width: 380
 
           videoFiles: [
             { 'src': 'video.mp4', 'type': 'video/mp4' }
@@ -161,16 +152,12 @@
         initialiseMediaPlayer()
         return
     </coffee-script>
-  </layout-put>
 
-  <layout-put into='body'>
-    <media-controls />
+  layout-put into='body'
+    media-controls
 
-    <div id='wrap_bg' onclick='clickDefault()'>
-      <div id='media-video' />
-      <html-comment>Your content goes here</html-comment>
-    </div>
+    #wrap_bg onclick='clickDefault()'
+      #media-video
+      html-comment - Your content goes here
 
-    <div id='closebutton' />
-  </layout-put>
-</layout-use>
+    #closebutton
