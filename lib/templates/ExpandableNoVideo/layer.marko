@@ -1,5 +1,5 @@
-<layout-use('../../lib/partials/layer.marko', data)>
-  <layout-put into='head'>
+layout-use('../../lib/partials/layer.marko', data)
+  layout-put into='head'
     <stylus-css>
       body
         background-color black
@@ -34,16 +34,11 @@
 
       clickDefault = ->
         screenad.click()
-        # console.log 'click default'
         return
     </coffee-script>
-  </layout-put>
 
-  <layout-put into='body'>
-    <div id='wrap_bg' onclick='clickDefault()'>
-      <html-comment>Your content goes here</html-comment>
-    </div>
+  layout-put into='body'
+    #wrap_bg onclick='clickDefault()'
+      html-comment - Your content goes here
 
-    <div id='closebutton' onclick='collapseFormat()' />
-  </layout-put>
-</layout-use>
+    #closebutton onclick='collapseFormat()'

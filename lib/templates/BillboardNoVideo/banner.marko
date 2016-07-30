@@ -1,5 +1,5 @@
-<layout-use('../../lib/partials/banner.marko', data)>
-  <layout-put into='head'>
+layout-use('../../lib/partials/banner.marko', data)
+  layout-put into='head'
     <stylus-css>
       #container
         box-shadow inset 0 0 0 1px gray
@@ -10,8 +10,6 @@
         screenad.log 'Start my Animation / Actions'
         return
     </coffee-script>
-  </layout-put>
-  <layout-put into='body'>
-    <banner-container />
-  </layout-put>
-</layout-use>
+
+  layout-put into='body'
+    banner-container

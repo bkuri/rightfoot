@@ -5,41 +5,32 @@
     <stylus-css>
       body
         cursor pointer
-        height 250px
         margin 0
         overflow hidden
-        width 300px
+        size 300px, 250px
 
       #container
-        height 250px
-        width 300px
+        size 300px, 250px
         z-index 10
 
       #media-video
+        absolute 0, 0
         background #000
         cursor pointer
-        height 169px
-        left 0px
-        position absolute
-        top 0px
-        width 300px
+        size 300px, 169px
         z-index 100000
 
       #media-controls
-        height 5px
-        left 0px
+        absolute 0, 0
         margin-top 1px
-        position absolute
-        top 0px
-        width 100%
+        size 100%, 5px
         z-index 1000
 
       button
         background transparent url('buttons.png') no-repeat 0 0
         border none
         cursor pointer
-        height 30px
-        width 30px
+        size 30px, 30px
 
         &:hover
           opacity 0.8
@@ -61,9 +52,8 @@
         border none
         color #000
         font-size 8px
-        height 4px
         margin-right 5px
-        width 100%
+        size 100%, 4px
 
         &::-webkit-progress-bar
           background-color grey
@@ -75,14 +65,10 @@
           background-color red
 
       #play-pause-button
-        left 5px
-        position relative
-        top 165px
+        relative 5px, 165px
 
       #mute-button
-        left 5px
-        position relative
-        top 165px
+        relative 5px, 165px
 
       #replay-button
         color #ffffff

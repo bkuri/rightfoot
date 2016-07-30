@@ -1,5 +1,5 @@
-<layout-use('../../lib/partials/banner.marko', data)>
-  <layout-put into='head'>
+layout-use('../../lib/partials/banner.marko', data)
+  layout-put into='head'
     <stylus-css>
       body
         font-family "Trebuchet MS"
@@ -39,7 +39,7 @@
         # Get deviceType
         screenad.event screenad.deviceType
 
-        if !ignite
+        unless ignite
           screenad.onSync = start
           ignite = yes
 
@@ -70,10 +70,7 @@
         screenad.click()
         return
     </coffee-script>
-  </layout-put>
 
-  <layout-put into='body'>
-    <div id='container' />
-    <div id='clicktoexpand' onclick='showLayer()' />
-  </layout-put>
-</layout-use>
+  layout-put into='body'
+    #container
+    #clicktoexpand onclick='showLayer()'
