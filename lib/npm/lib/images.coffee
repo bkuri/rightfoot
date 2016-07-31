@@ -23,7 +23,7 @@ class Images
 
   blank: =>
     b = '#000'
-    {width, height} = @data['banner']
+    {width, height} = @data.banner
     name = "public/#{ width }x#{ height }.gif"
 
     gm(width, height, b)
