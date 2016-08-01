@@ -14,7 +14,7 @@ describe 'Filesystem tests (app dir)', ->
     found 'assets/*.marko'
 
   it 'should find at least one stylus file', ->
-    found 'styles/*.styl'
+    found '*.styl'
 
   it 'should NOT find foreign characters in filenames', ->
     valid 'app'
