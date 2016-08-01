@@ -18,8 +18,7 @@ class Tools
     ext = what.match(/[^\.]+$/)[0]
 
     where = switch ext
-      when 'coffee' then 'app/scripts'
-      when 'styl' then 'app/styles'
+      when 'coffee', 'styl' then 'app'
       else 'app/assets'
 
     mkdir '-p', where
