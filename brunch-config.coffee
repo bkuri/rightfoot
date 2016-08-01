@@ -37,7 +37,7 @@ module.exports =
         postcss:
           processors: [
             require('autoprefixer')(['last 8 versions'])
-            require('postcss-base64')(extensions: ['.jpg', '.png'])
+            # require('postcss-base64')(extensions: ['.jpg', '.png'])
             require 'csswring'
             require 'pixrem'
           ]
