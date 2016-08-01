@@ -36,6 +36,7 @@ class Questions
 
   qMenu:
     choices: [
+      new Separator()
       { name: 'Start a live development server at http://localhost:3333', value: 'server' }
       { name: 'Render the current state to the public folder', value: 'standard' }
       new Separator()
