@@ -49,21 +49,18 @@ class Wizard
 
 
   process: =>
+    {meta, preview} = @data
+
     @tools
       .copy "#{ INIT }/app.styl"
-      .copy "#{ INIT }/preview/preview.footer.jpg", @data['preview']
-      .copy "#{ INIT }/preview/preview.header.jpg", @data['preview']
-      .copy "#{ INIT }/preview/preview.marko", @data['preview'], 'index'
-      .copy "#{ INIT }/preview/preview.styl", @data['preview']
-      .copyFolder "#{ TEMPLATES }/#{ @data.meta.type }"
+      .copy "#{ INIT }/preview/preview.footer.jpg", preview
+      .copy "#{ INIT }/preview/preview.header.jpg", preview
+      .copy "#{ INIT }/preview/preview.marko", preview, 'index'
+      .copy "#{ INIT }/preview/preview.styl", preview
+      .copyFolder "#{ TEMPLATES }/#{ meta.type }"
       .writeVars @data
 
     setTimeout (=> @menu()), 100
-    return
-
-
-  scrub: (confirmed) =>
-    @tools.run('scrub', 'scrubbed') if confirmed
     return
 
 
