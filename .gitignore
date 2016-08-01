@@ -3,4 +3,5 @@ lib/templates/new
 node_modules
 npm-debug.log
 public
+saved/**/*
 vendor
