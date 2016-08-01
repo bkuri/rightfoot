@@ -91,7 +91,7 @@ class Wizard
 
     @tools.clear()
     @msg.info 'title', version
-    if @tools.foundVars() then @menu() else @begin()
+    if @tools.foundFile() then @menu() else @begin()
     return
 
 

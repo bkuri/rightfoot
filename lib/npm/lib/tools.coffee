@@ -38,12 +38,12 @@ class Tools
     return @
 
 
-  foundVars: ->
-    return test('-f', VARS)
+  foundFile: (what=VARS) ->
+    return test('-f', what)
 
 
   readVars: =>
-    @msg.error('novars') unless @foundVars()
+    @msg.error('novars') unless @foundFile()
     return readFileSync(VARS)
 
 
