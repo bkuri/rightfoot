@@ -4,10 +4,7 @@
 
 
 do ->
-  targets = ['assets', 'scripts', 'styles']
-
-  rm('-f', "app/#{ target }/*.*") for target in targets
+  rm('-f', "app/#{ sub }/*.*") for sub in ['assets', 'scripts', 'styles']
   rm('-f', 'app/*.*')
-  rm '-f', 'public/*.*'
-  rm '-f', 'vendor/*.*'
+  rm '-f', "#{ sub }/*.*" for sub in ['public', 'vendor']
   return
