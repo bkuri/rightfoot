@@ -40,7 +40,7 @@ class Questions
       { name: 'Start a live development server at http://localhost:3333', value: 'server' }
       { name: 'Render the current state to the public folder', value: 'standard' }
       new Separator()
-      { name: 'Zip production version of the current state', value: 'deploy' }
+      { name: 'Zip production version of the current state', value: 'build' }
       { name: 'Zip snapshot of the current state (as is)', value: 'snapshot' }
       new Separator()
       { name: 'Clean up public folder (leave everything else intact)', value: 'clean' }

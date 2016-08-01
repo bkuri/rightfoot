@@ -19,7 +19,7 @@ Installing
 
 ### 1. Node.js
 
-Install [Node.js](http://nodejs.org). Visit [the download site](http://nodejs.org/download/) and download the version appropriate to your OS. Once `node` and `npm` commmands are available on your system, run the following:
+Install [Node.js](http://nodejs.org). Visit [the download site](http://nodejs.org/download/) and download the version appropriate to your OS. Once `node` and `npm` commands are available on your system, run the following:
 
 ### 2. Everything else
 
@@ -54,10 +54,10 @@ Simply issue the following command:`$ npm start`. This will start a server on `h
 
 You can now edit `index.marko` for the main content, as well as `scripts/app.coffee` for the main JS and `styles/app.styl` for the CSS. Everything will be compiled in real time as soon as you save your changes.
 
-Deploying
----------
+building
+--------
 
-You can deploy a production-ready version of your project by running `$ npm run deploy`. This will trigger all production-only optimizations, such as concatenation, minification, uglifyjs mangling, etc, as well as providing you with a zip file of all contents.
+You can build a production-ready version of your project by running `$ npm run build`. This will trigger all production-only optimizations, such as concatenation, minification, uglifyjs mangling, etc, as well as providing you with a zip file of all contents.
 
 Extra scripts
 -------------
@@ -70,7 +70,7 @@ Inside the `npm_scripts` folder are a few scripts that make life a bit easier.
 -	`scrub` will reset everything to its original state.
 -	`test` will run a battery of tests.
 -	`zip` will compress your `public` folder along with its contents.
--	`deploy` will prepare everything for production.
+-	`build` will prepare everything for production.
 
 You can run those scripts using the standard `$ npm run <script_name>`. More scripts are planned for future versions.
 
