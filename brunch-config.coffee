@@ -5,7 +5,11 @@ module.exports =
     ignored: [
       /[\\/]_/
       /^lib\/npm/
+      /^lib\/tags/
       /^lib\/templates/
+      /^public/
+      /^saved/
+      /^test/
       /vendor[\\/]node[\\/]/
     ]
 
@@ -14,8 +18,8 @@ module.exports =
   files:
     javascripts:
       joinTo:
-        'app.js': /^lib\/scripts/
-        'vendor.js': /^(?!lib)/
+        'app.js': /^app/
+        'vendor.js': /^(?!app)/
 
     stylesheets:
       joinTo: 'app.css'
