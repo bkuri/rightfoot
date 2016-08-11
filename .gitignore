@@ -1,7 +1,8 @@
 app/**/*
 lib/templates/new
 node_modules
-npm-debug.log
 public
 saved/**/*
 vendor
+npm-debug.log
+settings.cson
