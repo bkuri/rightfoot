@@ -1,7 +1,9 @@
 'use strict'
 
 {load} = require('cheerio')
-request = require('request-promise')
+request = require('request-promise-native')
+
+options = method: 'POST'
 
 
 class HTTP
@@ -10,14 +12,13 @@ class HTTP
 
   get: (uri) ->
     transform = (body) -> load(body)
-    return request(build {transform, uri})
+    return request({uri, transform})
 
   post: (url, form, formData={}) ->
-    options = method: 'POST'
     return request(Object.assign options, {uri, form})
 
   upload: (url, formData) ->
-    options = method: 'POST'
     return request(Object.assign options, {uri, formData})
+
 
 module.exports = new HTTP()

@@ -106,6 +106,10 @@ class Questions
     libs = []
 
     get(URI)
+      .catch (error) ->
+        # @msg.error 'http', error
+        throw error
+
       .then ($) ->
         $('tr', '#content').each (index, item) ->
           return if (index is 0)
@@ -123,13 +127,6 @@ class Questions
 
           return
 
-        return
-
-      .catch (error) ->
-        # @msg.error 'http', error
-        throw error
-
-      .finally =>
         @qLibs.choices = libs
         return
 
