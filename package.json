@@ -9,7 +9,8 @@
     "gm": "^1.22.0",
     "inquirer": "^1.0.2",
     "lodash": "^4.13.1",
-    "request-promise": "^3.0.0",
+    "request": "^2.74.0",
+    "request-promise-native": "^1.0.3",
     "shelljs": "^0.7.0",
     "stylus": "^0.54.5",
     "zip-folder": "^1.0.0"
@@ -64,5 +65,5 @@
     "wizard": "coffee lib/npm/wizard.coffee",
     "zip": "coffee lib/npm/zip.coffee"
   },
-  "version": "0.9.4"
+  "version": "0.9.5"
 }
