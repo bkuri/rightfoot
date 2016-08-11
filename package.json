@@ -55,6 +55,7 @@
     "preoptimized": "npm run clean && npm run img",
     "prestandard": "npm run clean && npm run img",
     "preserver": "npm run clean && npm run img",
+    "postinstall": "mkdir -p app public && npm start",
     "restart": "npm run scrub && npm run wizard",
     "scrub": "coffee lib/npm/scrub.coffee",
     "server": "brunch watch --server",
