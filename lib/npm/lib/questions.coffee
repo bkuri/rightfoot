@@ -1,8 +1,7 @@
 'use strict'
 
-{load} = require('cheerio')
+{get} = require('./http')
 {Separator} = require('inquirer')
-request = require('request-promise')
 
 URI = 'http://developer.weborama.nl/tools-downloads/'
 
@@ -106,11 +105,7 @@ class Questions
 
     libs = []
 
-    options =
-      uri: URI
-      transform: (body) -> load(body)
-
-    request(options)
+    get(URI)
       .then ($) ->
         $('tr', '#content').each (index, item) ->
           return if (index is 0)
