@@ -1,9 +1,15 @@
 'use strict'
 
 {cp, exec, find, mkdir, test} = require('shelljs')
+#{createReadStream} = require('fs')
+#{post, upload} = require('./http')
 {readFileSync, writeFile} = require('fs-cson')
 Messages = require('./messages')
 
+SETTINGS = './settings.cson'
+#URI_ADD = 'http://clients.weborama.nl/previewer/addcampaign'
+#URI_LOGIN = 'http://clients.weborama.nl/login'
+#URI_UPLOAD = 'http://clients.weborama.nl/previewer/upload'
 VARS = 'app/variables.cson'
 
 
@@ -40,6 +46,31 @@ class Tools
 
   foundFile: (what=VARS) ->
     return test('-f', what)
+
+
+  # TODO: finish this up
+  ###
+  preview: =>
+    data = @readVars()
+    extra = '5583472657/129762'
+    name = "public/#{ data.meta.name }.zip"
+    settings = readFileSync(SETTINGS)
+
+    steps = [
+      post(URI_LOGIN, settings.previewer)
+      post(URI_ADD, inputCampaignName: 'testing-1-2-3')
+      post("#{ URI_UPLOAD }/#{ extra }", uploadFile_1: createReadStream(name) )
+    ]
+
+    Promise.all(steps)
+      .catch (error) ->
+        throw error
+
+      .then (body) ->
+        return
+
+    return
+  ###
 
 
   readVars: =>
