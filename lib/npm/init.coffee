@@ -4,5 +4,5 @@
 
 
 do ->
-  mkdir '-p', ['app', 'public']
+  mkdir '-p', ['app', 'public', 'saved']
   return

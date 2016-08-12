@@ -1,3 +1,4 @@
+.public*
 app/**/*
 lib/templates/new
 node_modules
