@@ -47,6 +47,7 @@
     "url": "https://github.com/bkuri/rightfoot"
   },
   "scripts": {
+    "backup": "coffee lib/npm/backup.coffee",
     "clean": "coffee lib/npm/clean.coffee",
     "build": "npm run optimized && npm run zip",
     "img": "coffee lib/npm/img.coffee",
@@ -66,5 +67,5 @@
     "wizard": "coffee lib/npm/wizard.coffee",
     "zip": "coffee lib/npm/zip.coffee"
   },
-  "version": "0.9.6"
+  "version": "0.9.7"
 }

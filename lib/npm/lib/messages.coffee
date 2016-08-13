@@ -16,11 +16,20 @@ class Messages
 
   error: (key, extra) ->
     message = switch key
+      when 'backup'
+        "Code #{ extra } while attempting backup. Scrub operation aborted."
+
+      when 'load'
+        "Code #{ extra } while restoring saved project."
+
       when 'nopub'
         'There are no files left to delete in the public folder.'
 
       when 'novars'
         'There is no settings file yet. Try running the wizard first.'
+
+      when 'scrub'
+        "Code #{ extra } while attempting scrub operation. Loading aborted."
 
       else
         extra
@@ -30,7 +39,7 @@ class Messages
     return
 
 
-  info: (key, extra='') ->
+  info: (key, extra=null) ->
     console.log switch key
       when 'clean'
         cyan '\n· Cleaning public folder…\n'
@@ -44,11 +53,14 @@ class Messages
       when 'img'
         cyan '· Generating backup images…'
 
+      when 'load'
+        cyan("\n· Loading project '#{ extra }'…") if extra?
+
       when 'saved'
         green "→ Saved file '#{ extra }'"
 
       when 'scrub'
-        cyan '\n· Restoring original state…'
+        cyan '\n· Scrubbing active project…'
 
       when 'scrubbed'
         green '→ Finished. Run "npm start" again to start a new project.\n'

@@ -19,7 +19,11 @@ class Questions
 
 
   menu: (saved) =>
-    return [ @qMenu(saved), @qLoad(saved), @qSave(), @qScrub() ]
+    if tools.foundFile()
+      data = tools.readVars()
+      saved = saved.filter (item) -> (item isnt data.meta.name)
+
+    return [ @qMenu(saved.length > 0), @qLoad(saved), @qScrub(), @qSave() ]
 
 
   nextStage: (id) =>
@@ -37,36 +41,50 @@ class Questions
   qLoad: (choices) ->
     return Object.assign {choices},
       message: 'Select the project to load:'
-      name: 'select'
+      name: 'name'
       type: 'list'
       when: (answers) -> (answers.choice is 'load')
 
 
-  qMenu: (saved) ->
+  qMenu: (existing) ->
+    found = tools.foundFile()
+
     toggle = (item, condition) ->
       return item if condition
       return new Separator(item.name)
 
-    choices: [
-      new Separator()
-      { name: 'Start a live development server at http://localhost:3333', value: 'server' }
-      { name: 'Render the current state to the public folder', value: 'standard' }
-      new Separator()
-      toggle { name: 'Load a saved project', value: 'load' }, saved.length
-      toggle { name: 'Save the current project', value: 'save' }, tools.foundFile()
-      new Separator()
-      { name: 'Zip production version of the current state', value: 'build' }
-      { name: 'Zip snapshot of the current state (as is)', value: 'snapshot' }
-      new Separator()
-      { name: 'Clean up public folder (leave everything else intact)', value: 'clean' }
-      { name: 'Start a new project from scratch', value: 'scrub' }
-      new Separator()
-      { name: 'Run a series of tests on the current state', value: 'test' }
-      { name: 'Exit and do nothing', value: 'exit' }
-    ]
-    message: 'What would you like to do?'
-    name: 'choice'
-    type: 'list'
+    choices = switch
+      when (not found and existing)
+        [
+          { name: 'Start a new project', value: 'begin' }
+          { name: 'Load a saved project', value: 'load' }
+          new Separator()
+          { name: 'Exit and do nothing', value: 'exit' }
+        ]
+
+      else
+        [
+          new Separator()
+          { name: 'Start a live development server at http://localhost:3333', value: 'server' }
+          { name: 'Render the current state to the public folder', value: 'standard' }
+          new Separator()
+          toggle { name: 'Load a saved project', value: 'load' }, existing
+          toggle { name: 'Save the current project', value: 'backup' }, found
+          new Separator()
+          { name: 'Zip production version of the current state', value: 'build' }
+          { name: 'Zip snapshot of the current state (as is)', value: 'snapshot' }
+          new Separator()
+          { name: 'Clean up public folder (leave everything else intact)', value: 'clean' }
+          { name: 'Start a new project from scratch', value: 'scrub' }
+          new Separator()
+          { name: 'Run a series of tests on the current state', value: 'test' }
+          { name: 'Exit and do nothing', value: 'exit' }
+        ]
+
+    return Object.assign {choices},
+      message: 'What would you like to do?'
+      name: 'choice'
+      type: 'list'
 
 
   qPreview:
@@ -78,8 +96,8 @@ class Questions
 
   qSave: ->
     default: yes
-    message: 'Backup live project first?'
-    name: 'save'
+    message: 'Back up existing project first?'
+    name: 'backup'
     type: 'confirm'
     when: (answers) -> tools.foundFile() and (answers.choice in [ 'load', 'scrub' ])
 

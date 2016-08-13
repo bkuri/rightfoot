@@ -37,10 +37,12 @@ class Wizard
 
 
   menu: =>
-    prompt(questions.menu ls('saved')).then (answers) =>
+    prompt(questions.menu(@saved)).then (answers) =>
       switch answers.choice
+        when 'begin' then @begin()
         when 'exit' then exit(0)
-        when 'scrub' then @scrub(answers.confirm)
+        when 'load' then tools.load(answers.name, answers.backup)
+        when 'scrub' then tools.scrub(answers.backup)
         else tools.run(answers.choice)
 
       return
@@ -85,9 +87,11 @@ class Wizard
 
 
   constructor: ->
+    @saved = ls('saved')
+
     tools.clear()
     msg.info 'title', version
-    if tools.foundFile() then @menu() else @begin()
+    if (tools.foundFile() or (@saved.length > 0)) then @menu() else @begin()
     return
 
 

@@ -48,6 +48,31 @@ class Tools
     return test('-f', what)
 
 
+  load: (what, backup) =>
+    restore = (what) =>
+      msg.info 'load', what
+
+      @run 'scrub', (code) ->
+        msg.error('scrub') unless (code is 0)
+
+        exec "rsync -avh saved/#{ what }/ app/", (code, stdout, stderr) ->
+          msg.error('load', code) unless (code is 0)
+          return
+
+        return
+
+      return
+
+    if backup
+      exec 'npm run backup', (code, stdout, stderr) ->
+        if (code is 0) then restore(what)
+        else msg.error('restore', code)
+        return
+
+    else restore(what)
+    return
+
+
   # TODO: finish this up
   ###
   preview: =>
@@ -82,11 +107,23 @@ class Tools
     msg.info command
 
     exec "npm run #{ command }", (code, stdout, stderr) ->
-      # msg.error(command, stderr) if stderr?
-      # msg.info(command, stdout) if stdout?
-      msg.info(after) if after?
+      return unless after?
+
+      if (typeof after is 'function') then after(code)
+      else msg.info(after)
       return
 
+    return
+
+
+  scrub: (backup) =>
+    if backup
+      exec 'npm run backup', (code, stdout, stderr) =>
+        if (code is 0) then @run('scrub')
+        else msg.error('backup', code)
+        return
+
+    else @run('scrub')
     return
 
 
