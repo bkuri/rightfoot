@@ -37,7 +37,7 @@ class Wizard
 
 
   menu: =>
-    prompt(@questions.menu()).then (answers) =>
+    prompt(@questions.menu ls('saved')).then (answers) =>
       switch answers.choice
         when 'exit' then exit(0)
         when 'scrub' then @scrub(answers.confirm)

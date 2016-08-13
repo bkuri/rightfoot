@@ -66,5 +66,5 @@
     "wizard": "coffee lib/npm/wizard.coffee",
     "zip": "coffee lib/npm/zip.coffee"
   },
-  "version": "0.9.5"
+  "version": "0.9.6"
 }

@@ -2,6 +2,7 @@
 
 {get} = require('./http')
 {Separator} = require('inquirer')
+Tools = require('./tools')
 
 URI = 'http://developer.weborama.nl/tools-downloads/'
 
@@ -17,8 +18,8 @@ class Questions
     return [@qName, @qLang, @qType]
 
 
-  menu: =>
-    return [@qMenu, @qScrub]
+  menu: (saved) =>
+    return [ @qMenu(saved), @qLoad(saved), @qSave(), @qScrub() ]
 
 
   nextStage: (id) =>
@@ -33,11 +34,26 @@ class Questions
     type: 'checkbox'
 
 
-  qMenu:
+  qLoad: (choices) ->
+    return Object.assign {choices},
+      message: 'Select the project to load:'
+      name: 'select'
+      type: 'list'
+      when: (answers) -> (answers.choice is 'load')
+
+
+  qMenu: (saved) =>
+    toggle = (item, condition) ->
+      return item if condition
+      return new Separator(item.name)
+
     choices: [
       new Separator()
       { name: 'Start a live development server at http://localhost:3333', value: 'server' }
       { name: 'Render the current state to the public folder', value: 'standard' }
+      new Separator()
+      toggle { name: 'Load a saved project', value: 'load' }, saved.length
+      toggle { name: 'Save the current project', value: 'save' }, @tools.foundFile()
       new Separator()
       { name: 'Zip production version of the current state', value: 'build' }
       { name: 'Zip snapshot of the current state (as is)', value: 'snapshot' }
@@ -60,10 +76,18 @@ class Questions
     type: 'confirm'
 
 
-  qScrub:
+  qSave: =>
+    default: yes
+    message: 'Backup live project first?'
+    name: 'save'
+    type: 'confirm'
+    when: (answers) => @tools.foundFile() and (answers.choice in [ 'load', 'scrub' ])
+
+
+  qScrub: ->
     defaut: no
     message: 'Are you sure? You will lose all your current work!'
-    name: 'confirm'
+    name: 'scrub'
     type: 'confirm'
     when: (answers) -> (answers.choice is 'scrub')
 
@@ -137,6 +161,7 @@ class Questions
     @qOffsetY = inputNumber('Y Offset')
     @qWidth = inputNumber('Width', 300, 1)
     @qZIndex = inputNumber('Z Index', 1)
+    @tools = new Tools()
     return
 
 
