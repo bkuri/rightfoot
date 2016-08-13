@@ -2,7 +2,7 @@
 
 {get} = require('./http')
 {Separator} = require('inquirer')
-Tools = require('./tools')
+tools = require('./tools')
 
 URI = 'http://developer.weborama.nl/tools-downloads/'
 
@@ -42,7 +42,7 @@ class Questions
       when: (answers) -> (answers.choice is 'load')
 
 
-  qMenu: (saved) =>
+  qMenu: (saved) ->
     toggle = (item, condition) ->
       return item if condition
       return new Separator(item.name)
@@ -53,7 +53,7 @@ class Questions
       { name: 'Render the current state to the public folder', value: 'standard' }
       new Separator()
       toggle { name: 'Load a saved project', value: 'load' }, saved.length
-      toggle { name: 'Save the current project', value: 'save' }, @tools.foundFile()
+      toggle { name: 'Save the current project', value: 'save' }, tools.foundFile()
       new Separator()
       { name: 'Zip production version of the current state', value: 'build' }
       { name: 'Zip snapshot of the current state (as is)', value: 'snapshot' }
@@ -76,12 +76,12 @@ class Questions
     type: 'confirm'
 
 
-  qSave: =>
+  qSave: ->
     default: yes
     message: 'Backup live project first?'
     name: 'save'
     type: 'confirm'
-    when: (answers) => @tools.foundFile() and (answers.choice in [ 'load', 'scrub' ])
+    when: (answers) -> tools.foundFile() and (answers.choice in [ 'load', 'scrub' ])
 
 
   qScrub: ->
@@ -161,8 +161,7 @@ class Questions
     @qOffsetY = inputNumber('Y Offset')
     @qWidth = inputNumber('Width', 300, 1)
     @qZIndex = inputNumber('Z Index', 1)
-    @tools = new Tools()
     return
 
 
-module.exports = Questions
+module.exports = new Questions()

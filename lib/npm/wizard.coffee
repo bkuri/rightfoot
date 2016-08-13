@@ -4,9 +4,9 @@
 {prompt} = require('inquirer')
 {readdirSync} = require('fs')
 {version} = require('../../package.json')
-Messages = require('./lib/messages')
-Questions = require('./lib/questions')
-Tools = require('./lib/tools')
+questions = require('./lib/questions')
+msg = require('./lib/messages')
+tools = require('./lib/tools')
 
 ASSETS = 'lib'
 INIT = "#{ ASSETS }/init"
@@ -16,7 +16,7 @@ TEMPLATES = "#{ ASSETS }/templates"
 
 class Wizard
   begin: =>
-    prompt(@questions.firstStage readdirSync(TEMPLATES)).then (answers) =>
+    prompt(questions.firstStage readdirSync(TEMPLATES)).then (answers) =>
       {lang, name, type} = answers
       meta = {lang, name, type}
 
@@ -37,11 +37,11 @@ class Wizard
 
 
   menu: =>
-    prompt(@questions.menu ls('saved')).then (answers) =>
+    prompt(questions.menu ls('saved')).then (answers) =>
       switch answers.choice
         when 'exit' then exit(0)
         when 'scrub' then @scrub(answers.confirm)
-        else @tools.run(answers.choice)
+        else tools.run(answers.choice)
 
       return
 
@@ -51,7 +51,7 @@ class Wizard
   process: =>
     {meta, preview} = @data
 
-    @tools
+    tools
       .copy "#{ INIT }/app.styl"
       .copy "#{ INIT }/preview/preview.footer.jpg", preview
       .copy "#{ INIT }/preview/preview.header.jpg", preview
@@ -68,9 +68,9 @@ class Wizard
     path = names.shift()
     name = path.match(/([^/]+)\.marko$/)[1]
 
-    @msg.info 'subtitle', name
+    msg.info 'subtitle', name
 
-    prompt(@questions.nextStage name).then (answers) =>
+    prompt(questions.nextStage name).then (answers) =>
       @data[name] = unless (name is 'preview') then answers
       else answers.preview
 
@@ -85,13 +85,9 @@ class Wizard
 
 
   constructor: ->
-    @msg = new Messages()
-    @questions = new Questions()
-    @tools = new Tools()
-
-    @tools.clear()
-    @msg.info 'title', version
-    if @tools.foundFile() then @menu() else @begin()
+    tools.clear()
+    msg.info 'title', version
+    if tools.foundFile() then @menu() else @begin()
     return
 
 

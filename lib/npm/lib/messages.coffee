@@ -85,4 +85,4 @@ class Messages
     return
 
 
-module.exports = Messages
+module.exports = new Messages()

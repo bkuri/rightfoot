@@ -3,7 +3,7 @@
 {load} = require('cheerio')
 request = require('request-promise-native')
 
-options = method: 'POST'
+method = 'POST'
 
 
 class HTTP
@@ -15,10 +15,10 @@ class HTTP
     return request({uri, transform})
 
   post: (url, form, formData={}) ->
-    return request(Object.assign options, {uri, form})
+    return request({method, uri, form})
 
   upload: (url, formData) ->
-    return request(Object.assign options, {uri, formData})
+    return request({method, uri, formData})
 
 
 module.exports = new HTTP()

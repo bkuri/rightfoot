@@ -4,7 +4,7 @@
 #{createReadStream} = require('fs')
 #{post, upload} = require('./http')
 {readFileSync, writeFile} = require('fs-cson')
-Messages = require('./messages')
+msg = require('./messages')
 
 SETTINGS = './settings.cson'
 #URI_ADD = 'http://clients.weborama.nl/previewer/addcampaign'
@@ -31,7 +31,7 @@ class Tools
     where = "#{ where }/#{ rename }.#{ ext }" if rename?
 
     cp what, where
-    @msg.info 'copied', what
+    msg.info 'copied', what
     return @
 
 
@@ -74,17 +74,17 @@ class Tools
 
 
   readVars: =>
-    @msg.error('novars') unless @foundFile()
+    msg.error('novars') unless @foundFile()
     return readFileSync(VARS)
 
 
-  run: (command, after=null) =>
-    @msg.info command
+  run: (command, after=null) ->
+    msg.info command
 
-    exec "npm run #{ command }", (code, stdout, stderr) =>
-      # @msg.error(command, stderr) if stderr?
-      # @msg.info(command, stdout) if stdout?
-      @msg.info(after) if after?
+    exec "npm run #{ command }", (code, stdout, stderr) ->
+      # msg.error(command, stderr) if stderr?
+      # msg.info(command, stdout) if stdout?
+      msg.info(after) if after?
       return
 
     return
@@ -93,17 +93,16 @@ class Tools
   writeVars: (data) =>
     mkdir '-p', 'app'
 
-    writeFile VARS, data, (error) =>
+    writeFile VARS, data, (error) ->
       throw error if error?
-      @msg.info 'writevars', VARS
+      msg.info 'writevars', VARS
       return
 
     return @
 
 
   constructor: ->
-    @msg = new Messages()
     return
 
 
-module.exports = Tools
+module.exports = new Tools()
