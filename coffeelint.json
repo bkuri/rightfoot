@@ -114,7 +114,7 @@
     "level": "warn"
   },
   "no_unnecessary_fat_arrows": {
-    "level": "error"
+    "level": "warn"
   },
   "non_empty_constructor_needs_parens": {
     "level": "ignore"
