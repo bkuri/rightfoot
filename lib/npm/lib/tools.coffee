@@ -1,6 +1,6 @@
 'use strict'
 
-{cp, exec, find, mkdir, test} = require('shelljs')
+{cp, exec, find, test} = require('shelljs')
 #{createReadStream} = require('fs')
 #{post, upload} = require('./http')
 {readFileSync, writeFile} = require('fs-cson')
@@ -27,7 +27,6 @@ class Tools
       when 'coffee', 'styl' then 'app'
       else 'app/assets'
 
-    mkdir '-p', where
     where = "#{ where }/#{ rename }.#{ ext }" if rename?
 
     cp what, where
@@ -128,8 +127,6 @@ class Tools
 
 
   writeVars: (data) =>
-    mkdir '-p', 'app'
-
     writeFile VARS, data, (error) ->
       throw error if error?
       msg.info 'writevars', VARS
