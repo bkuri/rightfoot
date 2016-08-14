@@ -58,7 +58,11 @@ The idea behind this toolkit is to provide everything you need to create a webor
 
 In order to start using rightfoot is to issue the following command:`$ npm start`, which will start the wizard automatically. Simply follow the on-screen instructions to generate a valid `variables.cson` and other required files.
 
-You can then add your assets (images, videos, non-CDN libraries, audio files, etc) inside the `app/assets` subdirectory.
+The wizard will let you choose from the available templates, as well as choosing libraries from weborama's CDN.
+
+Once the wizard has finished generatin said files, you can proceed to creating your banner by editing files inside the `app` directory. Rightfoot comes bundled with stylus, marko and coffeescript interpreters, which are excellent RAD tools that allow you to generate css, html, and js respectively. You can also just use css/html/js files if you prefer.
+
+finally, you can add your assets (images, videos, non-CDN libraries, audio files, etc) inside the `app/assets` subdirectory and they will be integrated into your project automatically.
 
 Building
 --------
@@ -77,7 +81,8 @@ Inside the `npm_scripts` folder are a few scripts that make life a bit easier.
 -	`scrub` will reset everything to its original state.
 -	`test` will run a battery of tests.
 -	`zip` will compress your `public` folder along with its contents.
--	`build` will prepare everything for production.
+-	`snapshot` will generate a developer-oriented compiled version of your project.
+-	`build` will minify, concatenate and get everything ready for production use.
 
 You can run those scripts using the standard `$ npm run <script_name>`. More scripts are planned for future versions.
 
