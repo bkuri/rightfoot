@@ -21,7 +21,7 @@ Installing
 
 Install [Node.js](http://nodejs.org). Visit [the download site](http://nodejs.org/download/) and download the version appropriate to your OS. Once `node` and `npm` commands are available on your system, run the following:
 
-### 2. Everything else
+### 2. Other NPM packages
 
 Install Brunch & Coffeescript globally (you may need root permissions):
 
@@ -43,6 +43,10 @@ This will create a directory called `node_modules` and install its packages (usi
 -	[stylus-brunch](https://github.com/brunch/stylus-brunch)
 -	[uglify-js-brunch](https://github.com/brunch/uglify-js-brunch)
 
+### 3. External binaries
+
+You will need to install both GraphicsMagick and RSync in a matter appropriate to your OS in order to generate images and load/save your projects, respectively.
+
 #### Bower packages
 
 Bower no longer comes pre-bundled, but you can easily add it by installing it using `$ npm install bower`. You can then install your bower packages like so: `$bower install --save my-package-name`. This will create a `bower_components` directory and will contain all packages defined inside `bower.json`.
@@ -50,11 +54,13 @@ Bower no longer comes pre-bundled, but you can easily add it by installing it us
 Using
 -----
 
-Simply issue the following command:`$ npm start`. This will start a server on `http://localhost:3333` which you can open on your browser.
+The idea behind this toolkit is to provide everything you need to create a weborama-certified ad in record time. From a live dev server which auto-reloads on every file change, to a QA tester, backup image and zip file generators, this toolkit strives to have everything you need.
 
-You can now edit `index.marko` for the main content, as well as `scripts/app.coffee` for the main JS and `styles/app.styl` for the CSS. Everything will be compiled in real time as soon as you save your changes.
+In order to start using rightfoot is to issue the following command:`$ npm start`, which will start the wizard automatically. Simply follow the on-screen instructions to generate a valid `variables.cson` and other required files.
 
-building
+You can then add your assets (images, videos, non-CDN libraries, audio files, etc) inside the `app/assets` subdirectory.
+
+Building
 --------
 
 You can build a production-ready version of your project by running `$ npm run build`. This will trigger all production-only optimizations, such as concatenation, minification, uglifyjs mangling, etc, as well as providing you with a zip file of all contents.
@@ -66,6 +72,7 @@ Inside the `npm_scripts` folder are a few scripts that make life a bit easier.
 
 -	`wizard` will assist you in creating a new project or modifying an existing one.
 -	`clean` will empty out your `public` folder.
+-	`backup` will backup your live project to the `saved` folder.
 -	`images` will generate your backup images.
 -	`scrub` will reset everything to its original state.
 -	`test` will run a battery of tests.
