@@ -1,7 +1,7 @@
 'use strict'
 
 {load} = require('cheerio')
-request = require('request-promise-native')
+request = require('request-promise')
 
 method = 'POST'
 
