@@ -169,6 +169,9 @@ class Questions
 
           return
 
+        return
+
+      .finally =>
         @qLibs.choices = libs
         return
 
