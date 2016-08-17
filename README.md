@@ -47,6 +47,15 @@ This will create a directory called `node_modules` and install its packages (usi
 
 You will need to install both GraphicsMagick and RSync in a matter appropriate to your OS in order to generate images and load/save your projects, respectively.
 
+### 3.1 Windows
+
+Windows is the most awkward to configure, so here are a few directions
+
+* To install GraphicsMagick, head to http://www.graphicsmagick.org/download.html#download-sites and run the latest of
+the windows installers that you can find from the listed download mirrors.
+* To install RSync, use this guide: http://www.gaztronics.net/howtos/rsync-windows.php
+  it is based on cygwin. After installing it, add the executable dir to your windows path (probably C:\MinGW\msys\1.0\bin)
+
 #### Bower packages
 
 Bower no longer comes pre-bundled, but you can easily add it by installing it using `$ npm install bower`. You can then install your bower packages like so: `$bower install --save my-package-name`. This will create a `bower_components` directory and will contain all packages defined inside `bower.json`.
